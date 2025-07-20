@@ -1,0 +1,68 @@
+/*:root  > * {
+  --md-primary-fg-color:        #639;
+  --md-primary-fg-color--light: #639;
+  --md-primary-fg-color--dark:  #639;
+}*/
+
+@media only screen and (min-width: 76.25em) {
+  .md-main__inner {
+    max-width: none;
+  }
+  .md-sidebar--primary {
+    left: 0;
+  }
+  .md-sidebar--secondary {
+    right: 0;
+    margin-left: 0;
+    -webkit-transform: none;
+    transform: none;   
+  }
+}
+
+
+.md-typeset pre > code {
+  padding: 9.5px;
+  font-size: 13px;
+  line-height: 1.428571429;
+  color: #FFFFFF;
+  
+  white-space: pre-wrap;
+
+  background-color: #000000;
+}
+
+.md-typeset pre {
+  border-color: #f09018;
+  margin: 1em 0;
+  border-width: 1px;
+  border-style: solid;
+}
+
+strong {
+  background-color: #08101c;
+  color: #e5ae39;
+  padding-right: 1px;
+  padding-left: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 2px solid #08101c;
+  border-radius: 5px;
+}
+
+.md-typeset strong { 
+  background-color: #08101c;
+  color: #e5ae39;
+  padding-right: 1px;
+  padding-left: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 2px solid #08101c;
+  border-radius: 5px;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0;
+  border-left-width: 4px;
+}
+

@@ -1,0 +1,372 @@
+site_name: HackFast
+site_url: https://hackfa.st/
+
+# Repository
+repo_name: hack-fast/HackFast.git
+repo_url: https://github.com/hack-fast/HackFast.git
+
+# Copyright
+copyright: "<a href=\"/\">Legal Disclaimer</a> ⦁ <a href=\"/Community/Contributing/index.html\">Contribute</a>"
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Light mode
+    - scheme: default
+      primary: orange
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/info-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      clickable_checkbox: true
+  - pymdownx.tilde
+
+
+nav:
+  - 'Offensive Security':
+    - 'Network':
+      - 'Ports Scanning':
+        - 'Nmap': Offensive-Security/Network/tools/nmap.md
+        - 'Masscan': Offensive-Security/Network/tools/masscan.md
+        - 'RustScan': Offensive-Security/Network/tools/rustscan.md
+      - 'Services Enumeration':
+        - 'Readme': Offensive-Security/Network/ports/Readme.md
+        - '21 - FTP': Offensive-Security/Network/ports/21.md
+        - '22 - SSH': Offensive-Security/Network/ports/22.md
+        - '23 - Telnet': Offensive-Security/Network/ports/23.md
+        - '25 - SMTP': Offensive-Security/Network/ports/25.md
+        - '53 - DNS': Offensive-Security/Network/ports/53.md
+        - '110 - POP3': Offensive-Security/Network/ports/110.md
+        - '111/135 - RPC': Offensive-Security/Network/ports/135.md
+        - '161/162/199 - SNMP': Offensive-Security/Network/ports/161.md
+        - '389/636 - LDAP': Offensive-Security/Network/ports/389.md
+        - '445 - SMB ': Offensive-Security/Network/ports/445.md
+        - '1433/1434 - MSSQL': Offensive-Security/Network/ports/1433.md
+        - '2049 - NFS': Offensive-Security/Network/ports/2049.md
+        - '3306 - MYSQL': Offensive-Security/Network/ports/3306.md
+        - '3389 - RDP': Offensive-Security/Network/ports/3389.md
+        - '5900 - VNC': Offensive-Security/Network/ports/5900.md
+        - '5985/5986 - WINRM': Offensive-Security/Network/ports/5985.md
+    - 'Web Application':
+      - 'Web Enumeration':
+        - 'Readme': Offensive-Security/Web-Application/Web-Enumeration/Readme.md
+        - 'Directory Brute-Forcing': Offensive-Security/Web-Application/Web-Enumeration/Directory-Brute-Forcing.md
+        - 'Subdomain Enumeration': Offensive-Security/Web-Application/Web-Enumeration/Subdomain-Enumeration.md
+        - 'Detecting WAF (Web Application Firewall)': Offensive-Security/Web-Application/Web-Enumeration/Detecting-WAF.md
+        - 'Google Dorks': Offensive-Security/Web-Application/Web-Enumeration/Google-Dorks.md
+      - 'Web Exploit':
+        - 'Readme': Offensive-Security/Web-Application/Web-Exploit/Readme.md
+        - 'Injections':
+          - 'Server Side Injections':
+            - 'SQL Injection (SQLI)': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/SQLi.md
+            - 'OS Command Injection': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Command-Injection.md
+            - 'NoSQL Injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/NoSQL.md
+            - 'LDAP injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/LDAP.md
+            - 'XPath Injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/XPath.md
+            - 'Server-Side Template Injection (SSTI)': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/SSTI.md
+            - 'Checklist':
+              - 'SQL Injection (SQLi)': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/SQLi.md
+              - 'OS Command Injection': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/Command-Injection.md
+              - 'NoSQL Injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/NoSQL.md
+              - 'LDAP injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/LDAP.md
+              - 'XPath Injections': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/XPath.md
+              - 'Server-Side Template Injection (SSTI)': Offensive-Security/Web-Application/Web-Exploit/Injections/Server-Side-Injections/Checklist/SSTI.md
+          - 'Client Side Injections':
+            - 'Cross-Site Scripting (XSS)': Offensive-Security/Web-Application/Web-Exploit/Injections/Client-Side-Injections/XSS.md
+            - 'Cross Site Request Forgery (CSRF)': Offensive-Security/Web-Application/Web-Exploit/Injections/Client-Side-Injections/CSRF.md
+            - 'Checklist':
+              - 'Cross-Site Scripting (XSS)': Offensive-Security/Web-Application/Web-Exploit/Injections/Client-Side-Injections/Checklist/XSS.md
+              - 'Cross Site Request Forgery (CSRF)': Offensive-Security/Web-Application/Web-Exploit/Injections/Client-Side-Injections/Checklist/CSRF.md
+        - 'File & File Inclusions':
+          - 'File Upload': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/File-Upload.md
+          - 'Local File Inclusion (LFI)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/LFI.md
+          - 'Remote Code Execution (RCE)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/RCE.md
+          - 'XML External Entity (XXE)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/XXE.md
+          - 'Checklist':
+            - 'File Upload': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/Checklist/File-Upload.md
+            - 'Local File Inclusion (LFI)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/Checklist/LFI.md
+            - 'Remote File Inclusion (RFI)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/Checklist/RFI.md
+            - 'XML External Entity (XXE)': Offensive-Security/Web-Application/Web-Exploit/Injections/File-&-File-Inclusions/Checklist/XXE.md
+      - 'Web Bypassing': 
+        - 'Bypassing CAPTCHA': Offensive-Security/Web-Application/Web-Bypassing/Bypassing-CAPTCHA.md
+        - 'Bypassing CSRF Protection': Offensive-Security/Web-Application/Web-Bypassing/Bypassing-CSRF-Protection.md
+        - 'Bypassing Rate Limit Protection': Offensive-Security/Web-Application/Web-Bypassing/Bypassing-Rate-Limit-Protection.md
+      - 'Common Applications':
+        - 'Readme': Offensive-Security/Web-Application/Common-Applications/Readme.md
+        - 'PRTG Network Monitor': Offensive-Security/Web-Application/Common-Applications/PRTG-Network-Monitor.md
+        - 'Apache Tomcat': Offensive-Security/Web-Application/Common-Applications/Apache-Tomcat.md
+        - 'ColdFusion': Offensive-Security/Web-Application/Common-Applications/ColdFusion.md
+        - 'Jenkins': Offensive-Security/Web-Application/Common-Applications/Jenkins.md
+        - 'GitLab': Offensive-Security/Web-Application/Common-Applications/GitLab.md
+        - 'content management system (CMS)':
+          - 'WordPress': Offensive-Security/Web-Application/Common-Applications/cms/WordPress.md
+          - 'Drupal': Offensive-Security/Web-Application/Common-Applications/cms/Drupal.md
+          - 'Joomla': Offensive-Security/Web-Application/Common-Applications/cms/Joomla.md
+    - 'Linux Environment':
+      - 'Making Shell Fully Interactive': Offensive-Security/Linux-Environment/Making-Shell-Fully-Interactive.md
+      - 'File Transfer': 
+        - 'Download Operations': Offensive-Security/Linux-Environment/File-Transfer/Download-Operations.md
+        - 'Upload Operations': Offensive-Security/Linux-Environment/File-Transfer/Upload-Operations.md
+      - 'Pivoting, Tunneling, and Port Forwarding':
+        - 'Pivoting':
+          - 'Chisel': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Chisel.md
+          - 'ICMP Tunneling with ptunnel-ng': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/ICMP-Tunneling-with-ptunnel-ng.md
+          - 'Ligolo-ng': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Ligolo-ng.md
+          - 'Metasploit': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Metasploit.md
+          - 'SSH': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/SSH.md
+        - 'Port Forwarding':
+          - 'Enumeration': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Port-Forwarding/Enumeration.md
+          - 'Meterpreter Tunneling & Port Forwarding': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Port-Forwarding/Meterpreter-Tunneling-&-Port-Forwarding.md
+          - 'SSH Port Forwarding': Offensive-Security/Linux-Environment/Pivoting-Tunneling-and-Port-Forwarding/Port-Forwarding/SSH-Port-Forwarding.md
+      - 'Privilege Escalation': 
+        - 'Strategy': Offensive-Security/Linux-Environment/Privilege-Escalation/Strategy.md
+        - 'System Enumeration': Offensive-Security/Linux-Environment/Privilege-Escalation/System-Enumeration.md
+        - 'Environment Variables':
+          - 'README': Offensive-Security/Linux-Environment/Privilege-Escalation/Environment-Variables/readme.md
+          - 'LD_LIBRARY_PATH': Offensive-Security/Linux-Environment/Privilege-Escalation/Environment-Variables/LD_LIBRARY_PATH.md
+          - 'LD_PRELOAD': Offensive-Security/Linux-Environment/Privilege-Escalation/Environment-Variables/LD_PRELOAD.md
+        - 'Kernel Exploits': Offensive-Security/Linux-Environment/Privilege-Escalation/Kernel-Exploits.md
+        - 'Passwords & Keys': Offensive-Security/Linux-Environment/Privilege-Escalation/Passwords-&-Keys.md
+        - 'Service-Based':
+          - 'Cron Jobs': 
+            - 'README': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Cron-Jobs/Readme.md
+            - 'Hunting Cron Jobs': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Cron-Jobs/Hunting-Cron-Jobs.md
+            - 'Exploiting Cron PATH': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Cron-Jobs/Exploiting-Cron-PATH.md
+            - 'Wildcard Injection': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Cron-Jobs/Wildcard-Injection.md
+            - 'Exploiting Weak File Permissions': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Cron-Jobs/Exploiting-Weak-File-Permissions.md
+          - 'Docker': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Docker.md
+          - 'Logrotate': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/Logrotate.md
+          - 'LXD': Offensive-Security/Linux-Environment/Privilege-Escalation/Service-Based/LXD.md
+        - 'Exploiting Sudo Privileges': Offensive-Security/Linux-Environment/Privilege-Escalation/Exploiting-Sudo-Privileges.md
+        - 'SUID/SGID Executables':
+          - 'README': Offensive-Security/Linux-Environment/Privilege-Escalation/SUID-SGID-Executables/readme.md
+          - 'Enumerating SUID and SGID': Offensive-Security/Linux-Environment/Privilege-Escalation/SUID-SGID-Executables/Enumerating-SUID-and-SGID-Files.md
+          - 'Exploiting Vulnerable SUID': Offensive-Security/Linux-Environment/Privilege-Escalation/SUID-SGID-Executables/Exploiting-Vulnerable-SUID-Binaries.md
+          - 'Exploiting PATH Environment Injection': Offensive-Security/Linux-Environment/Privilege-Escalation/SUID-SGID-Executables/Exploiting-PATH-Environment-Injection.md
+          - 'Exploiting Shared Object Injection': Offensive-Security/Linux-Environment/Privilege-Escalation/SUID-SGID-Executables/Exploiting-Shared-Object-Injection.md
+        - 'Weak File Permissions':
+          - 'File Permissions': Offensive-Security/Linux-Environment/Privilege-Escalation/Weak-File-Permissions/File-Permissions.md
+          - '/etc/passwd': Offensive-Security/Linux-Environment/Privilege-Escalation/Weak-File-Permissions/etc-passwd.md
+          - '/etc/shadow': Offensive-Security/Linux-Environment/Privilege-Escalation/Weak-File-Permissions/etc-shadow.md
+      - 'Establishing Persistence': 
+        - 'Add Account': Offensive-Security/Linux-Environment/Establishing-Persistence/Add-Account.md
+        - 'Cron Jobs': Offensive-Security/Linux-Environment/Establishing-Persistence/Cron-Jobs.md
+        - 'SSH Persistence': Offensive-Security/Linux-Environment/Establishing-Persistence/SSH-PERSISTENCE.md
+        - 'Startup Scripts': Offensive-Security/Linux-Environment/Establishing-Persistence/Startup-Scripts.md
+      - 'Covering Tracks': 
+        - 'Delete Logs & Bash History': Offensive-Security/Linux-Environment/Covering-Tracks/Delete-Logs-&-Bash-History.md
+    - 'Windows Environment': 
+      - 'File Transfer':
+        - 'Download Operations': Offensive-Security/Windows-Environment/File-Transfer/Download-Operations.md
+        - 'Upload Operations': Offensive-Security/Windows-Environment/File-Transfer/Upload-Operations.md
+      - 'Pivoting, Tunneling, and Port Forwarding':
+        - 'Pivoting': 
+          - 'Chisel': Offensive-Security/Windows-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Chisel.md
+          - 'Ligolo-ng': Offensive-Security/Windows-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Ligolo-ng.md
+          - 'Meterpreter': Offensive-Security/Windows-Environment/Pivoting-Tunneling-and-Port-Forwarding/Pivoting/Meterpreter.md
+      - 'Privilege Escalation':
+        - 'Strategy': Offensive-Security/Windows-Environment/Privilege-Escalation/Strategy.md
+        - 'System Enumeration': Offensive-Security/Windows-Environment/Privilege-Escalation/System-Enumeration.md
+        - 'Credential Hunting': Offensive-Security/Windows-Environment/Privilege-Escalation/Credential-Hunting.md
+        - 'Kernel Exploits':
+          - 'Readme': Offensive-Security/Windows-Environment/Privilege-Escalation/Kernel-Exploits/readme.md
+          - 'Enumeration Kernel Vuln': Offensive-Security/Windows-Environment/Privilege-Escalation/Kernel-Exploits/Enumeration-Kernel-Vuln.md
+          - 'Exploiting Kernel Vuln': Offensive-Security/Windows-Environment/Privilege-Escalation/Kernel-Exploits/Exploiting-Kernel-Vuln.md
+        - 'Service Exploits':
+          - 'Insecure Permissions Executable': 
+            - 'Readme': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Permissions-Executable/readme.md
+            - 'Service Enumeration': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Permissions-Executable/Service-Enumeration.md
+            - 'Service Exploitation': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Permissions-Executable/Service-Exploitation.md
+          - 'Insecure Service Permissions':
+            - 'Readme': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Service-Permissions/readme.md
+            - 'Service Enumeration': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Service-Permissions/Service-Enumeration.md
+            - 'Service Exploitation': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Insecure-Service-Permissions/Service-Exploitation.md
+          - 'Unquoted Service Paths':
+            - 'Readme': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Unquoted-Service-Paths/readme.md
+            - 'Service Hunting': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Unquoted-Service-Paths/Service-Hunting.md
+            - 'Service Enumeration': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Unquoted-Service-Paths/Service-Enumeration.md
+            - 'Service Exploitation': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Unquoted-Service-Paths/Service-Exploitation.md
+          - 'Weak Registry Permissions':
+            - 'Registry Enumeration': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Weak-Registry-Permissions/Registry-Enumeration.md
+            - 'Registry Exploitation': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/Weak-Registry-Permissions/Registry-Exploitation.md
+          - 'DLL Hijacking': Offensive-Security/Windows-Environment/Privilege-Escalation/Service-Exploits/DLL-Hijacking.md
+        - 'Token Impersonation':
+          - 'Readme': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/readme.md
+          - 'SeBackupPrivilege/SeRestorePrivilege': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/SeBackupPrivilege-SeRestorePrivilege.md
+          - 'SeDebugPrivilege': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/SeDebugPrivilege.md
+          - 'SeImpersonatePrivilege/SeAssignPrimaryTokenPrivilege': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/SeImpersonatePrivilege-SeAssignPrimaryTokenPrivilege.md
+          - 'SeManageVolumePrivilege': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/SeManageVolumePrivilege.md
+          - 'SeTakeOwnershipPrivilege': Offensive-Security/Windows-Environment/Privilege-Escalation/Token-Impersonation/SeTakeOwnershipPrivilege.md
+      - 'Establishing Persistence':
+        - 'Code Cave Exploitation': Offensive-Security/Windows-Environment/Establishing-Persistence/Code-Cave-Exploitation.md
+        - 'DLL Hijacking': Offensive-Security/Windows-Environment/Establishing-Persistence/DLL-Hijacking.md
+        - 'PowerShell Profile': Offensive-Security/Windows-Environment/Establishing-Persistence/PowerShell-Profile.md
+        - 'Process Doppelgänging': Offensive-Security/Windows-Environment/Establishing-Persistence/Process-Doppelgänging.md
+        - 'Registry Keys': Offensive-Security/Windows-Environment/Establishing-Persistence/Registry-Keys.md
+        - 'Scheduled Tasks': Offensive-Security/Windows-Environment/Establishing-Persistence/Scheduled-Tasks.md
+        - 'Startup Folder': Offensive-Security/Windows-Environment/Establishing-Persistence/Startup-Folder.md
+        - 'WMI Event Subscription': Offensive-Security/Windows-Environment/Establishing-Persistence/WMI-Event-Subscription.md
+      - 'General':
+        - 'Compiling Exploits': Offensive-Security/Windows-Environment/General/Compiling-Exploits.md
+        - 'Reverse Shells':
+          - 'MSFvenom': Offensive-Security/Windows-Environment/General/Reverse-Shells/MSFvenom.md
+        - 'Tricks':
+          - 'Who Logged In and When': Offensive-Security/Windows-Environment/General/Tricks/Who-Logged-In-and-When.md
+    - 'Active Directory':
+      - 'Readme': Offensive-Security/Active-Directory/readme.md
+      - 'Initial Scanning & Enumeration':
+        - 'Readme': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/readme.md
+        - 'Username Enumeration': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Username-Enumeration.md
+        - 'ACL Enumeration': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/ACL-Enumeration.md
+        - 'Credentialed Enumeration':
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Credentialed-Enumeration/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Credentialed-Enumeration/From-Windows.md
+        - 'Tools':
+          - 'Linux':
+            - 'BloodHound Queries': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Linux/BloodHound-Queries.md
+            - 'CrackMapExec (CME)': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Linux/CrackMapExec.md
+            - 'Enum4linux': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Linux/Enum4linux.md
+            - 'Impacket Toolkit': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Linux/Impacket-Toolkit.md
+          - 'Windows':
+            - 'PowerShell': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Windows/PowerShell.md
+            - 'PowerView': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Windows/PowerView.md
+            - 'SharpView': Offensive-Security/Active-Directory/Initial-Scanning-&-Enumeration/Tools/Windows/SharpView.md
+      - 'Initial Attack Vectors':
+        - 'Password Spraying':
+          - 'Readme': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Password-Spraying/readme.md
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Password-Spraying/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Password-Spraying/From-Windows.md
+        - 'LLMNR/NBT-NS Poisoning':
+          - 'Readme': Offensive-Security/Active-Directory/Initial-Attack-Vectors/NBT-NS-Poisoning/readme.md
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Attack-Vectors/NBT-NS-Poisoning/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Attack-Vectors/NBT-NS-Poisoning/From-Windows.md
+        - 'Kerberoasting':
+          - 'README': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Kerberoasting/readme.md
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Kerberoasting/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Attack-Vectors/Kerberoasting/From-Windows.md
+        - 'ASREPRoasting':
+          - 'README': Offensive-Security/Active-Directory/Initial-Attack-Vectors/ASREPRoasting/readme.md
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Attack-Vectors/ASREPRoasting/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Attack-Vectors/ASREPRoasting/From-Windows.md
+        - 'DCSync':
+          - 'README': Offensive-Security/Active-Directory/Initial-Attack-Vectors/DCSync/readme.md
+          - 'From Linux': Offensive-Security/Active-Directory/Initial-Attack-Vectors/DCSync/From-Linux.md
+          - 'From Windows': Offensive-Security/Active-Directory/Initial-Attack-Vectors/DCSync/From-Windows.md
+      - 'Lateral Movement':
+        - 'Certificate': Offensive-Security/Active-Directory/Lateral-Movement/Certificate.md
+        - 'Kerberos': Offensive-Security/Active-Directory/Lateral-Movement/Kerberos.md
+        - 'Mimikatz': Offensive-Security/Active-Directory/Lateral-Movement/Mimikatz.md
+        - 'MSSQL': Offensive-Security/Active-Directory/Lateral-Movement/MSSQL.md
+        - 'NT Hash': Offensive-Security/Active-Directory/Lateral-Movement/NTHash.md
+        - 'Password': Offensive-Security/Active-Directory/Lateral-Movement/Password.md
+      - 'Domain Persistence':
+        - 'Custom SSP': Offensive-Security/Active-Directory/Domain-Persistence/Custom-SSP.md
+        - 'DCSync': Offensive-Security/Active-Directory/Domain-Persistence/DCSync.md
+        - 'DSRM Abuse': Offensive-Security/Active-Directory/Domain-Persistence/DSRM-Abuse.md
+  - 'Productivity': 
+    - 'todo': Productivity/todo.md
+  - 'Philosophy':
+    - 'todo': Philosophy/todo.md
+  - 'Community': 
+    - 'How to become a Contributor': Community/Contributing.md
+    - 'How to become a Maintainer': Community/Maintainer.md
+    - 'Asking a question': "https://discord.com/invite/#"
+      
+extra_css:
+  - stylesheets/extra.css
