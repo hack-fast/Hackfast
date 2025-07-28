@@ -1,9 +1,9 @@
 
-### ⚡ **OVERVIEW**
+### **Overview**
 
 Masscan is a high-speed port scanner built for Internet-scale reconnaissance. It sends packets like Nmap but is much faster. Use it to map large networks, identify exposed services, and narrow targets before deeper scans.
 
-### 🎯 **TARGET SELECTION**
+### **Target Selection**
 
 | Option | Example | Description |
 |--------|---------|-------------|
@@ -17,7 +17,7 @@ Masscan is a high-speed port scanner built for Internet-scale reconnaissance. It
 | `--excludefile` | `masscan --excludefile exclude.txt` | Load exclusions from a file (one IP or CIDR per line). |
 
 
-### 🚀 **SCAN RATE & PERFORMANCE**
+### **Scan Rate & Performance**
 
 | Option | Example | Description |
 |--------|---------|-------------|
@@ -28,7 +28,7 @@ Masscan is a high-speed port scanner built for Internet-scale reconnaissance. It
 | `--adapter-port` | `masscan --adapter-port 40000` | Sets the source port range to use for packets. Helps avoid firewall detection or port conflicts. |
 
 
-### 🔌 **PORT SCANNING OPTIONS**
+### **Port Scanning Options**
 
 | Option | Example | Description |
 |--------|---------|-------------|
@@ -38,7 +38,7 @@ Masscan is a high-speed port scanner built for Internet-scale reconnaissance. It
 | `--banners` | `masscan --banners` | Attempt to grab service banners (like version strings). Requires open port and banner support. Slower, use with `--rate` throttling. |
 
 
-### 📤 **OUTPUT FORMATS**
+### **Output Formats**
 
 | Option | Example | Description |
 |--------|---------|-------------|
@@ -47,7 +47,7 @@ Masscan is a high-speed port scanner built for Internet-scale reconnaissance. It
 | `--output-format list` | `masscan --output-format list` | Simple text format like `IP:port`. Useful for piping into other tools or quick review. |
 
 
-### 🔄 **WORKFLOW EXAMPLE**
+### **Workflow Example**
 
 ```bash
 # Fast recon of top 100 ports on a /16 subnet

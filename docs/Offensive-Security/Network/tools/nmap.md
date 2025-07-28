@@ -1,4 +1,4 @@
-### ⚡ **OVERVIEW**
+### **Overview**
 
 Nmap (Network Mapper) is a free and open-source tool used for network discovery and security auditing. It is widely used to identify what devices are running on a network, discover open ports, detect security risks, and map network infrastructure.
 
@@ -13,10 +13,10 @@ cat ports.nmap | grep 'open' | awk '{ print $1 }' | awk '{print ($0+0)}' | sed -
 nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 ```
 
-### 🎯**TARGET SPECIFICATION**
+### **Target Specification**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 |     | `nmap [IP-ADDRESS]` | Scan a single IP to identify open ports and associated services. |
 |     | `nmap [IP-ADDRESS] [IP-ADDRESS]` | Scan a two specified IP addresses to identify open ports and associated services. |
@@ -27,10 +27,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `--exclude` | `nmap --exclude [IP-ADDRESS]` | Exclude specific hosts from scan to focus on untested systems. |
 
 
-### 🔍**SCAN TECHNIQUES**
+### **Scan Techniques**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-sS` | `nmap [IP-ADDRESS] -sS` | Executes a stealth SYN scan to discreetly identify active ports without finalizing the TCP handshake. |
 | `-sT` | `nmap [IP-ADDRESS] -sT` | Use a TCP connect scan to check port availability through full TCP handshake (less stealthy). |
@@ -39,10 +39,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-sW` | `nmap [IP-ADDRESS] -sW` | Use a TCP Window scan to infer window size and detect potential for denial-of-service vulnerabilities. |
 | `-sM` | `nmap [IP-ADDRESS] -sM` | Implement a Maimon scan to explore peculiarities in TCP stack implementations. |
 
-### 💻**HOST DISCOVERY**
+### **Host Discovery**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-sL` | `nmap 192.168.1.1-3 -sL` | Lists network hosts without sending packets, useful for network inventories. |
 | `-sn` | `nmap [IP-ADDRESS/RANGE] -sn` | Ping scan to identify which hosts are up. |
@@ -53,10 +53,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-PR` | `nmap 192.168.1.1-1/24 -PR` | Uses ARP to find active hosts within a local network segment. |
 | `-n` | `nmap 192.168.1.1 -n` | Disables DNS resolution to speed up the scan. |
 
-### 🔒**PORT SPECIFICATION**
+### **Port Specification**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-p` | `nmap [IP-ADDRESS] -p [PORT]` | Scan a specific port to check for services like FTP and potential misconfigurations. |
 | `-p` | `nmap [IP-ADDRESS] -p [FROM-PORT]-[TO-PORT]` | Scan a range of ports to uncover a wider array of services and their states. |
@@ -68,10 +68,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-p-65535` | `nmap [IP-ADDRESS] -p-65535` | Scan from port 1 through 65535 to explore less commonly used ports. |
 | `-p0-` | `nmap [IP_ADDRESS] -p0-` | Start from port 0 to include all possible ports in the scan up to 65535. |
 
-### 🧠**SERVICE AND VERSION DETECTION**
+### **Service and Version Detection**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-sV` | `nmap [IP-ADDRESS] -sV` | Detects service versions running on open ports. |
 | `-sV --version-intensity` | `nmap [IP-ADDRESS] -sV --version-intensity 8` | Sets the intensity of version detection to level 8, balancing thoroughness and speed. |
@@ -79,10 +79,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-sV --version-all` | `nmap [IP-ADDRESS] -sV --version-all` | Forces Nmap to use the most aggressive version detection. |
 | `-A` | `nmap [IP-ADDRESS] -A` | Enables OS detection, version detection, script scanning, and traceroute. |
 
-### 🧬**OS DETECTION**
+### **OS Detection**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-O` | `nmap [IP-ADDRESS] -O` | Detects the operating system of the host. |
 | `-O --osscan-limit` | `nmap [IP-ADDRESS] -O --osscan-limit` | Limits OS detection to confirmed open and closed ports for faster scanning. |
@@ -90,10 +90,10 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-O --max-os-tries` | `nmap [IP-ADDRESS] -O --max-os-tries 1` | Limits the number of OS detection tries to speed up the process. |
 | `-A` | `nmap [IP-ADDRESS] -A` | Enables comprehensive scanning, including OS detection, service version detection, script scanning, and traceroute. |
 
-### ⏱️**TIMING AND PERFORMANCE**
+### **Timing and Performance**
 
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-T0` | `nmap [IP-ADDRESS] -T0` | Paranoid timing: extremely slow, used to evade intrusion detection systems. |
 | `-T1` | `nmap [IP-ADDRESS] -T1` | Sneaky timing: very slow, reduces the chance of detection. |
@@ -102,9 +102,9 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `-T4` | `nmap [IP-ADDRESS] -T4` | Aggressive timing: faster scanning that may be detected by modern IDS. |
 | `-T5` | `nmap [IP-ADDRESS] -T5` | Insane timing: very fast but likely to be detected and can overload network resources. |
 
-### 🛡️**FIREWALL/IDS EVASION AND SPOOFING**
+### **Timing and Performance**
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-f` | `nmap [IP-ADDRESS] -f` | Fragments packets to help hide the scan from firewalls and intrusion detection systems. |
 | `--mtu` | `nmap [IP-ADDRESS] --mtu 32` | Sets a custom MTU to fragment packets, helping to evade network filters. |
@@ -114,9 +114,9 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `--proxies` | `nmap --proxies http://[IP-ADDRESS]:[PORT], http://[IP-ADDRESS]:[PORT] [IP-ADDRESS]` | Routes the scan through proxies to hide the scanner's true IP and avoid network monitoring. |
 | `--data-length` | `nmap --data-length 200 [IP-ADDRESS]` | Adds extra random data to the scan packets, disrupting detection by systems that recognize scan patterns. |
 
-### 🛠**NSE SCRIPTS**
+### **NSE Scripts**
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-sC` | `nmap [IP-ADDRESS] -sC` | Runs default scripts for quick vulnerability scans and service identification. |
 | `--script default` | `nmap [IP-ADDRESS] --script default` | Executes all default scripts to comprehensively assess network security. |
@@ -125,9 +125,9 @@ nmap -p [PORT,PORT,PORT] -sCV [TARGET-IP] -oN Final.nmap
 | `--script` | `nmap [IP-ADDRESS] --script=http,banner` | Combines HTTP and banner scripts for detailed service analysis. |
 | `--script-args` | `nmap --script snmp-sysdescr --script-args snmpcommunity=admin [IP-ADDRESS]` | Runs the 'snmp-sysdescr' script with specified arguments to retrieve system descriptions from SNMP-enabled devices. |
 
-### 📤**OUTPUT OPTIONS**
+### **Output Options**
 
-| SWITCH | EXAMPLE | DESCRIPTION |
+| Option | Example | Description |
 | --- | --- | --- |
 | `-oN` | `nmap [IP-ADDRESS] -oN normal.file` | Saves the scan results in a normal, human-readable format to the specified file. |
 | `-oX` | `nmap [IP-ADDRESS] -oX xml.file` | Outputs the scan results in XML format, suitable for parsing by software or further processing. |
