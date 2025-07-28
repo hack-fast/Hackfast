@@ -2,8 +2,8 @@ site_name: HackFast
 site_url: https://hackfa.st/
 
 # Repository
-repo_name: hack-fast/HackFast.git
-repo_url: https://github.com/hack-fast/HackFast.git
+repo_name: hack-fast/HackFast
+repo_url: https://github.com/hack-fast/HackFast
 
 # Copyright
 copyright: "<a href=\"/\">Legal Disclaimer</a> ⦁ <a href=\"/Community/Contributing/index.html\">Contribute</a>"
