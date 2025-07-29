@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 WordPress is an open-source content management system (CMS) that enables users to create, manage, and modify content on a website without needing specialized technical knowledge. Originally launched in 2003 as a platform primarily for blogging, WordPress has evolved into a robust tool for building various types of websites, from simple blogs to comprehensive business sites and online stores.
 
-### **PLUGIN ENUMERATION TECHNIQUES**
+### **Plugin Enumeration Techniques**
 
 Vulnerable plugins are a primary attack vector in WordPress and represent a significant security risk.
 
@@ -30,7 +30,7 @@ Vulnerable plugins are a primary attack vector in WordPress and represent a sign
     `feroxbuster -u https://[WORDPRESS-DOMAIN]/wp-content/plugins -w plugins.txt`
     
 
-### **USER ENUMERATION TECHNIQUES**
+### **User Enumeration Techniques**
 
 1.  Enumerating Users with a Bash Script:
     
@@ -53,7 +53,7 @@ Vulnerable plugins are a primary attack vector in WordPress and represent a sign
     `use auxiliary/scanner/http/wordpress_enum_users`
     
 
-### **WPSCAN COMMANDS**
+### **WPScan Commands**
 
 1.  Performing a Comprehensive Website Scan:  
     `wpscan --rua -e ap,at,tt,cb,dbe,u,m --url https://[WORDPRESS-DOMAIN]/ --plugins-detection aggressive --api-token [API-TOKEN] --passwords /usr/share/seclists/Passwords/probable-v2-top1575.txt`
@@ -62,7 +62,7 @@ Vulnerable plugins are a primary attack vector in WordPress and represent a sign
     `wpscan --url https://[WORDPRESS-DOMAIN]/ --enumerate vp,u,vt,tt --follow-redirection --verbose --log target.log`
     
 
-### **INJECTING A SHELL INTO A WORDPRESS THEME**
+### **Injecting a Shell into a WordPress Theme**
 
 To establish a reverse shell through a WordPress theme, you modify theme files to execute arbitrary system commands. This can be done by adding PHP code to template files like `404.php` or `footer.php`. Follow these detailed steps to implement and use a reverse shell:
 

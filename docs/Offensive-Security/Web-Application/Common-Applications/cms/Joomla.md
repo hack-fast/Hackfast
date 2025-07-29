@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Joomla is a free and open-source content management system (CMS) used to create, manage, and publish digital content on websites. It provides a user-friendly interface and a range of features that allow users to build and maintain websites without needing to write code. Joomla is highly customizable, supporting extensions and templates to enhance functionality and design, making it a popular choice for websites of all sizes—from personal blogs to large corporate sites.
 
-### **IDENTIFYING JOOMLA VERSION**
+### **Identifying Joomla Version**
 
 1.  Obtain Joomla Version from README:  
     `curl -s http://[JOOMLA-DOMAIN]/README.txt | head -n 5`
@@ -49,12 +49,12 @@ Joomla is a free and open-source content management system (CMS) used to create,
     ```
     
 
-### **AUTOMATIC SCANNING**
+### **Automatic Scanning**
 
 1.  Use Droopescan for automatic scanning:  
     `droopescan scan joomla --url http://[JOOMLA-DOMAIN]/`
 
-### **BRUTE FORCING LOGIN CREDENTIALS**
+### **Brute Forcing Login Credentials**
 
 1.  Using Hydra for Credential Brute-Forcing:  
     `hydra -L users.txt -P passwds.txt [JOOMLA-DOMAIN] http-get /administrator/index.php`
@@ -63,9 +63,9 @@ Joomla is a free and open-source content management system (CMS) used to create,
 3.  Using Metasploit for Credential Brute-Forcing:  
     `msf > use auxiliary/scanner/http/joomla_bruteforce_login`
 
-### **GAIN RCE BY INJECTING PHP CODE IN A TEMPLATE**
+### **Gain RCE by Injecting PHP Code in a Template**
 
-1.  Navigate to the Templates menu via the administrator panel.
+1.  Navigate to Templates in Joomla Admin Panel.
 2.  Select protostar from the Template list.
 3.  Access the Templates: Customize page.
 4.  Edit the error.php page and insert the following PHP code:  
