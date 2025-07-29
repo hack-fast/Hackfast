@@ -1,0 +1,70 @@
+/*:root  > * {
+  --md-primary-fg-color:        #639;
+  --md-primary-fg-color--light: #639;
+  --md-primary-fg-color--dark:  #639;
+}*/
+
+@media only screen and (min-width: 76.25em) {
+  .md-main__inner {
+    max-width: none;
+  }
+  .md-sidebar--primary {
+    left: 0;
+  }
+  .md-sidebar--secondary {
+    right: 0;
+    margin-left: 0;
+    -webkit-transform: none;
+    transform: none;   
+  }
+}
+
+
+.md-banner {
+  color: var(--md-footer-fg-color--lighter);
+}
+
+.md-banner strong {
+  white-space: nowrap;
+}
+
+.md-banner a,
+.md-banner strong {
+  color: var(--md-footer-fg-color);
+}
+
+.md-banner a:focus,
+.md-banner a:hover {
+  color: currentColor;
+}
+
+.md-typeset .mastodon {
+  color: #7289da;
+}
+
+
+.md-banner a:focus .twemoji,
+.md-banner a:hover .twemoji {
+  background-color: #000;
+  box-shadow: none;
+}
+
+.md-banner .twemoji {
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 0.05rem currentColor;
+  display: inline-block;
+  height: 1.2rem;
+  padding: 0.25rem;
+  transition: all 0.25s;
+  vertical-align: bottom;
+  width: 1.2rem;
+}
+
+.md-banner .twemoji svg {
+  display: block;
+  max-height: none;
+}
+
+.md-typeset .twitter {
+  color: #ffffff; 
+}

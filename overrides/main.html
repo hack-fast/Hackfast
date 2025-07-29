@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+<!-- Discord joining bar -->
+{% block announce %}
+  Join our community on
+  <a rel="me" href="https://discord.gg/BbyWcewpSx">
+    <span class="twemoji mastodon">
+      {% include ".icons/discord.svg" %}
+    </span>
+    <strong>Discord</strong>
+  </a>
+  and follow us on
+  <a href="https://x.com/hackfastt">
+    <span class="twemoji twitter">
+      {% include ".icons/x.svg" %}
+    </span>
+    <strong>X.</strong>
+  </a>
+{% endblock %}
+
