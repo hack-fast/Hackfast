@@ -1,10 +1,10 @@
-### **WORDLIST TYPES**
+### **Wordlist Types**
 
 1. General-Purpose: Contains a broad range of common subdomain names (e.g., dev, staging, blog, mail, admin, test). Useful when the target's naming conventions are unknown.
 2. Targeted: Focused on specific industries, technologies, or naming patterns relevant to the target. More efficient and reduces false positives.
 3. Custom: Created based on specific keywords, patterns, or intelligence gathered from other sources.
 
-### **USING GOBUSTER**
+### **Using Gobuster**
 
 1. Basic usage with a predefined wordlist:  
     `gobuster dir -u [TARGET-URL] -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt,php,html -t 30`    
@@ -12,7 +12,7 @@
     `gobuster dir -u [TARGET-URL] -w /usr/share/wordlists/dirb/big.txt`
     
 
-### **USING FEROXBUSTER**
+### **Using Feroxbuster**
 
 1.  Default usage with a common wordlist:  
     `feroxbuster -u [TARGET-URL] -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -x php,txt,html`
@@ -27,7 +27,7 @@
     `feroxbuster -u [TARGET-URL] -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -x aspx`
     
 
-### **USING DIRSEARCH**
+### **Using Dirsearch**
 
 1.  Basic usage:  
     `dirsearch -u [TARGET-URL] -w /usr/share/dirb/wordlists/common.txt`
@@ -39,12 +39,12 @@
     `dirsearch -u [TARGET-URL] -e sh,txt,htm,php,cgi,html,pl,bak,old -w path/to/wordlist`
     
 
-### **USING FFUF**
+### **Using FFUF**
 
 1.  Using a common wordlist:  
     `ffuf -u [TARGET-URL]/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt`
 
-### **USING DIRB**
+### **Using Dirb**
 
 1.  Basic usage:  
     `dirb [TARGET-URL] /path/to/wordlist`

