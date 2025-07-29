@@ -1,4 +1,4 @@
-### **SYSTEM ENUMERATION**
+### **System Enumeration**
 
 1. display the hostname of the system:
     `hostname`
@@ -13,7 +13,7 @@
 6. display memory usage:
     `free -m`
 
-### **USER ENUMERATION**
+### **User Enumeration**
 
 1. display the current user:
     `whoami`
@@ -38,7 +38,7 @@
 11. display the version of sudo:
     `sudo -V`
 
-### **NETWORK ENUMERATION**
+### **Network Enumeration**
 
 1. display all ip addresses:
     `ip a s`
@@ -61,7 +61,7 @@
 10. display wireless network interfaces:
     `iwconfig`
 
-### **ENUMERATION TECHNIQUES**
+### **Enumeration Techniques**
 
 1. find files with the suid bit set:
     `find / -perm -4000 2>/dev/null`
@@ -84,7 +84,7 @@
 10. extract and display firefox browser history:
     `cat ~/.mozilla/firefox/*.default-release/places.sqlite`
 
-### **AUTOMATED ENUMERATION TOOLS**
+### **Automated Enumeration Tools**
 
 1. [LINPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
 2. [LINENUM](https://github.com/rebootuser/LinEnum)

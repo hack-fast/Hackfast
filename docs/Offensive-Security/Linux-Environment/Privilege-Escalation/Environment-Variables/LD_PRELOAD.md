@@ -1,4 +1,4 @@
-### **STEPS TO IDENTIFY AND EXPLOIT LD_PRELOAD**
+### **Steps to Identify and Exploit LD_PRELOAD**
 
 1.  To check if LD_PRELOAD is enabled, run sudo -l and look for env_keep+=LD_PRELOAD in the output.  
     `sudo -l`  

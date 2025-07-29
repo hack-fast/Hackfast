@@ -1,4 +1,4 @@
-### **ENUMERATING CRON JOBS USING LINPEAS**
+### **Enumerating Cron Jobs Using LinPEAS**
 
 1.  Set up an HTTP server on your attacker machine in the directory where `linpeas.sh` is located:  
     `python3 -m http.server 80`  
@@ -24,14 +24,14 @@
 
         Red/Yellow in LinPEAS indicates a 95% chance that the finding can be exploited for privilege escalation
 
-### **ENUMERATING SYSTEM CRON JOBS MANUALLY**
+### **Enumerating System Cron Jobs Manually**
 
 1.  The first place to check for cron jobs is in the system crontab file:  
     `cat /etc/crontab`  
 
     ![](../../../../img/Linux-Environment/64.png)
 
-**HERE WE CAN SEE THAT TWO CRON JOBS ARE RUNNING ON THIS HOST:**
+**Here we can see that two cron jobs are running on this host:**
 
 1.  The first cron job runs every minute, executing the `overwrite.sh` script.
 
@@ -46,7 +46,7 @@
 
         All five additional directories where cron jobs can execute from are shown. No custom cron jobs were found; these are all standard jobs commonly found by default
 
-### **ENUMERATING USER CRON JOBS MANUALLY**
+### **Enumerating User Cron Jobs Manually**
 
 1.  After enumerating all the system crontabs, check for user cron jobs (hidden cron jobs):  
     `ls -l /var/spool/cron/crontabs`  

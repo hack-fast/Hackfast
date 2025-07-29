@@ -1,4 +1,4 @@
-### **STEP 1: CREATE THE SCRIPT**
+### **Step 1: Create the Script**
 
 1.  Create the backdoor script with the necessary commands and actions:
     `nano /path/to/your_script.sh`
@@ -10,13 +10,13 @@
     `update-rc.d /path/to/your_script.sh defaults`
     
 
-### **STEP 2: VERIFY SCRIPT PERMISSIONS AND PATH**
+### **Step 2: Verify Script Permissions and Path**
 
 1.  Check the script permissions to ensure it is executable by the system:
     `ls -l /path/to/your_script.sh`
 2.  Confirm the script path and the shebang (`#!/bin/bash`) at the top of the script to specify the interpreter.
 
-### **STEP 3: MANUAL METHOD - CREATE A SYSTEMD SERVICE (ALTERNATIVE)**
+### **Step 3: Manual Method – Create a systemd Service (Alternative)**
 
 1.  Create a new service file for your script in the systemd directory.  
     `nano /etc/systemd/system/your_service_name.service`
@@ -49,7 +49,7 @@
     `systemctl start your_service_name.service`
     
 
-### **STEP 4: VERIFYING AND TROUBLESHOOTING**
+### **Step 4: Verifying and Troubleshooting**
 
 1.  Check the status of your service to ensure it’s running correctly:
     `systemctl status your_service_name.service`

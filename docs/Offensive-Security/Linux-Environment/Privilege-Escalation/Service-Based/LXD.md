@@ -1,14 +1,14 @@
-### **INTRODUCTION**
+### **Introduction**
 
 LXD (Linux Containers Daemon) is a next-generation system container manager, designed to manage Linux containers in a more powerful and flexible way than traditional container technologies like Docker. It provides a user-friendly interface for managing containers and virtual machines, offering capabilities that make it suitable for both development and production environments.
 
-### **COMMON SCENARIOS**
+### **Common Scenarios**
 
 1.  Host Path Mounting: Gaining access to the host filesystem from within a container.
 2.  Image Import with Elevated Privileges: Using custom container images configured to grant higher privileges.
 3.  Misconfigured Container Permissions: Exploiting containers that are started with elevated permissions or insecure settings.
 
-### **EXPLOITING LXC/LXD STEP-BY-STEP**
+### **Exploiting LXC/LXD Step-by-Step**
 
 1.  Check Group Membership, Ensure you are in the `lxd` group.  
     `id`  

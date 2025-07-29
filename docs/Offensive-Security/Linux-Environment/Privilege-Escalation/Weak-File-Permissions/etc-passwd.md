@@ -1,8 +1,8 @@
-### **OVERVIEW OF /ETC/PASSWD VULNERABILITIES**
+### **Overview of /etc/passwd Vulnerabilities**
 
 The `/etc/passwd` file is crucial in Linux systems as it stores essential information about user accounts. It is readable by all users on the system but should only be writable by the root user. Any misconfiguration in its permissions can lead to severe security risks.
 
-### **STEP 1: MODIFYING /ETC/PASSWD TO CHANGE ROOT PASSWORD**
+### **Step 1: Modifying /etc/passwd to Change Root Password**
 
 If `/etc/passwd` is writable, attacker can modify the password hash of the root user to a known value, enabling unauthorized root access. This is feasible if the system uses legacy behavior where `/etc/passwd` can contain password hashes.
 
@@ -30,7 +30,7 @@ If `/etc/passwd` is writable, attacker can modify the password hash of the root 
     `ssh root@[IP-ADRESS]`
     
 
-### **STEP 2: ADDING A NEW ROOT ACCOUNT**
+### **Step 2: Adding a New Root Account**
 
 If appending is possible but not modification, you can add a new user with root privileges by assigning them the root user ID (UID 0).
 

@@ -1,14 +1,14 @@
-### **INTRODUCTION TO SUID AND SGID FILES**
+### **Introduction to SUID and SGID Files**
 
 SUID (Set Owner User ID up on execution) and SGID (Set Group ID up on execution) are special permissions set on executable files. These permissions allow the files to be executed with the privileges of the file owner or group respectively, rather than the privileges of the user running the file.  
 It's essential to note that using `LD_PRELOAD` and `LD_LIBRARY_PATH` for hijacking library loads does not work with SUID executables as these environment variables are ignored to prevent security breaches.
 
-### **UNDERSTANDING SUID AND SGID**
+### **Understanding SUID and SGID**
 
-1.  **SUID (SET USER ID):** When a file with the SUID bit set is executed, it runs with the privileges of the file owner, not the user who launched it. This is often used for programs that need to perform tasks requiring higher privileges than those of the average user.
-2.  **SGID (SER GROUP ID):** When a file with the SGID bit set is executed, it runs with the privileges of the file group. This can be used for allowing members of a group to execute a file with the permissions of the group.
+1.  **SUID (Set User ID):** When a file with the SUID bit set is executed, it runs with the privileges of the file owner, not the user who launched it. This is often used for programs that need to perform tasks requiring higher privileges than those of the average user.
+2.  **SGID (Set Group ID):** When a file with the SGID bit set is executed, it runs with the privileges of the file group. This can be used for allowing members of a group to execute a file with the permissions of the group.
 
-### **ENUMERATING CUSTOM SUID BINARIES**
+### **Enumerating Custom SUID Binaries**
 
 we likely won’t find a quick win on GTFOBins for binaries are custom, so we need to understand more about the custom binaries to determine if they can be exploited, checklist that can be followed when enumerating custom SUID binaries:
 

@@ -1,4 +1,4 @@
-### **INTRODUCTION**
+### **Introduction**
 
 ICMP tunneling enables traffic to be encapsulated within ICMP echo requests and responses, allowing data to bypass firewalls that permit ping traffic. This technique is particularly effective for data exfiltration and establishing tunnels to external servers.
 

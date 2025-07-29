@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 When you find yourself with a low-privilege shell, upgrading it to a fully interactive shell is crucial. Here’s a guide to making your shell fully interactive, including initial steps and additional tips for a smooth experience.
 
-### **STEP 1. UPGRADE THE SHELL**
+### **Step 1: Upgrade the Shell**
 
 1.  Check the availability of Python versions:.   
     `which python python2 python3`
@@ -14,7 +14,7 @@ When you find yourself with a low-privilege shell, upgrading it to a fully inter
     `python3 -c 'import pty; pty.spawn("/bin/bash")'`
     
 
-### **STEP 2. SET PATH AND TERM**
+### **Step 2: Set PATH and TERM Variables**
 
 Next, set the `PATH` and `TERM` environment variables to ensure proper functionality of shell commands and terminal capabilities:
 
@@ -23,7 +23,7 @@ Next, set the `PATH` and `TERM` environment variables to ensure proper functiona
 2.  Set the TERM:  
     `export TERM=xterm-256color`
 
-### **STEP 3. HANDLE BACKGROUND PROCESSES**
+### **Step 3: Handle Background Processes**
 
 If you need to suspend the current shell process and bring it to the foreground later, use the following key combinations and commands:
 
@@ -33,14 +33,14 @@ If you need to suspend the current shell process and bring it to the foreground 
 3.  Reset the terminal settings to a sane state:  
     `reset`
 
-### **STEP 4. SET SHELL AND TERMINAL SIZE**
+### **Step 4: Set Shell and Terminal Size**
 
 Adjust the terminal window size for better readability and to avoid display issues:
 
 1.  Set the terminal size:  
     `stty columns 200 rows 200`
 
-### **BYPASSING RESTRICTED BASH**
+### **Bypassing Restricted Bash Environments**
 
 Use the following commands to bypass restricted bash environments:
 

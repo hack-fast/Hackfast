@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 When you use a wildcard character (\*) in a command argument, the shell performs a process called filename expansion or globbing. This replaces the wildcard with a space-separated list of all file and directory names in the current directory. You can observe this behavior by executing the command echo \* from your home directory.
 
-### **WILDCARDS & FILENAMES**
+### **Wildcards & Filenames**
 
 Linux filesystems allow a wide range of characters in filenames. Because filename expansion occurs before command execution, you can inadvertently pass command-line options (like -h or --help) by creating files with these names. Here’s an example to illustrate this:
 
@@ -14,7 +14,7 @@ $ ls *
 
 Filenames aren't limited to simple options like -h or --help. You can also create filenames that correspond to more complex options, such as --option=key=value. Tools like GTFOBins can help you find commands with useful command-line options for such purposes.
 
-### **STEPS TO IDENTIFY AND EXPLOIT WILDCARD**
+### **Steps to Identify and Exploit Wildcard Vulnerabilities**
 
 1.  By Running LinPEAS reveals a cron job running every minute as root, executing a script in /usr/local/bin using the absolute path.  
     
