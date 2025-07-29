@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Step 1. Generate SSH Keys**
 
 1. Generate an SSH key pair on your local machine:

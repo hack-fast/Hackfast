@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ENUMERATE DOMAIN INFORMATION**
 
 1. Retrieve Detailed Information about a Domain User:

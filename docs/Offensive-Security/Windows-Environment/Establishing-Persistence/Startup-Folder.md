@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ESTABLISHING PERSISTENCE USING STARTUP FOLDER:**
 
 Using the Startup folder for persistence is a straightforward and effective method. This technique leverages the fact that any executable placed in the Windows Startup folder will automatically run each time the user logs in.

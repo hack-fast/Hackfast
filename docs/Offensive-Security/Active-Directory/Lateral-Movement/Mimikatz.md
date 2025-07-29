@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **PREREQUISITES:**
 
 - The attacker must have an account or a shell on the target server.

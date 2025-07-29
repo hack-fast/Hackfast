@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **FILE SEARCHING COMMANDS**
 
 1.  Search for potentially risky files in the current directory and its subdirectories:  

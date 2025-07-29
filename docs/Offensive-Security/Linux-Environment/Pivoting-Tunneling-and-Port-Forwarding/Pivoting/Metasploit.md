@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1.  By using the `ifconfig` command, we observe that there is another network interface, ens192, which is part of a network that our current machine does not have direct access to.  
     
     ![](../../../img/Linux-Environment/24.png)

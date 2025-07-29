@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Joomla is a free and open-source content management system (CMS) used to create, manage, and publish digital content on websites. It provides a user-friendly interface and a range of features that allow users to build and maintain websites without needing to write code. Joomla is highly customizable, supporting extensions and templates to enhance functionality and design, making it a popular choice for websites of all sizes—from personal blogs to large corporate sites.

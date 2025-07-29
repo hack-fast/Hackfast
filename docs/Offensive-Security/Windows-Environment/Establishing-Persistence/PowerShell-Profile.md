@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### ESTABLISHING PERSISTENCE VIA POWERSHELL PROFILE
 
 PowerShell profiles are scripts that run at the start of a PowerShell session and are an effective way to establish persistence on a system.

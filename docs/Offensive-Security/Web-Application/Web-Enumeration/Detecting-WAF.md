@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Manual Techniques**
 
 Web Application Firewalls (WAFs) are designed to protect web applications by filtering and monitoring HTTP traffic. They can block malicious requests such as SQL injections or cross-site scripting (XSS) attacks, and can interfere with security testing and enumeration.

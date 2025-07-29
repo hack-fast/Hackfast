@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1.  search for files that contain the string “passw” and “pwd” across the entire filesystem  
     ```bash
     grep --color=auto -rnw '/' -iIe "PASS\|PASSW\|PASSWD\|PASSWORD\|PWD" --color=always 2>/dev/null

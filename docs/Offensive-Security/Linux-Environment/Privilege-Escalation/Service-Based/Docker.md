@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Docker is a tool designed to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts needed, such as libraries and dependencies.

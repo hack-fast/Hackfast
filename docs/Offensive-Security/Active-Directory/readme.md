@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 Active Directory (AD) is a service developed by Microsoft for Windows domain networks. It provides a wide array of services essential for managing network resources, user data, and application-specific data within an enterprise. The core components of AD include Domain Services (AD DS), Lightweight Directory Services (AD LDS), Certificate Services (AD CS), Federation Services (AD FS), and Rights Management Services (AD RMS).

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 Before we start, we need to know exactly what it is that we are looking for.

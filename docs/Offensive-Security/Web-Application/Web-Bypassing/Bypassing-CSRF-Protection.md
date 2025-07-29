@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Bypassing CSRF Protection**
 1. Remove the entire token parameter with value/Remove just the value.
 2. Use any other random but same length token.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ESTABLISHING PERSISTENCE USING REGISTRY KEYS**
 
 Using the Windows Registry for persistence involves creating or modifying registry keys that instruct Windows to automatically execute specific programs or scripts at certain events, like system startup or user logon.

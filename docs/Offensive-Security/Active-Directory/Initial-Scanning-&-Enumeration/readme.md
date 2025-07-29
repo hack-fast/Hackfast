@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1.  **SMB (Server Message Block)**
     
     - [ ] Look for any open shares.

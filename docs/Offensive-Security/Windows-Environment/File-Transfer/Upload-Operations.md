@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **UPLOADING FILES VIA SMB (NO CREDENITIAL)**
 
 1.  Setting Up an SMB Server:  

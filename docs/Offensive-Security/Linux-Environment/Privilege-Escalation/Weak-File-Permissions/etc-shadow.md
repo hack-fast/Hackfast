@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Overview of /etc/shadow Vulnerabilities**
 
 The /etc/shadow file that stores password hashes that are only accessible by the root user under normal circumstances. Misconfigurations in this file's permissions can lead to severe security breaches.

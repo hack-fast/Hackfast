@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **WHAT ARE TOKENS?**
 
 Temporary Keys that allow you access to a system/network without having to provide credentials each time you access a file, Think of it as cookies for computers

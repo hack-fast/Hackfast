@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **USING IMPACKET SECRETSDUMP.PY**
 
 1. Update Package List

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Cron jobs are programs or scripts that users can schedule to run at specific times or intervals. These tasks are managed by the cron daemon, a background process that executes scheduled commands on Unix-like operating systems. Cron jobs run with the security level of the user who owns them, ensuring that they have the same permissions as the user. This means that a cron job created by a regular user will execute with that user's permissions, while a cron job created by the root user will have root-level privileges.

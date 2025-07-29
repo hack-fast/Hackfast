@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **CRACKMAPEXEC (CME)**
 
 CrackMapExec (CME) is an open-source post-exploitation tool that helps penetration testers to perform various network-level attacks and enumeration tasks. It is particularly useful for managing large Active Directory (AD) networks.

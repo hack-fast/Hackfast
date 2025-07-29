@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ESTABLISHING PERSISTENCE USING PROCESS DOPPELGÄNGING**
 
 Process Doppelgänging is a sophisticated technique that exploits Windows NTFS transactions to execute malicious code in the guise of legitimate processes. This method can evade detection from most antivirus software.

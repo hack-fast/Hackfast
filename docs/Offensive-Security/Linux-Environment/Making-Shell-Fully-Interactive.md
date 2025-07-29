@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 When you find yourself with a low-privilege shell, upgrading it to a fully interactive shell is crucial. Here’s a guide to making your shell fully interactive, including initial steps and additional tips for a smooth experience.

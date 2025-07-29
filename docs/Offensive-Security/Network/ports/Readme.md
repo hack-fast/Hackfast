@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Investigating Unrecognized Open Ports**
 
 Identifying an unrecognized open port during penetration testing might provide a potential entry point .This guide provides straightforward steps to understand and inspect these ports.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 SeBackupPrivilege allows a user to back up files and directories. This privilege grants the ability to traverse any folder and list its contents, even if there are no explicit access control entries (ACEs) for the user in the folder's access control list (ACL). It is commonly used by service accounts for backup purposes. Understanding and leveraging this privilege can be crucial for privilege escalation during a penetration test.

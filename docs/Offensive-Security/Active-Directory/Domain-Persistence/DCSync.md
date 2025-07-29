@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 Granting DCSync privileges allows a user to replicate domain data, which includes sensitive information such as password hashes. 
 

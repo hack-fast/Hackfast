@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Step 1: Create the Script**
 
 1.  Create the backdoor script with the necessary commands and actions:

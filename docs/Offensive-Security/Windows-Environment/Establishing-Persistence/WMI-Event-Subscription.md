@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 Windows Management Instrumentation (WMI) is a powerful feature in Windows that allows for system management and monitoring. WMI Event Subscription is a technique that can be used by administrators—and malicious actors—for persistence, allowing scripts or programs to execute automatically when specified system events occur.

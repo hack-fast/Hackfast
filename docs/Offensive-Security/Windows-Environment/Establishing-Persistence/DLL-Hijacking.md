@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ESTABLISHING PERSISTENCE USING DLL HIJACKING**
 
 DLL Hijacking takes advantage of the way Windows applications search for and load Dynamic Link Libraries (DLLs). Here is a detailed explanation of the commands and technical aspects of setting up a DLL Hijacking scenario:

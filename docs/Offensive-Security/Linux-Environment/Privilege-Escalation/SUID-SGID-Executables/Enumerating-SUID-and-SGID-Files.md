@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1.  To hunt for all SUID binaries on the system  
     `find / -type f -perm -u=s 2>/dev/null`  
     

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 WordPress is an open-source content management system (CMS) that enables users to create, manage, and modify content on a website without needing specialized technical knowledge. Originally launched in 2003 as a platform primarily for blogging, WordPress has evolved into a robust tool for building various types of websites, from simple blogs to comprehensive business sites and online stores.

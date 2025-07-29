@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ACTIVE DIRECTORY POWERSHELL MODULE**
 
 The Active Directory PowerShell module provides cmdlets for administering and querying an AD environment from the command line.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **METERPRETER TUNNELING & PORT FORWARDING**
 
 We will cover the essential commands and steps for setting up Meterpreter port forwarding, This guide assumes you have a Meterpreter shell on an Ubuntu server (pivot host) and wish to perform enumeration scans through this host.

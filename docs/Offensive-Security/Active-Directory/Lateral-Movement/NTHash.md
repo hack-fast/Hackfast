@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 NTLMv1, NTLMv2 and NThash are all confusing terms and used interchangeably but let’s settle this once and for all:

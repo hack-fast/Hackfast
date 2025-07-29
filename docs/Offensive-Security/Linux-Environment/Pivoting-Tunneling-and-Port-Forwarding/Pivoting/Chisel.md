@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1.  Run `ifconfig` and look for extra interfaces, in this example, we find `ens224`, which connects to a network our current machine can't reach directly.
     
     ![](../../../img/Linux-Environment/1.png)

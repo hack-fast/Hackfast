@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 In 2008 blog post on devblogs.microsoft.com has the title “If you grant somebody SeDebugPrivilege, you gave away the farm”. Basically, because a user with that privilege can debug any process (including those running as system), they can inject code into those processes and run whatever they want as that user.

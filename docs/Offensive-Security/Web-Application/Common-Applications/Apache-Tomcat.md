@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Apache Tomcat is an open-source Java servlet container and web server, it's a key target due to its role in hosting Java-based web applications, often presenting opportunities to exploit configuration flaws and known vulnerabilities.

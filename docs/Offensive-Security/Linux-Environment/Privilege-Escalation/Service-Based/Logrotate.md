@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Understanding Logrotate**
 
 Logrotate is a Linux utility designed to manage log files, automating tasks like rotating, compressing, and removing old logs to prevent them from consuming excessive disk space. It's typically scheduled via cron jobs and configured through files like `/etc/logrotate.conf` and service-specific configurations in `/etc/logrotate.d/`,When assessing Logrotate for potential exploits, start by identifying configurations that could be exploited:

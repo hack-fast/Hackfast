@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Drupal is a free and open-source content management system (CMS) used to build and manage websites. It's written in PHP and provides a backend framework for at least 2.3% of all websites worldwide, from personal blogs to corporate, political, and government sites.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **USING DOMAINPASSWORDSPRAY.PS1**
 
 1.  Import the DomainPasswordSpray module.  

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **OVERVIEW**
 
 ASREPRoast is a  attack that exploits users who lack the Kerberos pre-authentication required attribute. This vulnerability allows attacker to request authentication for a user from the Domain Controller (DC) without needing the user password. The DC then responds with a message encrypted with the user password-derived key, which attacker can attempt to crack offline to discover the user password.

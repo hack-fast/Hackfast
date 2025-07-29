@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Environment variables are used to store configuration settings and system information, such as paths to executable files, user preferences, and system directories. Common examples include `PATH`, `HOME`, and `LD_LIBRARY_PATH`.

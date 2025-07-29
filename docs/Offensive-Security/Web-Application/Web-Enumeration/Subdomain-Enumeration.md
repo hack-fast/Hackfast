@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Importance of Subdomains in Web Reconnaissance**
 
 Subdomains are crucial targets in web reconnaissance because they often reveal overlooked and potentially vulnerable parts of an organization's infrastructure. Here's why they're important:

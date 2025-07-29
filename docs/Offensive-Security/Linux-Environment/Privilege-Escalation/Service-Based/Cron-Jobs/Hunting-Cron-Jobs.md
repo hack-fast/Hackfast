@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Enumerating Cron Jobs Using LinPEAS**
 
 1.  Set up an HTTP server on your attacker machine in the directory where `linpeas.sh` is located:  

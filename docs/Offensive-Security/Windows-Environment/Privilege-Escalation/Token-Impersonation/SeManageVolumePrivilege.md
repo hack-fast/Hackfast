@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1: CHECK CURRENT USER PRIVILEGES**
 
 1.  Verify if current user has SeManageVolumePrivilege privileges by running:  

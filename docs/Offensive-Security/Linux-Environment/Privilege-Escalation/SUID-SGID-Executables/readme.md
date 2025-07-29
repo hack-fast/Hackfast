@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction to SUID and SGID Files**
 
 SUID (Set Owner User ID up on execution) and SGID (Set Group ID up on execution) are special permissions set on executable files. These permissions allow the files to be executed with the privileges of the file owner or group respectively, rather than the privileges of the user running the file.  

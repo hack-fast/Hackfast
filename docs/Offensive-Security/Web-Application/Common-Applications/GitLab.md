@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 GitLab is an open-source DevOps platform that combines source code management (SCM) with continuous integration and delivery (CI/CD) tools. It allows teams to collaborate on code, track issues, and automate the software development process from a single application. GitLab is widely appreciated for its comprehensive suite of features that support project planning, source code management, testing, deployment, and monitoring.

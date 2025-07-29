@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Jenkins is an open-source automation server used for continuous integration and delivery (CI/CD) in software development. It automates tasks like building, testing, and deploying software, and supports a vast range of plugins to extend its capabilities.

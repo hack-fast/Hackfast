@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Setting Up an HTTP Server and Downloading a File Using Python 2**
 
 1.  Start a http server:  

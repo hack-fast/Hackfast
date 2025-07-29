@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1. DEFINE USER' SID AND CHECK REPLICATION RIGHTS**
 
 1.  Import the PowerView module :  
