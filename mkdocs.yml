@@ -10,6 +10,7 @@ copyright: "<a href=\"/\">Legal Disclaimer</a> ⦁ <a href=\"/Community/Contribu
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   palette:
     # Dark mode
@@ -369,4 +370,4 @@ nav:
     - 'Asking a question': "https://discord.com/invite/#"
       
 extra_css:
-  - stylesheets/extra.css
+  - stylesheet/extra.css
