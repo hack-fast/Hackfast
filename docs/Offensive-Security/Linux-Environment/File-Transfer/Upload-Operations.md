@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **File Uploading Using Python and Curl**
 
 1.  Install uploadserver:  

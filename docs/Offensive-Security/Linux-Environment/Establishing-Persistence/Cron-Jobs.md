@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Step 1: Create the Cron Job**
 
 1. Open the crontab editor:

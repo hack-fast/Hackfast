@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1. AUTOMATED ENUMERATION TOOLS**
 
 1.  Run Winpeas gathers extensive information about the system.  

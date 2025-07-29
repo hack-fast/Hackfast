@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **OVERVIEW**
 Domain Controllers (DC) have a local Administrator account that can be leveraged for persistence. By gaining administrative privileges on a DC and dumping the local Administrator hash, you can modify the registry to enable remote access to this account.
 

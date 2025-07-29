@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **USING CRACKMAPEXEC (CME)**
 
 1.  Enumerate Domain Users:  

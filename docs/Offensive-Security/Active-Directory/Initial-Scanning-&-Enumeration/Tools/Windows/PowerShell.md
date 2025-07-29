@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 PowerShell, released by Microsoft in 2006, is a powerful upgrade to Command Prompt. It includes access to cmdlets (pronounced command-lets), which are .NET classes designed to perform specific functions. This cheat sheet focuses on using PowerShell for Active Directory (AD) enumeration, leveraging cmdlets included with the AD-RSAT (Active Directory Remote Server Administration Tools) package.

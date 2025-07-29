@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **PORT FORWARDING WITH SSH AND SOCKS TUNNELING**
 
 

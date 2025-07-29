@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 ColdFusion is a commercial rapid web application development platform created by Allaire Corporation, which is now maintained by Adobe Systems. It consists of a programming language known as ColdFusion Markup Language (CFML), an integrated development environment (IDE), and a scalable server for developing and delivering web and mobile applications. ColdFusion is designed to simplify the connection between HTML pages and databases, as well as to assist in building dynamic websites with advanced features that interact with databases, manipulate file content, manage session state, and integrate with various web services.

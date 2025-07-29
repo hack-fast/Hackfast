@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 When you use a wildcard character (\*) in a command argument, the shell performs a process called filename expansion or globbing. This replaces the wildcard with a space-separated list of all file and directory names in the current directory. You can observe this behavior by executing the command echo \* from your home directory.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 1. Open the Start menu, type **gpedit.msc**, and press Enter.
 
 2. In the Group Policy Editor, navigate to: **Local Computer Policy** → **Computer Configuration** → **Windows Settings** → **Security Settings** → **Local Policies** → **Audit Policy**.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ENUM4LINUX**
 
 Enum4linux is a Linux-based command-line tool used for gathering information from Windows machines and Samba servers. It is a popular tool among penetration testers and security professionals for performing SMB (Server Message Block) enumeration.

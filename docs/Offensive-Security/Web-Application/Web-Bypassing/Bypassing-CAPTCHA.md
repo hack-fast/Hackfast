@@ -1,3 +1,6 @@
+---
+legal-banner: true
+---
 
 2. Response manipulation.
 3. Use previously used captcha value.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **File Permissions in Linux**
 
 The concept of permissions and ownership is crucial in Linux. On a Linux system, each file and directory is assigned access rights for the owner of the file, the members of a group of related users, and everybody else.

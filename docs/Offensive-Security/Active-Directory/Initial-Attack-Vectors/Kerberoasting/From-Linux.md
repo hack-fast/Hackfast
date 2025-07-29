@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1: SETUP IMPACKET TOOLS**
 
 1.  Clone the Impacket repository:  

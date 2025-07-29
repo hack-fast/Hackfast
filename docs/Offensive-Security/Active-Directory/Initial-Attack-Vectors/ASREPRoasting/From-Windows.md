@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **USING POWERVIEW TO ENUMERATE ACCOUNTS**
 
 1.  Import PowerView module  

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Wordlist Types**
 
 1. General-Purpose: Contains a broad range of common subdomain names (e.g., dev, staging, blog, mail, admin, test). Useful when the target's naming conventions are unknown.

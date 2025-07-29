@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Overview of /etc/passwd Vulnerabilities**
 
 The `/etc/passwd` file is crucial in Linux systems as it stores essential information about user accounts. It is readable by all users on the system but should only be writable by the root user. Any misconfiguration in its permissions can lead to severe security risks.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Data Transmission Methods**
 
 Understanding how data is transmitted within applications is essential for spotting potential vulnerabilities that could lead to data interception or manipulation. This section explores common methods.

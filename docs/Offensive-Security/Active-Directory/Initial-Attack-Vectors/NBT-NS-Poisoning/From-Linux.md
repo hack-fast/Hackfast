@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1. STARTING RESPONDER**
 
 To begin, ensure that Responder is installed on your system. If it's not already installed, follow these steps to install it:

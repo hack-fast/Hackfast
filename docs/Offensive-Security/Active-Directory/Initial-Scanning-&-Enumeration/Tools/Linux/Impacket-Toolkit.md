@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **IMPACKET TOOLKIT**
 
 Impacket is a collection of Python classes for working with network protocols. It is highly regarded in the cybersecurity community for its ability to handle low-level network tasks and its extensive support for various protocols, making it an essential toolkit for penetration testers and security researchers.

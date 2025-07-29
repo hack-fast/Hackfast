@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **OVERVIEW**
 
 The DCSync attack simulates the behavior of a Domain Controller and requests other Domain Controllers to replicate information using the Directory Replication Service Remote Protocol (MS-DRSR). This is a valid and necessary function of Active Directory, hence it cannot be turned off or disabled.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 #### **1. Run Scripts and Analyze Enumeration Results**
 
 - [ ] Run LinPEAS,LinEnum, lse.sh If scripts fail, refer to manual enumeration commands available in the System Enumeration section.

@@ -1,3 +1,6 @@
+---
+legal-banner: true
+---
 
 1. Using Rpcclient for Password Spraying
 	```bash

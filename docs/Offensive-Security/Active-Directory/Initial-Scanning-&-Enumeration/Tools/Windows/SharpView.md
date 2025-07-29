@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **ENUMERATING AD USERS**
 
 1. Enumerates AD users.  

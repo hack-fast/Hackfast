@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **CONNECTING TO AN SMB SHARE USING POWERSHELL**
 
 1.  Set Up an SMB Server with Credentials  

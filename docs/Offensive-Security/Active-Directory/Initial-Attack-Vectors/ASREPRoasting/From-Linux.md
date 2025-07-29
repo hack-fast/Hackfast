@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **USING IMPACKET GETNPUSERS.PY**
 
 1.  Update the package list:  

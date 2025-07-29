@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 #### **LIST ALL OWNED USERS**
 
 `MATCH (m:User) WHERE m.owned=TRUE RETURN m`

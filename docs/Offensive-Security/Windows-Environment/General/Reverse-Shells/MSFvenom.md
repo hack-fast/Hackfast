@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **COMMON MISTAKES TO AVOID**
 
 1.  Mismatched payloads

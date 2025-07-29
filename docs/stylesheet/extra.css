@@ -19,6 +19,13 @@
   }
 }
 
+.legal-banner {
+  background-color: #111;
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 1.25em;
+}
+
 
 .md-banner {
   color: var(--md-footer-fg-color--lighter);

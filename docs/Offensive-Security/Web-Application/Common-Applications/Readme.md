@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Methodology**
 
 There are many applications you may come across while performing penetration testing. I've provided a cheat sheet for some of the most common ones that you may find during your assessments. If you discover a software application that I haven't covered, don't worry. I've also included a generalized methodology that can be applied to any software application you might come across.

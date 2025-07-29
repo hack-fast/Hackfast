@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Step 1. Generate a Password**
 
 1.  Generate a hashed password using OpenSSL. Replace \[SALT\] and \[PASSWORD\] with your chosen salt and password.  

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 Kerberos is a network authentication protocol that uses secret-key cryptography to provide secure authentication for client/server applications. It employs a trusted third-party, the Key Distribution Center (KDC), to issue tickets that validate user identities, protecting against eavesdropping and replay attacks. Kerberos is commonly integrated into secure operating environments, such as Microsoft Windows, to safeguard user data and services.

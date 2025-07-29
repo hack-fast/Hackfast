@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 Link-Local Multicast Name Resolution (LLMNR) and NetBIOS Name Service (NBT-NS) are fallback name resolution protocols used in Windows environments. They are designed to help machines on the same local network resolve hostnames when DNS resolution fails. However, these protocols are inherently vulnerable to poisoning attacks, which can be exploited by attacker to intercept traffic and capture credentials.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **RUNNING INVEIGH IN POWERSHELL**
 
 1.  Load the Inveigh module into PowerShell:  

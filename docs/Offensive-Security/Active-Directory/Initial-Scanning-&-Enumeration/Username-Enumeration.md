@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **GENERATE USER LIST**
 
 1.  Websites like hunter.io help discover employee email patterns. For example, entering "apple.com" shows that emails often follow the pattern {f}{last}@apple.com. So, instead of finding each email, you can guess them. By scraping a list of Apple employees from LinkedIn, you can transform names into emails (e.g., Steve Jobs becomes s.jobs@apple.com). While not all guesses will be accurate, many should be correct.

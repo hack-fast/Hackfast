@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 LXD (Linux Containers Daemon) is a next-generation system container manager, designed to manage Linux containers in a more powerful and flexible way than traditional container technologies like Docker. It provides a user-friendly interface for managing containers and virtual machines, offering capabilities that make it suitable for both development and production environments.

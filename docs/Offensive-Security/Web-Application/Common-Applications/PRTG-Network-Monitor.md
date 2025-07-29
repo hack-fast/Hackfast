@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 PRTG Network Monitor is a comprehensive network monitoring tool that allows businesses to observe and manage their IT infrastructure. It provides real-time data on the health and performance of network devices, servers, and services, enabling IT administrators to detect outages, optimize performance, and ensure system reliability. PRTG supports a wide range of technologies and comes with flexible alerting, reporting capabilities, and an intuitive interface for easy operation.

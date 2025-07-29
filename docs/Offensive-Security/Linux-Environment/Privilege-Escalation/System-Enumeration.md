@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **System Enumeration**
 
 1. display the hostname of the system:

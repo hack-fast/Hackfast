@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **STEP 1: PREPARATION AND SPN ENUMERATION**
 
 1.  List all Service Principal Names (SPNs) in the domain:  

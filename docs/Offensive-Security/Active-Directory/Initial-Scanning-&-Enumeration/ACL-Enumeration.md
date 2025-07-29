@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **INTRODUCTION**
 
 ACL (Access Control List) enumeration is a critical part of understanding permissions and potential attack paths within an Active Directory (AD) environment. This cheat sheet covers the use of PowerView for manual enumeration and BloodHound for graphical representation and attack path discovery.

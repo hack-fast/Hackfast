@@ -1,3 +1,6 @@
+---
+legal-banner: true
+---
 
 ### **Overview**
 

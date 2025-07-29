@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **DOMAIN PERSISTENCE VIA CUSTOM SSP**
 
 Custom Security Support Providers (SSPs) can be used to capture plaintext passwords from users that log on. This guide provides steps to set up a custom SSP using a DLL, such as `mimilib.dll` from Mimikatz.

@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **WINRM**
 
 WinRM is a management protocol used to remotely communicate with another system in the Windows realm. You can pass  

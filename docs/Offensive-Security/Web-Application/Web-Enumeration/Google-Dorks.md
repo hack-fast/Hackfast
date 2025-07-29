@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Introduction**
 
 Google Dorks Used advanced search syntax to find specific information on the internet. This table lists various search queries, known as "Google Dorks," that are used to identify potential security exposures in server configurations.

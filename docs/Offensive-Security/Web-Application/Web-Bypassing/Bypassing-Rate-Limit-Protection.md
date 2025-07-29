@@ -1,3 +1,7 @@
+---
+legal-banner: true
+---
+
 ### **Bypassing Rate Limit Protection**
 1. Ip Rotator - If developer implemented rate limit in such a way that the application blocks the ip address of attacker after few requests, then you may try using IP Rotator to change your IP in each requests.
 2. Add the following headers in the request:
