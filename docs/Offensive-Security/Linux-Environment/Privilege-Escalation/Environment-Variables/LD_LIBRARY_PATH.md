@@ -1,4 +1,4 @@
-### **STEPS TO IDENTIFY AND EXPLOIT LD_LIBRARY_PATH**
+### **Steps to Identify and Exploit LD_LIBRARY_PATH**
 
 1.  Verify which environment variables are being inherited  
     `sudo -l`  

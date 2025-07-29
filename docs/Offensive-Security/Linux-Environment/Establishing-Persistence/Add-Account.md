@@ -1,4 +1,4 @@
-### **STEP 1. GENERATE A PASSWORD**
+### **Step 1. Generate a Password**
 
 1.  Generate a hashed password using OpenSSL. Replace \[SALT\] and \[PASSWORD\] with your chosen salt and password.  
     `openssl passwd -1 -salt [SALT] [PASSWORD]`
@@ -18,7 +18,7 @@
     `hackfast:$1$mysalt$hREc3A9Q3vWq/TYxhRgW80:1001:1001:Hackfast User:/home/hackfast:/bin/bash`
     
 
-### **STEP 2: VERIFY THE NEW ENTRY**
+### **Step 2: Verify the New Entry**
 
 1.  Check the /etc/passwd file to ensure your new entry is correctly added and there are no syntax errors:  
     `cat /etc/passwd | grep 'hackfast'`  
@@ -28,7 +28,7 @@
 2.  Grant sudo privileges to the new user:  
     `sudo usermod -aG sudo hackfast`
 
-### **STEP 3: ALTERNATIVE METHOD (RECOMMENDED)**
+### **Step 3: Alternative Method (Recommended)**
 
 1.  Add the new user using the adduser command:  
     `sudo adduser hackfast`  
@@ -39,7 +39,7 @@
 2.  Grant administrative (sudo) privileges to the new user:  
     `sudo usermod -aG sudo hackfast`
 
-### **STEP 4. TEST THE NEW ACCOUNT**
+### **Step 4. Test the New Account**
 
 1.  Switch to the new user to verify that the account was created successfully:  
     `su - hackfast`

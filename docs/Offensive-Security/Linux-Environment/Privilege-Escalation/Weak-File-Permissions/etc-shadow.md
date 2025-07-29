@@ -1,10 +1,10 @@
-### **OVERVIEW OF /ETC/SHADOW VULNERABILITIES**
+### **Overview of /etc/shadow Vulnerabilities**
 
 The /etc/shadow file that stores password hashes that are only accessible by the root user under normal circumstances. Misconfigurations in this file's permissions can lead to severe security breaches.
 
 Practice Machine : https://tryhackme.com/r/room/linuxprivescarena
 
-### **SCENARIO 1: CRACKING PASSWORD HASHES**
+### **Scenario 1: Cracking Password Hashes**
 
 If /etc/shadow is readable due to misconfigured permissions, attacker can extract and crack password hashes.
 
@@ -30,7 +30,7 @@ If /etc/shadow is readable due to misconfigured permissions, attacker can extrac
     `john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt shadow.hash`
     
 
-### **SCENARIO 2: REPLACING ROOT PASSWORD HASH**
+### **Scenario 2: Replacing the Root Password Hash**
 
 If /etc/shadow is writable, an attacker can replace the root password hash with a known one.
 

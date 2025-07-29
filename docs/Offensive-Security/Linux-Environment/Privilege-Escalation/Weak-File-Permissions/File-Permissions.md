@@ -1,19 +1,19 @@
-### **FILE PERMISSIONS IN LINUX**
+### **File Permissions in Linux**
 
 The concept of permissions and ownership is crucial in Linux. On a Linux system, each file and directory is assigned access rights for the owner of the file, the members of a group of related users, and everybody else.
 
-### **OWNERSHIP TYPES**
+### **Ownership Types**
 
-- **OWNER**: The Owner permissions apply only to the owner of the file or directory.
-- **GROUP**: The Group permissions apply only to the group that has been assigned to the file or directory.
-- **OTHER USERS**: The other users’ permissions apply to all other users on the system that are not the owner, nor part of the group.  
+- **Owner**: The Owner permissions apply only to the owner of the file or directory.
+- **Group**: The Group permissions apply only to the group that has been assigned to the file or directory.
+- **Other Users**: The other users’ permissions apply to all other users on the system that are not the owner, nor part of the group.  
     <br/><br/>
 
     ![](../../../img/Linux-Environment/138.png)
 
-### **DIRECTORY PERMISSIONS IN LINUX**
+### **Directory Permissions in Linux**
 
-| PERMISSIONS | NUMERIC CODE | DESCRIPTION |
+| Permissions | Numeric Code | Description |
 | --- | --- | --- |
 | `----------` | `0000` | No permissions |
 | `-rwx------` | `0700` | Read, write, & execute only for owner |

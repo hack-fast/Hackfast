@@ -1,8 +1,8 @@
-### **INTRODUCTION**
+### **Introduction**
 
 Docker is a tool designed to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts needed, such as libraries and dependencies.
 
-### **DOCKER SHARED DIRECTORIES**
+### **Docker Shared Directories**
 
 Shared directories (volume mounts) between the host system and Docker containers can be exploited if improperly configured. If sensitive files are shared with the container, they can be accessed and used for escalation.
 
@@ -21,7 +21,7 @@ Shared directories (volume mounts) between the host system and Docker containers
     
     ![](../../../img/Linux-Environment/94.png)
 
-### **DOCKER GROUP MEMBERSHIP**
+### **Docker Group Membership**
 
 If a user is a member of the docker group, they can effectively run commands as root because Docker daemon commands have root privileges.
 
@@ -36,7 +36,7 @@ If a user is a member of the docker group, they can effectively run commands as 
     ![](../../../img/Linux-Environment/96.png)
     
 
-### **WRITABLE DOCKER SOCKET**
+### **Writable Docker Socket**
 
 A writable Docker socket (/var/run/docker.sock) can allow users to run Docker commands as root, leading to full control over the host system.
 

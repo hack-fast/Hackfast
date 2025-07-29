@@ -250,8 +250,6 @@ nav:
         - 'Cron Jobs': Offensive-Security/Linux-Environment/Establishing-Persistence/Cron-Jobs.md
         - 'SSH Persistence': Offensive-Security/Linux-Environment/Establishing-Persistence/SSH-PERSISTENCE.md
         - 'Startup Scripts': Offensive-Security/Linux-Environment/Establishing-Persistence/Startup-Scripts.md
-      - 'Covering Tracks': 
-        - 'Delete Logs & Bash History': Offensive-Security/Linux-Environment/Covering-Tracks/Delete-Logs-&-Bash-History.md
     - 'Windows Environment': 
       - 'File Transfer':
         - 'Download Operations': Offensive-Security/Windows-Environment/File-Transfer/Download-Operations.md

