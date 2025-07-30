@@ -55,6 +55,7 @@ theme:
     - search.suggest
     - toc.follow
   icon:
+    repo: fontawesome/brands/github
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16
