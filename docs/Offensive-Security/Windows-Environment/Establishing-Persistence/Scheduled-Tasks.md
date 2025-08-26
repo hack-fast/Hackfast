@@ -6,7 +6,7 @@ legal-banner: true
 
 Creating and managing scheduled tasks in Windows can be done via the graphical user interface of Task Scheduler or through the command line using `schtasks`, a powerful command-line tool provided by Windows.
 
-### **STEP-BY-STEP TO ESTABLISH PERSISTENCE USING SCHEDULED TASKS**
+### **Step-by-Step Guide to Establish Persistence Using Scheduled Tasks**
 
 1.  Make sure the script or executable that you want to run is tested and properly located in a secure directory where it has appropriate permissions.
     

