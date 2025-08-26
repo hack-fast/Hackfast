@@ -2,219 +2,246 @@
 legal-banner: true
 ---
 
-### **INFORMATION THAT YOU NEED TO GATHER**
+### **Information you need to gather**
 
-1. Username and Hostname
-2. Group Memberships of the Current User
-3. Existing Users and Groups
-4. Operating System, Version, and Architecture
-5. Network Information 
-6. Installed Applications
-7. Running Processes
+1.  Username and hostname  
+2.  Group memberships of the current user  
+3.  Existing users and groups  
+4.  Operating system, version, and architecture  
+5.  Network information  
+6.  Installed applications  
+7.  Running processes  
 
-### **SYSTEM INFORMATION**
+### **System information**
 
-1.  Display detailed configuration information about the computer:`systeminfo`
-2.  Show the hostname of the computer:`hostname`
-3.  Retrieve OS name, service pack, architecture, and version:  
+1.  Display detailed configuration info:  
+    `systeminfo`
+2.  Show computer hostname:  
+    `hostname`
+3.  Get OS name, service pack, architecture, and version:  
     `wmic os get Caption,CSDVersion,OSArchitecture,Version`
-4.  Fetch operating system details using PowerShell:  
-    `powershell Get-WmiObject -Class Win32_OperatingSystem`
-5.  Filter system information to show only OS Name and Version:  
+4.  Fetch OS details with PowerShell:  
+    `Get-WmiObject -Class Win32_OperatingSystem`
+5.  Filter only OS name and version:  
     `systeminfo | findstr /B /C:"OS Name" /C:"OS Version"`
-6.  Retrieve comprehensive system information using PowerShell:  
+6.  Retrieve comprehensive info:  
     `Get-ComputerInfo`
 
-### **USER INFORMATION**
+### **User information**
 
-1.  Display the current username: `whoami`
-2.  List all user accounts on the system: `net user`
-3.  Display information about user sessions on a Remote Desktop Session Host server: `query user`
-4.  List all users in the administrators group:`net localgroup administrators`
-5.  List local user accounts using PowerShell:`Get-LocalUser`
-6.  List members of the administrators group using PowerShell:`Get-LocalGroupMember -Group "Administrators"`
-7.  Retrieve detailed user account information using PowerShell:`Get-WmiObject -Class Win32_UserAccount`
+1.  Current username:  
+    `whoami`
+2.  List all user accounts:  
+    `net user`
+3.  Show RDP session users:  
+    `query user`
+4.  List all admin group members:  
+    `net localgroup administrators`
+5.  List local users with PowerShell:  
+    `Get-LocalUser`
+6.  List admin group members with PowerShell:  
+    `Get-LocalGroupMember -Group "Administrators"`
+7.  Detailed user account info:  
+    `Get-WmiObject -Class Win32_UserAccount`
 
-### **NETWORK INFORMATION**
+### **Network information**
 
-1.  Display all current TCP/IP network configuration values:`ipconfig /all`
-2.  Display active connections and listening ports: `netstat -ano`
-3.  Display the IP routing table: `route print`
-4.  Display the ARP cache: `arp -a`
-5.  Retrieve IP address configuration using PowerShell: `Get-NetIPAddress`
-6.  Retrieve detailed network configuration using PowerShell: `Get-NetIPConfiguration`
-7.  List all network adapters using PowerShell: `Get-NetAdapter`
-8.  Test network connection to a specified host using PowerShell:`Test-Connection -ComputerName [hostname]`
+1.  Show all TCP/IP config:  
+    `ipconfig /all`
+2.  Display active connections and ports:  
+    `netstat -ano`
+3.  Show IP routing table:  
+    `route print`
+4.  Display ARP cache:  
+    `arp -a`
+5.  IP addresses (PowerShell):  
+    `Get-NetIPAddress`
+6.  Full network config (PowerShell):  
+    `Get-NetIPConfiguration`
+7.  List network adapters:  
+    `Get-NetAdapter`
+8.  Test connection:  
+    `Test-Connection -ComputerName [hostname]`
 
-### **LIST INSTALLED PROGRAMS**
+### **List installed programs**
 
-1.  List installed programs: `Get-ChildItem 'C:\Program Files', 'C:\Program Files (x86)' | ft Parent,Name,LastWriteTime`
-1. List installed antivirus: `WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntivirusProduct Get displayName`
-3.  List installed programs using PowerShell: `Get-WmiObject -Class Win32_Product | Select-Object -Property Name,Version`
-3.  List installed programs from the registry using PowerShell: `Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate`
-4.  List installed packages using PowerShell: `Get-Package`
+1.  Enumerate installed programs:  
+    `Get-ChildItem 'C:\Program Files', 'C:\Program Files (x86)' | ft Parent,Name,LastWriteTime`
+2.  Check installed AV products:  
+    `WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntivirusProduct Get displayName`
+3.  Programs via PowerShell:  
+    `Get-WmiObject -Class Win32_Product | Select-Object -Property Name,Version`
+4.  Programs via registry:  
+    `Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate`
+5.  List installed packages:  
+    `Get-Package`
 
-### **SCHEDULED TASKS**
+### **Scheduled tasks**
 
-1.  List all scheduled tasks with verbose details:  
+1.  List all tasks (verbose):  
     `schtasks /query /fo LIST /v`
-2.  Retrieve scheduled tasks information using PowerShell:  
+2.  Scheduled tasks via PowerShell:  
     `Get-ScheduledTask | Get-ScheduledTaskInfo`
-3.  Display detailed information about a specific scheduled task:  
+3.  Details of a specific task:  
     `schtasks /query /tn <taskname>`
 
-### **SERVICES AND DRIVERS**
+### **Services and drivers**
 
-1. List processes that are running as "system": `tasklist /v /fi "username eq system"`
-2.  Display information about active services: `sc query`
-3.  List all installed device drivers and their properties: `driverquery`
-4.  Retrieve the status of services using PowerShell: `Get-Service`
-5.  List services with detailed information using PowerShell: `Get-WmiObject -Class Win32_Service`
+1.  Show processes running as SYSTEM:  
+    `tasklist /v /fi "username eq system"`
+2.  List active services:  
+    `sc query`
+3.  List installed drivers:  
+    `driverquery`
+4.  Get service status (PowerShell):  
+    `Get-Service`
+5.  Detailed service info (PowerShell):  
+    `Get-WmiObject -Class Win32_Service`
 
-### **CHECK PERMISSIONS ON FILES/FOLDERS**
+### **Check permissions on files/folders**
 
-1.  Display or modify discretionary access control lists (DACLs) on specified files:  
+1.  Show or modify ACLs:  
     `icacls "C:\Path\to\folder"`
-2.  Retrieve the access control list for a file or folder using PowerShell:  
+2.  Retrieve ACLs (PowerShell):  
     `Get-Acl "C:\Path\to\folder"`
-3.  Use Sysinternals tool to check access permissions:  
+3.  Use AccessChk from Sysinternals:  
     `AccessChk.exe -d "C:\Path\to\folder"`
 
-### **LIST USER PRIVILEGES**
+### **List user privileges**
 
-1.  List the user privileges for the current user:  
+1.  Show current user privileges:  
     `whoami /priv`
-2.  List local user account details using PowerShell:  
+2.  Local user details (PowerShell):  
     `Get-LocalUser | Select-Object Name, Enabled, PasswordLastSet, LastLogon`
-3.  List all privileges assigned to the current user using PowerShell:  
+3.  List assigned privileges (PowerShell):  
     `Get-Privilege`
 
-### **ACTIVE CONNECTIONS AND LISTENING PORTS**
+### **Active connections and listening ports**
 
-1.  Display active connections and listening ports:  
+1.  Show active connections:  
     `netstat -ano`
-2.  List TCP connections using PowerShell:  
+2.  TCP connections (PowerShell):  
     `Get-NetTCPConnection`
-3.  List UDP endpoints using PowerShell:  
+3.  UDP endpoints (PowerShell):  
     `Get-NetUDPEndpoint`
 
-### **FIREWALL RULES**
+### **Firewall rules**
 
 1.  List all firewall rules:  
     `netsh advfirewall firewall show rule name=all`
-2.  Retrieve firewall rules using PowerShell:  
+2.  Firewall rules via PowerShell:  
     `Get-NetFirewallRule`
-3.  Display firewall profile settings using PowerShell:  
+3.  Firewall profile settings:  
     `Get-NetFirewallProfile`
 
-### **DNS CACHE**
+### **DNS cache**
 
-1.  Display the contents of the DNS resolver cache:  
+1.  Show DNS cache:  
     `ipconfig /displaydns`
-2.  Retrieve DNS client cache using PowerShell:  
+2.  DNS cache via PowerShell:  
     `Get-DnsClientCache`
-3.  Clear the DNS client cache using PowerShell:  
+3.  Clear DNS cache:  
     `Clear-DnsClientCache`
 
-### **VIEWING RECENT DOCUMENTS**
+### **Viewing recent documents**
 
 1.  List recent documents:  
     `type %userprofile%\Recent\*.lnk`
-2.  List recent documents with their names and last access times:  
+2.  With names and timestamps:  
     `Get-ChildItem "$env:UserProfile\Recent" | Select-Object Name, LastAccessTime`
 
-### **LIST LARGE FILES**
+### **List large files**
 
-1.  List large files:  
-    `powershell Get-ChildItem -Path C:\ -Recurse | Sort-Object Length -Descending`
+1.  Find large files:  
+    `Get-ChildItem -Path C:\ -Recurse | Sort-Object Length -Descending`
 
-### **CHECK AUTOSTART ENTRIES**
+### **Check autostart entries**
 
-1.  List startup programs for all users:  
+1.  Startup programs (all users):  
     `reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
-2.  List startup programs for the current user:  
+2.  Startup programs (current user):  
     `reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
-3.  Retrieve startup programs using PowerShell:  
+3.  Via PowerShell:  
     `Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run"`
 
-### **CHECK FOR INSTALLED APPLICATIONS**
+### **Check for installed applications**
 
-1.  List installed applications from the registry:  
+1.  Registry method:  
     `reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`
-2.  List installed applications using PowerShell:  
+2.  PowerShell method:  
     `Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"`
 
-### **CLIPBOARD CONTENTS**
+### **Clipboard contents**
 
-1.  Retrieve the contents of the clipboard:  
-    `powershell Get-Clipboard`
+1.  Read clipboard contents:  
+    `Get-Clipboard`
 
-### **LIST LOADED DLLS FOR PROCESSES**
+### **List loaded DLLs for processes**
 
-1.  List all running processes and the DLLs they have loaded:  
+1.  List processes with loaded DLLs:  
     `tasklist /m`
-2.  List process modules using PowerShell:  
+2.  Process modules via PowerShell:  
     `Get-Process | Select-Object Name, Modules`
 
-### **WINDOWS EVENT LOGS**
+### **Windows event logs**
 
 1.  List all event logs:  
     `wevtutil el`
-2.  Query the system event log:  
+2.  Query system logs:  
     `wevtutil qe /f:text System`
-3.  Retrieve the latest 100 system events using PowerShell:  
+3.  Latest 100 system events:  
     `Get-EventLog -LogName System -Newest 100`
-4.  Retrieve the latest 50 security events using PowerShell:  
+4.  Latest 50 security events:  
     `Get-WinEvent -LogName Security -MaxEvents 50`
 
-### **RUNNING PROCESSES**
+### **Running processes**
 
-1.  List all running processes:  
+1.  List running processes:  
     `tasklist`
-2.  Retrieve information about running processes using PowerShell:  
+2.  Running processes (PowerShell):  
     `Get-Process`
 
-### **GET DETAILED SYSTEM INFORMATION**
+### **Get detailed system information**
 
-1.  Retrieve detailed system information using PowerShell:  
+1.  Detailed system info:  
     `Get-ComputerInfo`
 
-### **NETWORK CONFIGURATION**
+### **Network configuration**
 
-1.  Retrieve network configuration using PowerShell:  
+1.  Show network config:  
     `Get-NetIPConfiguration`
-2.  List all network adapters using PowerShell:  
+2.  List adapters:  
     `Get-NetAdapter`
 
-### **INSTALLED HOTFIXES**
+### **Installed hotfixes**
 
-1.  List all installed hotfixes:  
+1.  List hotfixes:  
     `wmic qfe list`
-2.  Retrieve installed hotfixes using PowerShell:  
+2.  Hotfixes via PowerShell:  
     `Get-HotFix`
 
-### **ENVIRONMENT VARIABLES**
+### **Environment variables**
 
-1.  Display environment variables:  
+1.  Show environment variables:  
     `set`
-2.  Retrieve environment variables using PowerShell:  
+2.  PowerShell:  
     `Get-ChildItem Env:`
 
-### **RUNNING TASKS**
+### **Running tasks**
 
-1.  List all scheduled tasks:  
+1.  List scheduled tasks:  
     `schtasks`
-2.  Retrieve scheduled tasks using PowerShell:  
+2.  PowerShell:  
     `Get-ScheduledTask`
 
-### **SYSTEM UPTIME**
+### **System uptime**
 
-1.  Display server statistics including uptime:  
+1.  Show uptime with server stats:  
     `net stats srv`
-2.  Retrieve system uptime using PowerShell:  
+2.  PowerShell uptime:  
     `Get-Uptime`
 
-### **POWERSHELL EXECUTION POLICY**
+### **PowerShell execution policy**
 
-1.  Display the current PowerShell execution policy:  
+1.  Show current execution policy:  
     `Get-ExecutionPolicy`

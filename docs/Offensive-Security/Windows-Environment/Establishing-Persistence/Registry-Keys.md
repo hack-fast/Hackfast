@@ -2,11 +2,11 @@
 legal-banner: true
 ---
 
-### **ESTABLISHING PERSISTENCE USING REGISTRY KEYS**
+### **Establishing Persistence Using Registry Keys**
 
 Using the Windows Registry for persistence involves creating or modifying registry keys that instruct Windows to automatically execute specific programs or scripts at certain events, like system startup or user logon.
 
-### **STEP 1: SELECT THE APPROPRIATE REGISTRY KEY**
+### **Step 1: Selecting the Appropriate Registry Key**
 
 Depending on the persistence requirement (system-wide or user-specific), choose the appropriate registry location:
 
@@ -19,7 +19,7 @@ Depending on the persistence requirement (system-wide or user-specific), choose 
 3.  Ensure the executable or script is reliable and placed in a secure, accessible location. It should not require additional prompts or permissions that might hinder its execution.
     
 
-### **STEP 2: ADD A REGISTRY ENTRY**
+### **Step 2: Adding a Registry Entry**
 
 1.  Open the Registry Editor: Press `Win + R`, type `regedit`, and press Enter. Ensure you have the necessary permissions to modify the registry.
     
@@ -44,14 +44,14 @@ Depending on the persistence requirement (system-wide or user-specific), choose 
     `C:\Path\To\Your\Executable.exe`
     
 
-### **STEP 3: TEST THE PERSISTENCE**
+### **Step 3: Testing Persistence**
 
 1.  Restart Your Computer or log out and then log back in (if using HKEY_CURRENT_USER) to test if the setup works.
 2.  Verify Execution: After logging back in or restarting, check if your program or script runs automatically.
 3.  Remove or Disable the Registry Entry When No Longer Needed:  
     `reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v SystemHelper /f`
 
-### **TECHNIQUE 1: USING ALTERNATE REGISTRY PATHS**
+### **Technique 1: Using Alternate Registry Paths**
 
 Some applications use specific registry paths to configure auto-start settings. You can place your persistence mechanism in less commonly monitored registry paths.
 
@@ -60,7 +60,7 @@ Some applications use specific registry paths to configure auto-start settings. 
     `HKEY_CURRENT_USER\Software\Classes\clsid\{GUID}\shell\open\command`
 3.  Place your executable path here to trigger it when the application linked to the GUID is invoked.
 
-### **TECHNIQUE 2: REGISTRY KEY HIJACKING**
+### **Technique 2: Registry Key Hijacking**
 
 Modify existing legitimate registry keys to include your persistence payload, which can be particularly stealthy.
 
@@ -71,7 +71,7 @@ Modify existing legitimate registry keys to include your persistence payload, wh
     `reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "LegitimateService" /d "C:\Path\To\Your\Executable.exe && original_command.exe" /f`
     
 
-### **TECHNIQUE 3: USING WINDOWS POWERSHELL REGISTRY MANIPULATION FOR STEALTH**
+### **Technique 3: PowerShell Registry Manipulation**
 
 Manipulate registry keys using PowerShell to leave fewer traces and utilize more complex logic.
 
@@ -84,7 +84,7 @@ Manipulate registry keys using PowerShell to leave fewer traces and utilize more
     ```
     
 
-### **COBALTSTRIKE**
+### **Cobalt Strike Example**
 
 AutoRun values in HKCU and HKLM allow applications to start on boot. You commonly see these to start native and 3rd party applications such as software updaters, download assistants, driver utilities and so on.
 

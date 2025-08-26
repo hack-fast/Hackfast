@@ -9,6 +9,8 @@ repo_url: https://github.com/hack-fast/HackFast
 copyright: "<a href=\"/\">Legal Disclaimer</a> ⦁ <a href=\"/Community/Contributing/index.html\">Contribute</a>"
 
 theme:
+  logo: assets/logo.png
+  favicon: assets/favicon.png
   name: material
   custom_dir: overrides
   language: en
