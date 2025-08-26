@@ -52,7 +52,7 @@ Drupal is a free and open-source content management system (CMS) used to build a
     
 5.  Investigate forums, articles, and comments on the target Drupal site. Users often leave traces or use similar usernames across different platforms.
     
-6.  If the Drupal site has JSON API  you might be able to retrieve user information:  
+6.  If the Drupal site has JSON API  you might be able to retrieve user information:  
     `curl -s http://[DRUPAL-DOMAIN]/jsonapi/user/user | jq`  
     Look for unique identifiers or username fields in the JSON response.
     

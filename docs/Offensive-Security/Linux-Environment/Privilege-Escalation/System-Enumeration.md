@@ -90,9 +90,9 @@ legal-banner: true
 
 ### **Automated Enumeration Tools**
 
-1. [LINPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
-2. [LINENUM](https://github.com/rebootuser/LinEnum)
-3. [LINUX EXPLOIT SUGGESTER](https://github.com/mzet-/linux-exploit-suggester)
-4. [LINUX SMART ENUMERATION](https://github.com/diego-treitos/linux-smart-enumeration)
-5. [LINUX PRIV CHECKER](https://github.com/linted/linuxprivchecker)
-6. [PSPY](https://github.com/DominicBreuker/pspy)
+1. [LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)  
+2. [LinEnum](https://github.com/rebootuser/LinEnum)  
+3. [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester)  
+4. [Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)  
+5. [Linux Privilege Checker](https://github.com/linted/linuxprivchecker)  
+6. [pspy](https://github.com/DominicBreuker/pspy)  

