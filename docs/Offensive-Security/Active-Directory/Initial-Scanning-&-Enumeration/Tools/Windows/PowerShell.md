@@ -2,55 +2,81 @@
 legal-banner: true
 ---
 
-### **INTRODUCTION**
+### **Introduction**
 
-PowerShell, released by Microsoft in 2006, is a powerful upgrade to Command Prompt. It includes access to cmdlets (pronounced command-lets), which are .NET classes designed to perform specific functions. This cheat sheet focuses on using PowerShell for Active Directory (AD) enumeration, leveraging cmdlets included with the AD-RSAT (Active Directory Remote Server Administration Tools) package.
+PowerShell, released by Microsoft in 2006, is a powerful upgrade to Command Prompt. It includes access to cmdlets (pronounced *command-lets*), which are .NET classes designed to perform specific functions.  
+This cheat sheet focuses on using PowerShell for Active Directory (AD) enumeration, leveraging cmdlets included with the AD-RSAT (Active Directory Remote Server Administration Tools) package.
 
-### **ENUMERATING AD USERS**
+### **Enumerating AD Users**
 
-1. Enumerates AD users and retrieves properties of AD user objects.  
-   `Get-ADUser -Identity gordon.stevens -Server za.example.com -Properties *`
+1. Retrieve AD user details with all properties  
+```powershell
+Get-ADUser -Identity gordon.stevens -Server za.example.com -Properties *
+```
 
-2. Use filters to narrow down the user search.  
-   `Get-ADUser -Filter 'Name -like "*Roland"' -Server za.example.com | Format-Table Name,SamAccountName -A`
+2. Use filters to narrow down user search  
+```powershell
+Get-ADUser -Filter 'Name -like "*Roland"' -Server za.example.com | Format-Table Name,SamAccountName -A
+```
 
-3. Lists all users in the AD.  
-   `Get-ADUser -Filter * -Server za.example.com | Format-Table Name,SamAccountName -AutoSize`
+3. List all users in the domain  
+```powershell
+Get-ADUser -Filter * -Server za.example.com | Format-Table Name,SamAccountName -AutoSize
+```  
 
-### **ENUMERATING AD GROUPS**
+### **Enumerating AD Groups**
 
-1. Enumerates AD groups.  
-   `Get-ADGroup -Identity Administrators -Server za.example.com`
+1. Retrieve AD group details  
+```powershell
+Get-ADGroup -Identity Administrators -Server za.example.com
+```
 
-2. Enumerate group membership using the Get-ADGroupMember cmdlet.  
-   `Get-ADGroupMember -Identity Administrators -Server za.example.com`
+2. Enumerate group membership  
+```powershell
+Get-ADGroupMember -Identity Administrators -Server za.example.com
+```
 
-3. Lists all groups in the AD.  
-   `Get-ADGroup -Filter * -Server za.example.com | Format-Table Name,GroupScope -AutoSize`
+3. List all groups in the domain  
+```powershell
+Get-ADGroup -Filter * -Server za.example.com | Format-Table Name,GroupScope -AutoSize
+```  
 
-### **ENUMERATING AD COMPUTERS**
+### **Enumerating AD Computers**
 
-1. Enumerates AD computers.  
-  `Get-ADComputer -Identity "DC01" -Server za.example.com -Properties *`
+1. Retrieve AD computer details with all properties  
+```powershell
+Get-ADComputer -Identity "DC01" -Server za.example.com -Properties *
+```
 
-2. Use filters to narrow down the computer search.  
-   `Get-ADComputer -Filter 'OperatingSystem -like "*Server*"' -Server za.example.com | Format-Table Name,OperatingSystem -A`
+2. Use filters to narrow down computers by OS  
+```powershell
+Get-ADComputer -Filter 'OperatingSystem -like "*Server*"' -Server za.example.com | Format-Table Name,OperatingSystem -A
+```
 
-3. Lists all computers in the AD.  
-   `Get-ADComputer -Filter * -Server za.example.com | Format-Table Name,OperatingSystem -AutoSize`
+3. List all computers in the domain  
+```powershell
+Get-ADComputer -Filter * -Server za.example.com | Format-Table Name,OperatingSystem -AutoSize
+```  
 
-### **ENUMERATING AD OBJECTS**
+### **Enumerating AD Objects**
 
-1. Performs generic searches for any AD objects.  
-     `$ChangeDate = New-Object DateTime(2024, 05, 25, 12, 00, 00)`
-     `Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -IncludeDeletedObjects -Server za.example.com`
+1. Search for objects changed after a specific date  
+```powershell
+$ChangeDate = New-Object DateTime(2024, 05, 25, 12, 00, 00)
+Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -IncludeDeletedObjects -Server za.example.com
+```
 
-2. Lists all AD objects.  
-   `Get-ADObject -Filter * -Server za.example.com | Format-Table Name,ObjectClass -AutoSize`
+2. List all AD objects  
+```powershell
+Get-ADObject -Filter * -Server za.example.com | Format-Table Name,ObjectClass -AutoSize
+```  
+### **Enumerating Domains**
 
-### **ENUMERATING DOMAINS**
-
-1. Retrieves additional information about the specific domain.  
-	`Get-ADDomain -Server za.example.com`
-2. Retrieves information about organizational units.  
-	`Get-ADOrganizationalUnit -Filter * -Server za.example.com | Format-Table Name,DistinguishedName -A`
+1. Retrieve detailed domain information  
+```powershell
+Get-ADDomain -Server za.example.com
+```  
+2. Enumerate organizational units (OUs)  
+```powershell
+Get-ADOrganizationalUnit -Filter * -Server za.example.com | Format-Table Name,DistinguishedName -A
+```  

