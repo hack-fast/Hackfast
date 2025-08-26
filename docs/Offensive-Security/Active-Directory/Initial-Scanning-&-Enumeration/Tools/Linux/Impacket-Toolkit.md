@@ -8,7 +8,7 @@ Impacket is a collection of Python classes for working with network protocols. I
 
 ### **SMB/SMB2**
 
-**smbclient.py** – Interactive SMB client to work with shares.
+**smbclient.py** : Interactive SMB client to work with shares.
 
 1. Access SMB shares interactively  
 ```bash
@@ -19,7 +19,7 @@ smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
 smbclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -L
 ```  
 
-**secretsdump.py** – Dump secrets from a remote machine without executing any agent.
+**secretsdump.py** : Dump secrets from a remote machine without executing any agent.
 
 1. Dump NTLM hashes of all domain users from a domain controller  
 ```bash
@@ -31,7 +31,7 @@ secretsdump.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS]
 secretsdump.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 ```  
 
-**netview.py** – Enumerate shares and sessions on the network.
+**netview.py** : Enumerate shares and sessions on the network.
 
 1. Enumerate network shares and sessions  
 ```bash
@@ -45,7 +45,7 @@ netview.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 
 ### **MSRPC**
 
-**rpcclient.py** – Execute client-side MSRPC calls. 
+**rpcclient.py** : Execute client-side MSRPC calls. 
 
 1. Execute MSRPC client calls  
 ```bash
@@ -67,7 +67,7 @@ rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "enumdomgroups"
 rpcclient.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -c "cmd"
 ```  
 
-**rpcdump.py** – Dump information about endpoints and interfaces.
+**rpcdump.py** : Dump information about endpoints and interfaces.
 
 1. Dump RPC endpoints and interfaces info  
 ```bash
@@ -86,7 +86,7 @@ rpcdump.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 
 ### **DCE/RPC**
 
-**atexec.py** – Execute commands using Task Scheduler.
+**atexec.py** : Execute commands using Task Scheduler.
 
 1. Execute command using Task Scheduler  
 ```bash
@@ -103,7 +103,7 @@ atexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
 atexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
 ```  
 
-**wmiexec.py** – Execute commands via WMI.
+**wmiexec.py** : Execute commands via WMI.
 
 1. Execute command via WMI  
 ```bash
@@ -120,7 +120,7 @@ wmiexec.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
 wmiexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
 ```  
 
-**dcomexec.py** – Execute commands using DCOM. 
+**dcomexec.py** : Execute commands using DCOM. 
 
 1. Execute command using DCOM  
 ```bash
@@ -139,7 +139,7 @@ dcomexec.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS] [COMMAND]
 
 ### **LDAP**
 
-#### **GetADUsers.py** – Enumerate all users in the domain.
+#### **GetADUsers.py** : Enumerate all users in the domain.
 
 1. Enumerate all domain users  
 ```bash
@@ -156,7 +156,7 @@ GetADUsers.py [DOMAIN]/[USERNAME]:[PASSWORD]@[IP-ADDRESS] -all
 GetADUsers.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 ```  
 
-#### **GetUserSPNs.py** – Enumerate Service Principal Names (SPNs).
+#### **GetUserSPNs.py** : Enumerate Service Principal Names (SPNs).
 
 1. Enumerate user SPNs  
 ```bash
@@ -173,7 +173,7 @@ GetUserSPNs.py [DOMAIN]/[USERNAME]:[PASSWORD] -request -dc-ip [IP-ADDRESS]
 GetUserSPNs.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME] -dc-ip [IP-ADDRESS]
 ```  
 
-#### **windapsearch.py** – Perform LDAP queries against Active Directory. 
+#### **windapsearch.py** : Perform LDAP queries against Active Directory. 
 
 1. Enumerate Group Policy Objects  
 ```bash
@@ -202,7 +202,7 @@ python3 windapsearch.py --dc-ip [IP-ADDRESS] -u [USERNAME]@[DOMAIN] -p [PASSWORD
 
 ### **Kerberos**
 
-#### **ticketer.py** – Generate Kerberos tickets.
+#### **ticketer.py** : Generate Kerberos tickets.
 
 1. Generate a TGT ticket for a user  
 ```bash
@@ -219,7 +219,7 @@ ticketer.py -nthash [NTHASH] -domain-sid [SID] -request [USERNAME] [SPN]
 ticketer.py -aesKey [AESKEY] -domain-sid [SID] [USERNAME]
 ```  
 
-**GetNPUsers.py** – Check for accounts with pre-authentication disabled.
+**GetNPUsers.py** : Check for accounts with pre-authentication disabled.
 
 1. Enumerate accounts with pre-auth disabled  
 ```bash
@@ -238,7 +238,7 @@ GetNPUsers.py -k [DOMAIN]/[USERNAME] -request -dc-ip [IP-ADDRESS]
 
 ### **NTLM**
 
-**lookupsid.py** – Enumerate domain SID information.
+**lookupsid.py** : Enumerate domain SID information.
 
 1. Enumerate domain SID info  
 ```bash
@@ -255,7 +255,7 @@ lookupsid.py -hashes [LMHASH]:[NTHASH] [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 lookupsid.py -no-pass [DOMAIN]/[USERNAME]@[IP-ADDRESS]
 ```  
 
-**secretsdump.py** – Dump secrets from remote machines.
+**secretsdump.py** : Dump secrets from remote machines.
 
 1. Dump secrets from a remote machine  
 ```bash

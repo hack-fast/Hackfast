@@ -2,48 +2,78 @@
 legal-banner: true
 ---
 
-### **INTRODUCTION**
+### **Introduction**
 
-ACL (Access Control List) enumeration is a critical part of understanding permissions and potential attack paths within an Active Directory (AD) environment. This cheat sheet covers the use of PowerView for manual enumeration and BloodHound for graphical representation and attack path discovery.
+ACL (Access Control List) enumeration is a critical step in understanding permissions and potential attack paths within an Active Directory (AD) environment.  
+This cheat sheet covers the use of **PowerView** for manual enumeration and **BloodHound** for graphical representation and attack path discovery.
 
-### **STEP 1: CONVERT USERNAMES TO SIDS AND RETRIEVE ACLS**
+### **Step 1: Convert Usernames to SIDs and Retrieve ACLs**
 
-1.  Import PowerView Module  
-    `Import-Module .\PowerView.ps1`
-2.  Convert Username to SID  
-    `$userSID = Convert-UserToSID -Username mthompson`
-3.  Get Domain Object ACLs  
-    `Get-DomainObjectACL -Identity * | Where-Object {$_.SecurityIdentifier -eq $userSID}`
-4.  Convert GUID Values to Human-Readable Format:  
-    `Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid}`
-    
+1. Import the PowerView module  
+```powershell
+Import-Module .\PowerView.ps1
+```
 
-### **STEP 2: WORK WITH SPECIFIC GUIDS**
+2. Convert a username to a SID  
+```powershell
+$userSID = Convert-UserToSID -Username mthompson
+```
 
-5.  Set the GUID:  
-    `$guid = "3e0abfd0-1261-11d0-a060-00aa006c33ed"`
-6.  Find the mapping:  
-    `Get-ADObject -SearchBase "CN=Extended-Rights,$((Get-ADRootDSE).ConfigurationNamingContext)" -Filter {ObjectClass -like 'ControlAccessRight'} -Properties * | Select-Object Name,DisplayName,DistinguishedName,rightsGuid | Where-Object {$_.rightsGuid -eq $guid} | Format-List`
+3. Get domain object ACLs for that SID  
+```powershell
+Get-DomainObjectACL -Identity * | Where-Object {$_.SecurityIdentifier -eq $userSID}
+```
 
-### **STEP 3: REPEAT FOR ADDITIONAL USERS AND GROUPS**
+4. Resolve GUID values into human-readable format  
+```powershell
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid}
+```  
 
-7.  Convert another username to SID:  
-    `$sid2 = Convert-NameToSid -Username nwalker`
-    
-8.  Enumerate rights:  
-    `Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $sid2} -Verbose`
-    
-9.  Check Group Nesting  
-    `Get-DomainGroup -Identity "Finance Team" | Select-Object memberof`
-    
-10. Convert group name to SID:  
-    `$securityGroupSID = Convert-NameToSid -Username "Security Operations"`
-    
-11. Enumerate rights:  
-    `Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $securityGroupSID} -Verbose`
-    
-12. Convert another username to SID:  
-    `$jdoeSID = Convert-NameToSid -Username jdoe`
-    
-13. Enumerate rights:  
-    `Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $jdoeSID} -Verbose`
+### **Step 2: Work with Specific GUIDs**
+
+5. Set a GUID  
+```powershell
+$guid = "3e0abfd0-1261-11d0-a060-00aa006c33ed"
+```
+
+6. Find its mapping in AD  
+```powershell
+Get-ADObject -SearchBase "CN=Extended-Rights,$((Get-ADRootDSE).ConfigurationNamingContext)" -Filter {ObjectClass -like 'ControlAccessRight'} -Properties * | Select-Object Name,DisplayName,DistinguishedName,rightsGuid | Where-Object {$_.rightsGuid -eq $guid} | Format-List
+```  
+
+### **Step 3: Repeat for Additional Users and Groups**
+
+7. Convert another username to SID  
+```powershell
+$sid2 = Convert-NameToSid -Username nwalker
+```
+
+8. Enumerate rights for that SID  
+```powershell
+Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $sid2} -Verbose
+```
+
+9. Check group nesting  
+```powershell
+Get-DomainGroup -Identity "Finance Team" | Select-Object memberof
+```
+
+10. Convert a group name to SID  
+```powershell
+$securityGroupSID = Convert-NameToSid -Username "Security Operations"
+```
+
+11. Enumerate rights for that group SID  
+```powershell
+Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $securityGroupSID} -Verbose
+```
+
+12. Convert another username to SID  
+```powershell
+$jdoeSID = Convert-NameToSid -Username jdoe
+```
+
+13. Enumerate rights for that SID  
+```powershell
+Get-DomainObjectACL -ResolveGUIDs -Identity * | Where-Object {$_.SecurityIdentifier -eq $jdoeSID} -Verbose
+```  

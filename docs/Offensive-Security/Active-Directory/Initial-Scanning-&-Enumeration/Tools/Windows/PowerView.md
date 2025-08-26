@@ -2,163 +2,249 @@
 legal-banner: true
 ---
 
-### **ENUMERATE DOMAIN INFORMATION**
+### **Enumerate Domain Information**
 
-1. Retrieve Detailed Information about a Domain User:
-   `Get-DomainUser -Identity mmorgan -Domain inlanefreight.local | Select-Object -Property name, samaccountname, description, memberof, whencreated, pwdlastset, lastlogontimestamp, accountexpires, admincount, userprincipalname, serviceprincipalname, useraccountcontrol`
+1. Retrieve detailed information about a domain user  
+```powershell
+Get-DomainUser -Identity mmorgan -Domain inlanefreight.local | Select-Object -Property name, samaccountname, description, memberof, whencreated, pwdlastset, lastlogontimestamp, accountexpires, admincount, userprincipalname, serviceprincipalname, useraccountcontrol
+```
 
-2. List Members of the "Domain Admins" Group, Including Nested Group Memberships:
-   `Get-DomainGroupMember -Identity "Domain Admins" -Recurse`
+2. List members of the "Domain Admins" group (including nested memberships)  
+```powershell
+Get-DomainGroupMember -Identity "Domain Admins" -Recurse
+```
 
-3. List Trust Relationships for the Domain:
-   `Get-DomainTrustMapping`
+3. List trust relationships for the domain  
+```powershell
+Get-DomainTrustMapping
+```
 
-4. Check Administrative Access to a Specific Machine:
-   `Test-AdminAccess -ComputerName ACADEMY-EA-MS01`
+4. Check administrative access to a specific machine  
+```powershell
+Test-AdminAccess -ComputerName ACADEMY-EA-MS01
+```
 
-5. Identify Users with the SPN Property Set (Useful for Kerberoasting):
-   `Get-DomainUser -SPN -Properties samaccountname, ServicePrincipalName`
+5. Identify users with SPN property set (useful for Kerberoasting)  
+```powershell
+Get-DomainUser -SPN -Properties samaccountname, ServicePrincipalName
+```
 
-6. Enumerate Local Groups on a Specified Target:
-   `Get-NetLocalGroup -ComputerName <target>`
+6. Enumerate local groups on a target  
+```powershell
+Get-NetLocalGroup -ComputerName <target>
+```
 
-7. Enumerate Members of the Local Administrators Group on a Specified Target:
-   `Get-NetLocalGroupMember -ComputerName <target> -GroupName "Administrators"`
+7. Enumerate members of the local Administrators group on a target  
+```powershell
+Get-NetLocalGroupMember -ComputerName <target> -GroupName "Administrators"
+```
 
-8. Enumerate Shares on a Specified Target:
-   `Get-NetShare -ComputerName <target>`
+8. Enumerate shares on a target  
+```powershell
+Get-NetShare -ComputerName <target>
+```
 
-9. Find Reachable Shares on Domain Machines:
-   `Find-DomainShare`
+9. Find reachable shares on domain machines  
+```powershell
+Find-DomainShare
+```
 
-10. Search for Files Matching Specific Criteria on Readable Shares in the Domain:
-    `Find-InterestingDomainShareFile`
+10. Search for files matching criteria on readable shares  
+```powershell
+Find-InterestingDomainShareFile
+```
 
-11. Return a List of All Distributed File Systems for the Domain:
-    `Get-DomainDFSShare`
+11. List all distributed file systems for the domain  
+```powershell
+Get-DomainDFSShare
+```
 
-12. Return the Default Domain Policy or the Domain Controller Policy:
-    `Get-DomainPolicy`
+12. Retrieve default domain or DC policy  
+```powershell
+Get-DomainPolicy
+```  
 
-### **DOMAIN INFORMATION**
+### **Domain Information**
 
-1. Get Current Domain:
-   `Get-NetDomain`
+1. Get current domain  
+```powershell
+Get-NetDomain
+```
 
-2. Enumerate Other Domains:
-   `Get-NetDomain -Domain $DomainName`
+2. Enumerate other domains  
+```powershell
+Get-NetDomain -Domain $DomainName
+```
 
-3. Get Domain SID:
-   `Get-DomainSID`
+3. Get domain SID  
+```powershell
+Get-DomainSID
+```
 
-4. Get Domain Policy:
-   `Get-DomainPolicy`
-   `(Get-DomainPolicy)."system access"`
-   `(Get-DomainPolicy)."kerberos policy"`
+4. Retrieve domain policy  
+```powershell
+Get-DomainPolicy
+(Get-DomainPolicy)."system access"
+(Get-DomainPolicy)."kerberos policy"
+```
 
-5. Get Domain Controllers:
-   `Get-NetDomainController`
-   `Get-NetDomainController -Domain $DomainName`
+5. Get domain controllers  
+```powershell
+Get-NetDomainController
+Get-NetDomainController -Domain $DomainName
+```
 
-6. Get Detailed Domain Info:
-   `Get-NetDomain -FullData`
+6. Get detailed domain info  
+```powershell
+Get-NetDomain -FullData
+```  
 
-### **ENUMERATE DOMAIN USERS**
+### **Enumerate Domain Users**
 
-1. Enumerate Domain Users:
-   `Get-NetUser`
-   `Get-NetUser -SamAccountName $user`
-   `Get-NetUser | select cn`
-   `Get-UserProperty`
+1. Enumerate domain users  
+```powershell
+Get-NetUser
+Get-NetUser -SamAccountName $user
+Get-NetUser | select cn
+Get-UserProperty
+```
 
-2. Check Last Password Change:
-   `Get-UserProperty -Properties pwdlastset`
+2. Check last password change  
+```powershell
+Get-UserProperty -Properties pwdlastset
+```
 
-3. Get Specific Attribute Value:
-   `Find-UserField -SearchField Description -SearchTerm "wtver"`
+3. Get specific attribute value  
+```powershell
+Find-UserField -SearchField Description -SearchTerm "wtver"
+```
 
-4. Enumerate Users Logged on a Machine:
-   `Get-NetLoggedon -ComputerName $ComputerName`
+4. Enumerate users logged onto a machine  
+```powershell
+Get-NetLoggedon -ComputerName $ComputerName
+```
 
-5. Enumerate Session Information:
-   `Get-NetSession -ComputerName $ComputerName`
+5. Enumerate session information  
+```powershell
+Get-NetSession -ComputerName $ComputerName
+```
 
-6. Enumerate User Locations:
-   `Find-DomainUserLocation -Domain $DomainName | Select-Object UserName, SessionFromName`
+6. Enumerate user locations  
+```powershell
+Find-DomainUserLocation -Domain $DomainName | Select-Object UserName, SessionFromName
+```  
 
-### **ENUMERATE DOMAIN COMPUTERS**
+### **Enumerate Domain Computers**
 
-1. Enumerate Domain Computers:
-   `Get-NetComputer -FullData`
-   `Get-NetComputer -Ping`
+1. Enumerate domain computers  
+```powershell
+Get-NetComputer -FullData
+Get-NetComputer -Ping
+```
 
-2. Enumerate Live Machines:
-   `Get-NetComputer -Ping`
+2. Enumerate live machines  
+```powershell
+Get-NetComputer -Ping
+```  
 
-### **ENUMERATE GROUPS AND GROUP MEMBERS**
+### **Enumerate Groups and Group Members**
 
-1. Enumerate Group Members:
-   `Get-NetGroupMember -GroupName "$GroupName" -Domain $DomainName`
+1. Enumerate group members  
+```powershell
+Get-NetGroupMember -GroupName "$GroupName" -Domain $DomainName
+```
 
-2. Get Group Members:
-   `Get-DomainGroup -Identity $GroupName | Select-Object -ExpandProperty Member`
+2. Get group members  
+```powershell
+Get-DomainGroup -Identity $GroupName | Select-Object -ExpandProperty Member
+```
 
-3. Enumerate GPO Local Group Membership:
-   `Get-DomainGPOLocalGroup | Select-Object GPODisplayName, GroupName`
+3. Enumerate GPO local group membership  
+```powershell
+Get-DomainGPOLocalGroup | Select-Object GPODisplayName, GroupName
+```
 
-4. Enumerate All Groups:
-   `Get-NetGroup -FullData`
+4. Enumerate all groups  
+```powershell
+Get-NetGroup -FullData
+```  
 
-### **ENUMERATE SHARES**
+### **Enumerate Shares**
 
-1. Enumerate Domain Shares:
-   `Find-DomainShare`
+1. Enumerate domain shares  
+```powershell
+Find-DomainShare
+```
 
-2. Enumerate Accessible Domain Shares:
-   `Find-DomainShare -CheckShareAccess`
+2. Enumerate accessible domain shares  
+```powershell
+Find-DomainShare -CheckShareAccess
+```  
 
-### **ENUMERATE GROUP POLICIES**
+### **Enumerate Group Policies**
 
-1. Get Group Policies:
-   `Get-NetGPO`
+1. Get group policies  
+```powershell
+Get-NetGPO
+```
 
-2. Get Group Policy for Machine:
-   `Get-NetGPO -ComputerName $ComputerName`
+2. Get group policy for a machine  
+```powershell
+Get-NetGPO -ComputerName $ComputerName
+```
 
-3. Get Local Admin Group Users:
-   `Find-GPOComputerAdmin -ComputerName $ComputerName`
+3. Get local admin group users  
+```powershell
+Find-GPOComputerAdmin -ComputerName $ComputerName
+```  
 
-### **ENUMERATE OUS**
+### **Enumerate OUs**
 
-1. Enumerate OUs:
-   `Get-NetOU -FullData`
-   `Get-NetGPO -GPOname $GPO_GUID`
+1. Enumerate organizational units  
+```powershell
+Get-NetOU -FullData
+Get-NetGPO -GPOname $GPO_GUID
+```  
 
-### **ENUMERATE ACLS**
+### **Enumerate ACLs**
 
-1. Get ACLs for a User:
-   `Get-ObjectAcl -SamAccountName $UserName -ResolveGUIDs`
+1. Get ACLs for a user  
+```powershell
+Get-ObjectAcl -SamAccountName $UserName -ResolveGUIDs
+```
 
-2. Get ACLs for a Specific Path:
-   `Get-PathAcl -Path $Path`
+2. Get ACLs for a specific path  
+```powershell
+Get-PathAcl -Path $Path
+```
 
-3. Search for Interesting ACEs:
-   `Invoke-ACLScanner -ResolveGUIDs`
+3. Search for interesting ACEs  
+```powershell
+Invoke-ACLScanner -ResolveGUIDs
+```  
 
-### **ENUMERATION OF DATA**
+### **Enumeration of Data**
 
-1. Enumerate Domain Trusts:
-   `Get-NetDomainTrust`
-   `Get-NetDomainTrust -Domain $DomainName`
+1. Enumerate domain trusts  
+```powershell
+Get-NetDomainTrust
+Get-NetDomainTrust -Domain $DomainName
+```
 
-2. Enumerate Forest Trusts:
-   `Get-NetForestTrust`
-   `Get-NetForestDomain -Forest $ForestName`
+2. Enumerate forest trusts  
+```powershell
+Get-NetForestTrust
+Get-NetForestDomain -Forest $ForestName
+```
 
-3. Get DNS Zones and Records:
-   `Get-DNSZone`
-   `Get-DNSRecord`
+3. Get DNS zones and records  
+```powershell
+Get-DNSZone
+Get-DNSRecord
+```
 
-4. Get All Domain Sites and Subnets:
-   `Get-NetSite`
-   `Get-NetSubnet`
+4. Get all domain sites and subnets  
+```powershell
+Get-NetSite
+Get-NetSubnet
+``` 

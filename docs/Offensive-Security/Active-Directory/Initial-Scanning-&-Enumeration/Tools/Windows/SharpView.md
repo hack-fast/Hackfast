@@ -2,66 +2,98 @@
 legal-banner: true
 ---
 
-### **ENUMERATING AD USERS**
+### **Enumerating AD Users**
 
-1. Enumerates AD users.  
-   `SharpView.exe Get-DomainUser -Identity gordon.stevens -Domain [DOMAIN]`
+1. Enumerate AD users  
+```bash
+SharpView.exe Get-DomainUser -Identity gordon.stevens -Domain [DOMAIN]
+```
 
-2. Use filters to narrow down the user search.  
-   `SharpView.exe Get-DomainUser -Filter "samaccountname -like '*[USERNAME]*'" -Domain [DOMAIN]`
+2. Use filters to narrow user search  
+```bash
+SharpView.exe Get-DomainUser -Filter "samaccountname -like '*[USERNAME]*'" -Domain [DOMAIN]
+```
 
-3. List all users in the AD.  
-   `SharpView.exe Get-DomainUser -Domain [DOMAIN]`
+3. List all AD users  
+```bash
+SharpView.exe Get-DomainUser -Domain [DOMAIN]
+```  
 
-### **ENUMERATING AD GROUPS**
+### **Enumerating AD Groups**
 
-1. Enumerates AD groups.  
-   `SharpView.exe Get-DomainGroup -Identity Administrators -Domain [DOMAIN]`
+1. Enumerate AD groups  
+```bash
+SharpView.exe Get-DomainGroup -Identity Administrators -Domain [DOMAIN]
+```
 
-2. Enumerate group membership.  
-   `SharpView.exe Get-DomainGroupMember -Identity Administrators -Domain [DOMAIN]`
+2. Enumerate group membership  
+```bash
+SharpView.exe Get-DomainGroupMember -Identity Administrators -Domain [DOMAIN]
+```
 
-3. List all groups in the AD.  
-   `SharpView.exe Get-DomainGroup -Domain [DOMAIN]`
+3. List all AD groups  
+```bash
+SharpView.exe Get-DomainGroup -Domain [DOMAIN]
+```  
 
-### **ENUMERATING AD COMPUTERS**
+### **Enumerating AD Computers**
 
-1. Enumerates AD computers.  
-   `SharpView.exe Get-DomainComputer -Identity "DC01" -Domain [DOMAIN]`
+1. Enumerate AD computers  
+```bash
+SharpView.exe Get-DomainComputer -Identity "DC01" -Domain [DOMAIN]
+```
 
-2. Use filters to narrow down the computer search.  
-   `SharpView.exe Get-DomainComputer -Filter "operatingsystem -like '*Server*'" -Domain [DOMAIN]`
+2. Use filters to narrow computer search  
+```bash
+SharpView.exe Get-DomainComputer -Filter "operatingsystem -like '*Server*'" -Domain [DOMAIN]
+```
 
-3. List all computers in the AD.  
-   `SharpView.exe Get-DomainComputer -Domain [DOMAIN]`
+3. List all AD computers  
+```bash
+SharpView.exe Get-DomainComputer -Domain [DOMAIN]
+```  
 
-### **ENUMERATING AD OBJECTS**
+### **Enumerating AD Objects**
 
-1. Performs generic searches for any AD objects.  
-   `SharpView.exe Get-DomainObject -Filter "whenchanged -gt 2024-02-28T12:00:00" -Domain [DOMAIN]`
+1. Perform generic AD object searches  
+```bash
+SharpView.exe Get-DomainObject -Filter "whenchanged -gt 2024-02-28T12:00:00" -Domain [DOMAIN]
+```
 
-2. List all AD objects.  
-   `SharpView.exe Get-DomainObject -Domain [DOMAIN]`
+2. List all AD objects  
+```bash
+SharpView.exe Get-DomainObject -Domain [DOMAIN]
+```  
 
-### **ENUMERATING DOMAINS**
+### **Enumerating Domains**
 
-1. Retrieve additional information about the specific domain.  
-   `SharpView.exe Get-Domain -Domain [DOMAIN]`
+1. Retrieve detailed domain information  
+```bash
+SharpView.exe Get-Domain -Domain [DOMAIN]
+```
 
-2. Retrieve information about organizational units.  
-   `SharpView.exe Get-DomainOU -Domain [DOMAIN]`
+2. Enumerate organizational units (OUs)  
+```bash
+SharpView.exe Get-DomainOU -Domain [DOMAIN]
+```  
 
-### **ENUMERATING GROUP POLICY OBJECTS (GPOS)**
+### **Enumerating Group Policy Objects (GPOs)**
 
-1. Retrieve information about Group Policy Objects (GPOs) within the domain.  
-   `SharpView.exe Get-DomainGPO -Domain [DOMAIN]`
+1. Retrieve Group Policy Objects in the domain  
+```bash
+SharpView.exe Get-DomainGPO -Domain [DOMAIN]
+```  
 
-### **ENUMERATING TRUSTS**
+### **Enumerating Trusts**
 
-1. Retrieve information about domain trusts.  
-   `SharpView.exe Get-DomainTrust -Domain [DOMAIN]`
+1. Retrieve domain trust information  
+```bash
+SharpView.exe Get-DomainTrust -Domain [DOMAIN]
+```  
 
-### **ENUMERATING DOMAIN CONTROLLERS**
+### **Enumerating Domain Controllers**
 
-1. Retrieve information about domain controllers.  
-   `SharpView.exe Get-DomainController -Domain [DOMAIN]`
+1. Retrieve domain controller information  
+```bash
+SharpView.exe Get-DomainController -Domain [DOMAIN]
+```  
