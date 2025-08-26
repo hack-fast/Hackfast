@@ -363,8 +363,8 @@ nav:
         - 'DSRM Abuse': Offensive-Security/Active-Directory/Domain-Persistence/DSRM-Abuse.md
   - 'Productivity': 
     - 'todo': Productivity/todo.md
-  - 'Philosophy':
-    - 'todo': Philosophy/todo.md
+  - 'Hacker Mindset':
+    - 'todo': Hacker-Mindset/todo.md
   - 'Community': 
     - 'How to become a Contributor': Community/Contributing.md
     - 'How to become a Maintainer': Community/Maintainer.md
